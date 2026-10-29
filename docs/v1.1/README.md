@@ -14,7 +14,7 @@
 
 [Oficjalne Release v1.1](https://github.com/MarcinKowalik-AGH/Zortrax-m300-Boot-Loader/releases/tag/v1.1) · [Pliki firmware](../../firmware/v1.1) · [SHA-256](../../firmware/v1.1/SHA256SUMS.txt) · [Wyniki audytu](AUDYT_REPOZYTORIUM_PL.md)
 
-**Potwierdzone sprzętowo:** właściciel wykonał upgrade własnego bootloadera do v1.1 przez pośrednik **1.1-i4** i uruchomił oryginalne Zortrax **1.3.1**. **Jedna klasyczna M300, PCB Rev. 5.3 / HW05, SIZE 256 KiB.** Osobnych prób FACTORY i ST-Link nie potwierdzono. Firmwarowe pliki binarne nie zostały przebudowane w tej reorganizacji.
+**Potwierdzenie sprzętowe:** **UPGRADE** v1.1/i4 z przywróceniem oryginalnego **1.3.1** zrealizowano na pierwszej klasycznej M300 (PCB Rev. 5.3 / HW05 / SIZE 256 KiB). Właściciel dodatkowo **zgłosił działanie FACTORY na drugiej drukarce**; jej parametry oraz dokładne logi etapów instalacji nie są jeszcze udokumentowane. **ST-Link/SWD nie został osobno przetestowany sprzętowo.** [Macierz prób i status weryfikacji](HARDWARE_FEEDBACK_2026-10-29.md). Opublikowane firmware pozostaje niezmienione.
 
 **Publiczne archiwa są powiązane hashami z jednym rozpoznanym egzemplarzem.** Inne drukarki M300/HW05 wymagają własnej kwalifikacji; nie wyłączaj ochrony, nie modyfikuj hashy i nie przenoś obcych NVM/UID. Nie publikuj kopii konkretnej drukarki.
 

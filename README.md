@@ -2,7 +2,7 @@
 
 **Independent service bootloader · SD installer 1.1-i4**  
 **Autor / Author:** Marcin Kowalik · mkowalik@agh.edu.pl  
-**Tested target:** classic M300, **PCB Rev. 5.3 / hardware 05 / measured 256 KiB Flash**.
+**Fully characterized test unit:** classic M300, **PCB Rev. 5.3 / hardware 05 / measured 256 KiB Flash**. A second printer has owner-reported FACTORY success; its board revision and firmware have not yet been supplied.
 
 > **Najpierw kopia / Backup first.** Nie zdejmuj RDP, żeby odczytać pamięć: wyłączenie aktywnej ochrony w tym STM32F1 kasuje główną Flash. Najpierw zachowaj dwie zgodne kopie bootloadera, NVM/danych fabrycznych, UID, SIZE i Option Bytes. [Pełna procedura PL](docs/v1.1/KOPIA_ORYGINALU_PL.md) · [English](docs/v1.1/ORIGINAL_BACKUP_EN.md).
 
@@ -49,9 +49,9 @@
 
 ## Potwierdzenie sprzętowe / Hardware status
 
-Właściciel potwierdził zakończenie **UPGRADE do v1.1 przez i4**, późniejsze zapisanie oryginalnego **Zortrax 1.3.1** i jego uruchomienie. Testowano **jeden egzemplarz**. Poprzednie próby obejmowały OEM v3 → diagnostykę, rc3 FULL, UART, OLED, enkoder, SD oraz zachowanie numeru/hardware/licznika. Pełne zestawienie, zakres i ograniczenia są w [TESTED_HARDWARE](docs/v1.1/TESTED_HARDWARE.md).
+**UPGRADE:** właściciel potwierdził instalację v1.1/i4 i uruchomienie oryginalnego **Zortrax 1.3.1** na pierwszej, dokładnie scharakteryzowanej M300 (Rev. 5.3 / HW05 / 256 KiB). **FACTORY:** właściciel następnie zgłosił, że ścieżka FACTORY działa na **drugiej drukarce**. Parametry tej płyty, log i dokładny punkt zakończenia instalacji nie zostały podane; przy deklarowanych blokadach UID/Option Bytes/strony fabrycznej wymaga to dodatkowej weryfikacji. **ST-Link pozostaje niepotwierdzony sprzętowo.**
 
-Owner-reported success: **custom M300Boot → v1.1 using i4 → original Zortrax 1.3.1 starts**, on one unit. The published machine-code images have not been changed after that report. **FACTORY i4 and ST-Link v1.1 are provided as separately documented routes, not separately hardware-qualified successes.** No power-loss or general print-performance certification is claimed.
+Owner reports **UPGRADE and restored stock 1.3.1 startup** on unit A, plus **FACTORY functioning on a second printer** (unit B). This second report is recorded as owner evidence, **not** proof of universal compatibility or of specific permanent-write/stock-start checkpoints without logs. The embedded identity gates have not been removed. [Hardware feedback and test matrix](docs/v1.1/HARDWARE_FEEDBACK_2026-10-29.md) · [Tested hardware](docs/v1.1/TESTED_HARDWARE.md). No power-loss or general print-performance certification is claimed.
 
 ## Mapa pamięci / Memory layout
 

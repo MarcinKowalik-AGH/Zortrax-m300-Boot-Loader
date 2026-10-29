@@ -1,6 +1,6 @@
 # M300 boot v1.1 · SD installer 1.1-i4
 
-Independent service bootloader for **classic Zortrax M300**, tested on one **PCB Rev.5.3 / HW05 / measured 256-KiB STM32F1 high-density** unit. Original bootloader: OEM v3; original printer application: **1.3.1**. The owner confirmed custom-boot upgrade through i4 and subsequent successful stock 1.3.1 startup. FACTORY i4 and ST-Link programming are separately documented, not independently hardware-qualified.
+Independent service bootloader for **classic Zortrax M300**. Unit A is fully characterized as **PCB Rev.5.3 / HW05 / measured 256-KiB STM32F1 high-density**, OEM v3 and original **1.3.1**. The owner confirmed **UPGRADE** through i4 and successful stock 1.3.1 startup. In a subsequent report, the owner stated **FACTORY works on a second printer** (unit B), without providing that unit’s board/firmware details or individual completion logs. This is owner-reported route evidence, not blanket M300 qualification; fixed identity profile gates still require reconciliation with second-unit checkpoints. **ST-Link programming remains physically unconfirmed.** See [hardware feedback](HARDWARE_FEEDBACK_2026-10-29.md).
 
 ## Choose your package
 

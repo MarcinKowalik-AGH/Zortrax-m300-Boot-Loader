@@ -10,7 +10,7 @@ Dotyczy **klasycznej M300 Rev.5.3/HW05, 256 KiB, profilu rozpoznawanego przez i4
 | Własny rozpoznany **M300Boot FULL rc1/rc2/rc3 lub v1.1** | SD_UPGRADE_i4 — ręczny wybór `M300APP.M3B` |
 | Rozruch uszkodzony, potrzebne SWD | Osobna [procedura ST-Link](STLINK_I_ODZYSKIWANIE_PL.md); nie zamieniaj nazwy pliku SD na BIN |
 
-Przebieg UPGRADE do v1.1/i4 i uruchomienie stock 1.3.1 potwierdził właściciel jednej drukarki. FACTORY i4 jest osobną drogą bez takiego odrębnego potwierdzenia. W obu paczkach znajduje się ta sama aplikacja i4 oraz ten sam docelowy boot v1.1.
+**UPGRADE** do v1.1/i4 i uruchomienie stock **1.3.1** właściciel potwierdził na pierwszej drukarce. **FACTORY** właściciel zgłosił jako działające na **drugiej drukarce**, jednak bez jej danych sprzętowych i szczegółowych logów potwierdzających końcowy zapis stałego BOOT. Ponieważ i4 ma blokady indywidualnego profilu, nie traktujemy tego jako dowodu uniwersalnej zgodności; [macierz prób](HARDWARE_FEEDBACK_2026-10-29.md). W obu paczkach znajduje się ta sama aplikacja i4 oraz ten sam docelowy boot v1.1.
 
 ## 2. Karta i kontrola
 

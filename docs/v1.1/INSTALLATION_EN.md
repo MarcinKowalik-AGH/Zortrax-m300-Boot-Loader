@@ -21,7 +21,7 @@ bash tools/SPRAWDZ_M300_SD_I4.command --card "/Volumes/M300" --route upgrade
 2. After actual completion, switch off, remove the card, and power on without it. **M300 SD installer 1.1-i4** should start.
 3. When its menu is idle, reinsert the same FACTORY card. Continue with the common procedure below.
 
-The OEM bootloader remains until the separate replacement step. Installing the intermediary already replaces the stock printing application; later backups are not pristine pre-update full images.
+The OEM bootloader remains until the separate replacement step. Installing the intermediary already replaces the stock printing application; later backups are not pristine pre-update full images. **Owner feedback:** FACTORY reportedly worked on a second printer; without the second unit’s hardware details and completion log this is not independent verification of each stage or universal compatibility. See [hardware feedback](HARDWARE_FEEDBACK_2026-10-29.md).
 
 ## B. Enter through an existing custom M300Boot
 

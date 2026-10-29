@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.1 — documentation follow-up 2026-10-29
+
+- Owner confirmed that **FACTORY works on a second printer**. The original UPGRADE/stock 1.3.1 confirmation on unit A remains valid.
+- Public docs now distinguish owner-reported second-device FACTORY operation from independent evidence of each permanent BOOT write/stock start checkpoint. The second board identity and log remain unreported.
+- Compiled installer i4 still has device-profile gates; no firmware binaries or release assets changed. Physical ST-Link remains unconfirmed.
+
 ## 1.1 — publication 2026-10-29
 
 - Stable display name M300 boot v1.1 © Marcin Kowalik.
