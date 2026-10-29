@@ -1,27 +1,41 @@
-# M300 boot v1.1
+# M300 boot v1.1 — classic Zortrax M300
 
-Independent service bootloader for the **classic Zortrax M300**. Author: **Marcin Kowalik**, mkowalik@agh.edu.pl.
+**Independent service bootloader · SD installer 1.1-i4**  
+**Author / Autor:** Marcin Kowalik · mkowalik@agh.edu.pl
 
-## Release scope / Zakres wydania
-
-The publication is being assembled from the tested **M300Boot v1.1 + SD installer 1.1-i4** artifacts. This is **not** firmware for M300 Plus, M300 Dual or Inventure. Do not flash an Inventure binary onto an M300.
-
-Hardware reported as tested by the owner: **one classic M300, PCB Rev. 5.3, menu hardware version 05, STM32F1 high-density device ID 0x414, 256 KiB of main Flash established by two matching internal SIZE-register reads**. The full MCU part marking was not reliably read; no exact ordering code is claimed. SWD originally displayed 512 KB, but the measured size is 256 KiB.
-
-The owner confirmed upgrade from the custom M300Boot, completion of installer i4, restoration of the original **Zortrax 1.3.1** application, and successful startup. The factory-entry i4 route and ST-Link installation are documented separately; they must not be described as independently hardware-tested merely because the upgrade passed. These reports do not qualify power-loss recovery, arbitrary M300 revisions, or printing performance.
+> Publication status: PL/EN documentation is committed. The checked binary packages are prepared, but **the GitHub Release and its attachments have not yet been published**. Final publication uses the supplied local publisher and official GitHub CLI browser authorization. This notice will be replaced by the full download index when publication completes.
 
 ## Backup first / Najpierw kopia
 
-Before changing anything, preserve the original bootloader, NVM/calibration/preferences, factory identity and operating-time records, UID, Option Bytes and the measured Flash size. Never upload personal dumps to a public issue.
+**Never remove RDP to obtain a backup. On this STM32F1, removing active read protection erases main Flash.** Preserve two matching images, original BOOT, NVM/factory pages, UID, SIZE and options before migration. Installing a diagnostic intermediary already replaces the printer application; its full dump is post-update, not a pristine factory image.
 
-**Do not disable RDP just to obtain a backup.** On this STM32F1, removing read protection erases main Flash. Preserve a verified copy before any destructive recovery. A temporary diagnostic application can export retained regions from internally executing code, but its installation replaces the previous application; this is not a pristine pre-update full dump.
+**[Kopia oryginalnej pamięci — PL](docs/KOPIA_ORYGINALU_PL.md)** · **[Original-memory backup — EN](docs/ORIGINAL_BACKUP_EN.md)**
 
-## Distribution policy
+## Three installation routes
 
-Public firmware binaries and PL/EN operating instructions follow the Inventure publication model. No C/ASM firmware sources, ELF/map files, private full-Flash dumps, UID bytes, NVM or serial-number photographs are intended for publication.
+| Existing state | Distribution prepared for v1.1 |
+|---|---|
+| Recognized original Zortrax Bootloader v3 | SD_FACTORY_OEMV3_i4, starting from Update.bin |
+| Recognized existing M300Boot FULL | SD_UPGRADE_i4, starting from M300APP.M3B |
+| Deliberate ST-Link installation or recovery | STLINK_LOCAL_BUILDER: exact stage2/assets and a local PERSONAL-image builder using your own backup |
 
-**Important:** the existing i4 SD installer checks a fixed device profile, including identity hashes. It is not a universal installer for every PCB labelled HW05. These safety gates must not be removed to make an incompatible printer accept it. The final asset manifest will state the exact scope.
+**Important:** the unchanged i4 installers are **locked to one qualified device profile**, including identity/options/factory-page hashes. HW05 alone does not establish compatibility. Do not patch safety gates, copy another printer's identity or erase data to force acceptance.
 
-This initial documentation commit is not a claim that a GitHub Release or its assets have already been published.
+[Instalacja PL](docs/INSTALACJA_PL.md) · [Installation EN](docs/INSTALLATION_EN.md)  
+[ST-Link i odzyskiwanie PL](docs/STLINK_I_ODZYSKIWANIE_PL.md) · [ST-Link and recovery EN](docs/STLINK_AND_RECOVERY_EN.md)  
+[Funkcje i Hardware PL](docs/FUNKCJE_I_KONSOLA_PL.md) · [Features EN](docs/FEATURES_AND_CONSOLE_EN.md)  
+[Tested hardware / Przetestowany sprzęt](docs/TESTED_HARDWARE.md) · [Release scope](docs/RELEASE_MANIFEST.md)
 
-Independent project; not affiliated with or endorsed by Zortrax or STMicroelectronics.
+## Tested configuration
+
+One **classic M300**, mainboard **Rev.5.3**, menu hardware **05**, STM32F1 high-density device ID **0x414 / Rev X**, measured **256 KiB Flash**. Original loader **OEM v3**, printer firmware **1.3.1**. The exact full MCU part marking was not reliably read; no VDT6/VET6 ordering code is asserted.
+
+The owner confirmed successful **UPGRADE through installer 1.1-i4 to M300 boot v1.1**, followed by restoration and startup of original **Zortrax 1.3.1**. The factory-entry i4 and ST-Link routes are separately documented, not separately hardware-qualified. No power-loss, general printing or other-board guarantee is claimed.
+
+## Functions and preservation
+
+OLED header `M300 boot v1.1 © Marcin Kowalik`; responsive non-wrapping encoder menus; Hardware information decoded from current records; progress rings; cancellable 5-second autoboot; checked SD/UART application updates; persistent UART baud; backups, diagnostics and service history.
+
+The original first **4 KiB** remain. Stage2 is at 0x08001000, assets at 0x0803A000; the replaceable application starts at 0x08008000 with **200 KiB capacity**. Final **8 KiB at 0x0803E000** retain manufacturer settings and identity. ST-Link recovery must use a complete personal reconstruction, not a foreign full-Flash image.
+
+Public scope follows Inventure: binary firmware, operational host tools, instructions/checksums and non-identifying UI previews. No firmware C/ASM, ELF/maps, private raw UID/NVM/full-Flash dumps, serial-bearing screenshots or vendor-key tools. Manufacturer firmware in RESTORE.BIN retains its own rights. Independent project; not endorsed by Zortrax or STMicroelectronics.
