@@ -1,0 +1,24 @@
+{
+  "result": "PASS",
+  "scope": "Offline public release validation; no printer or GitHub write",
+  "version": "1.1",
+  "installer": "1.1-i4",
+  "checks": 38419,
+  "groups": {
+    "release": 22,
+    "archives": 91,
+    "privacy": 54,
+    "protocol": 7,
+    "hex": 38113,
+    "host": 12,
+    "links": 106,
+    "structure": 14
+  },
+  "relative_markdown_links_verified": 106,
+  "public_files_audited": 65,
+  "release_zip_assets_unchanged": true,
+  "hardware_test_performed_during_this_audit": false,
+  "original_release_assets_rebuilt": false,
+  "latest_reference": "Inventure boot v1.5-HW2, docs/v1.5 current, docs/v1.4 archived",
+  "private_reference_test": "executed offline separately, not part of public CI"
+}

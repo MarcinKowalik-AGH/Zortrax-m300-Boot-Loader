@@ -1,0 +1,25 @@
+name: M300 v1.1 publication audit (no device access)
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    name: Assets, documentation, compatibility and safety claims
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.9', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify repository SHA-256 checksums
+        run: sha256sum -c SHA256SUMS.txt
+      - name: Independently validate v1.1 release (read-only)
+        run: python tools/validate_publication.py --json

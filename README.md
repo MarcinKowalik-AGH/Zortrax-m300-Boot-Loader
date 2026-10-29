@@ -4,9 +4,9 @@
 **Autor / Author:** Marcin Kowalik · mkowalik@agh.edu.pl  
 **Tested target:** classic M300, **PCB Rev. 5.3 / hardware 05 / measured 256 KiB Flash**.
 
-> **Najpierw kopia / Backup first.** Nie zdejmuj RDP, żeby odczytać pamięć: wyłączenie aktywnej ochrony w tym STM32F1 kasuje główną Flash. Najpierw zachowaj dwie zgodne kopie bootloadera, NVM/danych fabrycznych, UID, SIZE i Option Bytes. [Pełna procedura PL](docs/KOPIA_ORYGINALU_PL.md) · [English](docs/ORIGINAL_BACKUP_EN.md).
+> **Najpierw kopia / Backup first.** Nie zdejmuj RDP, żeby odczytać pamięć: wyłączenie aktywnej ochrony w tym STM32F1 kasuje główną Flash. Najpierw zachowaj dwie zgodne kopie bootloadera, NVM/danych fabrycznych, UID, SIZE i Option Bytes. [Pełna procedura PL](docs/v1.1/KOPIA_ORYGINALU_PL.md) · [English](docs/v1.1/ORIGINAL_BACKUP_EN.md).
 
-> **Ważne ograniczenie / Important restriction:** opublikowane, niezmienione pakiety i4 są **przypisane do jednego zakwalifikowanego egzemplarza** przez hashe UID, opcji i strony fabrycznej. Sama zgodność „M300 / HW05” nie wystarcza. Nie zdejmuj tych blokad i nie wgrywaj pośrednika na inną drukarkę, żeby sprawdzić, czy odmówi. / The unchanged i4 installers are **single-device-profile locked**. They are not universal M300 installers. A different unit requires its own qualification and build, not patched hash checks. See [tested hardware and compatibility](docs/TESTED_HARDWARE.md).
+> **Ważne ograniczenie / Important restriction:** opublikowane, niezmienione pakiety i4 są **przypisane do jednego zakwalifikowanego egzemplarza** przez hashe UID, opcji i strony fabrycznej. Sama zgodność „M300 / HW05” nie wystarcza. Nie zdejmuj tych blokad i nie wgrywaj pośrednika na inną drukarkę, żeby sprawdzić, czy odmówi. / The unchanged i4 installers are **single-device-profile locked**. They are not universal M300 installers. A different unit requires its own qualification and build, not patched hash checks. See [tested hardware and compatibility](docs/v1.1/TESTED_HARDWARE.md).
 
 ## Pobierz / Download v1.1
 
@@ -17,10 +17,22 @@
 | Świadoma procedura ST-Link/SWD z własną kopią / deliberate SWD installation or recovery using your private backup | **[STLINK — obrazy i lokalny generator / images and offline builder](firmware/v1.1/M300Boot_v1.1_STLINK_LOCAL_BUILDER.zip)** |
 | Zabezpieczenie oryginalnego bootloadera i danych przy RDP / original boot and data backup under RDP | **[Diagnostyka UART 0.5.5 / UART backup application](firmware/v1.1/M300_BACKUP_0.5.5_UART.zip)** |
 
-**[Instrukcja instalacji PL](docs/INSTALACJA_PL.md)** · **[Installation manual EN](docs/INSTALLATION_EN.md)**  
-[ST-Link i odzyskiwanie PL](docs/STLINK_I_ODZYSKIWANIE_PL.md) · [ST-Link and recovery EN](docs/STLINK_AND_RECOVERY_EN.md)  
-[Funkcje, Hardware i konsola PL](docs/FUNKCJE_I_KONSOLA_PL.md) · [Features and console EN](docs/FEATURES_AND_CONSOLE_EN.md)  
-[Manifest wydania / Release manifest](docs/RELEASE_MANIFEST.md) · [SHA-256](firmware/v1.1/SHA256SUMS.txt)
+**[Instrukcja instalacji PL](docs/v1.1/INSTALACJA_PL.md)** · **[Installation manual EN](docs/v1.1/INSTALLATION_EN.md)**  
+[ST-Link i odzyskiwanie PL](docs/v1.1/STLINK_I_ODZYSKIWANIE_PL.md) · [ST-Link and recovery EN](docs/v1.1/STLINK_AND_RECOVERY_EN.md)  
+[Funkcje, Hardware i konsola PL](docs/v1.1/FUNKCJE_I_KONSOLA_PL.md) · [Features and console EN](docs/v1.1/FEATURES_AND_CONSOLE_EN.md)  
+[Manifest wydania / Release manifest](docs/v1.1/RELEASE_MANIFEST.md) · [SHA-256](firmware/v1.1/SHA256SUMS.txt)
+
+## Dokumentacja według wersji / Versioned documentation
+
+**[Wszystkie instrukcje v1.1 / Complete v1.1 manuals](docs/v1.1/README.md)** · [Indeks dokumentacji](docs/README.md) · [GitHub Release v1.1](https://github.com/MarcinKowalik-AGH/Zortrax-m300-Boot-Loader/releases/tag/v1.1)
+
+| Wersja | Status | Dokumentacja | Pliki |
+|---|---|---|---|
+| **v1.1 / i4** | **Aktualna / Current** | [docs/v1.1](docs/v1.1/README.md) | [firmware/v1.1](firmware/v1.1) |
+
+[Przykłady UART i aktualizacji APP PL](docs/v1.1/KONSOLA_UART_PRZYKLADY_PL.md) · [UART examples EN](docs/v1.1/UART_EXAMPLES_EN.md) · [Niezależny audyt publikacji](docs/v1.1/AUDYT_REPOZYTORIUM_PL.md) · [Publiczne narzędzia PC](tools/README.md)
+
+**Tag `v1.1` zachowuje pierwotne pliki wydania; na gałęzi `main` aktualizujemy dokumentację i testy publikacyjne, bez zmian przetestowanych binariów.** Nie tworzono nieistniejącego publicznego archiwum v1.0. Kompatybilne odsyłacze z historycznych `docs/*.md` zachowano.
 
 ## Co robi / Features
 
@@ -31,13 +43,13 @@
 - UART: **19200 / 57600 / 115200 / 250000 / 500000, 8N1**, persisted selection, recovery entry at 250000 by holding the encoder during startup.
 - Full-Flash and identity backup; service diagnostics and history. The SD installer makes **two independent 256-KiB snapshots** and requires a separate physical confirmation before replacing boot pages.
 
-![Boot menu — rendered from the release UI](docs/images/BOOT_MAIN_MENU.png)
+![Boot menu — rendered from the release UI](docs/v1.1/images/BOOT_MAIN_MENU.png)
 
 *Ilustracje są renderami kodu interfejsu, nie zdjęciami potwierdzającymi test sprzętowy. / Illustrations are UI renders, not hardware-test photographs.*
 
 ## Potwierdzenie sprzętowe / Hardware status
 
-Właściciel potwierdził zakończenie **UPGRADE do v1.1 przez i4**, późniejsze zapisanie oryginalnego **Zortrax 1.3.1** i jego uruchomienie. Testowano **jeden egzemplarz**. Poprzednie próby obejmowały OEM v3 → diagnostykę, rc3 FULL, UART, OLED, enkoder, SD oraz zachowanie numeru/hardware/licznika. Pełne zestawienie, zakres i ograniczenia są w [TESTED_HARDWARE](docs/TESTED_HARDWARE.md).
+Właściciel potwierdził zakończenie **UPGRADE do v1.1 przez i4**, późniejsze zapisanie oryginalnego **Zortrax 1.3.1** i jego uruchomienie. Testowano **jeden egzemplarz**. Poprzednie próby obejmowały OEM v3 → diagnostykę, rc3 FULL, UART, OLED, enkoder, SD oraz zachowanie numeru/hardware/licznika. Pełne zestawienie, zakres i ograniczenia są w [TESTED_HARDWARE](docs/v1.1/TESTED_HARDWARE.md).
 
 Owner-reported success: **custom M300Boot → v1.1 using i4 → original Zortrax 1.3.1 starts**, on one unit. The published machine-code images have not been changed after that report. **FACTORY i4 and ST-Link v1.1 are provided as separately documented routes, not separately hardware-qualified successes.** No power-loss or general print-performance certification is claimed.
 
