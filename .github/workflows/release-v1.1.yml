@@ -1,0 +1,52 @@
+name: Release M300 boot v1.1
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'firmware/v1.1/**'
+      - '.github/workflows/release-v1.1.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  release:
+    if: github.repository == 'MarcinKowalik-AGH/Zortrax-m300-Boot-Loader'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify public release artifacts
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd firmware/v1.1
+          sha256sum -c SHA256SUMS.txt
+          python3 - <<'PY'
+          import json, hashlib, pathlib
+          m=json.loads(pathlib.Path('RELEASE_MANIFEST.json').read_text())
+          assert m['version']=='1.1' and m['installer']=='1.1-i4'
+          for a in m['assets']:
+              data=pathlib.Path(a['name']).read_bytes()
+              assert len(data)==a['bytes']
+              assert hashlib.sha256(data).hexdigest()==a['sha256']
+          print('PASS_PUBLIC_RELEASE_SHA256')
+          PY
+      - name: Publish GitHub Release v1.1
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          if gh release view v1.1 >/dev/null 2>&1; then
+            echo 'Release v1.1 exists; no replacement performed.'
+            exit 0
+          fi
+          gh release create v1.1 \
+            firmware/v1.1/M300Boot_v1.1_SD_FACTORY_OEMV3_i4.zip \
+            firmware/v1.1/M300Boot_v1.1_SD_UPGRADE_i4.zip \
+            firmware/v1.1/M300Boot_v1.1_STLINK_LOCAL_BUILDER.zip \
+            firmware/v1.1/M300_BACKUP_0.5.5_UART.zip \
+            firmware/v1.1/SHA256SUMS.txt \
+            firmware/v1.1/RELEASE_MANIFEST.json \
+            --title 'M300 boot v1.1 (SD installer 1.1-i4)' \
+            --notes-file RELEASE_NOTES_v1.1.md \
+            --latest

@@ -1,0 +1,23 @@
+# Private device state MUST NOT enter the public repository
+__pycache__/
+*.pyc
+.venv*/
+.DS_Store
+._*
+private/
+backups/
+M300_AUDYT_*/
+M300_BACKUP_*/
+M300_INSTALL_*/
+FLASH*_A.bin
+FLASH*_B.bin
+BOOT_A.bin
+BOOT_B.bin
+DATA_A.bin
+DATA_B.bin
+UID_*.bin
+OPTIONS_*.bin
+UART.log
+UART_RX.raw
+*_PERSONAL_256KiB.bin
+*_PERSONAL_256KiB.hex

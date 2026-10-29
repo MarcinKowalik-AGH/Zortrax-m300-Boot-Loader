@@ -1,39 +1,82 @@
-# ST-Link: v1.1 i awaryjne odtworzenie OEM
+# ST-Link: instalacja v1.1 i awaryjny powrót do OEM
 
-To droga serwisowa, nie rutynowy test działającej drukarki. Osobnego sprzętowego zapisu v1.1 przez SWD nie potwierdzono. Najpierw wykonaj [dwie zgodne kopie](KOPIA_ORYGINALU_PL.md) i sprawdź profil. Nie używaj cudzych danych.
+**Droga ostateczna lub świadomie wybrana instalacja serwisowa. Nie używaj jej do „sprawdzenia” działającej drukarki.** Opis dotyczy tylko klasycznej M300 Rev.5.3/HW05, 256 KiB oraz profilu akceptowanego przez wydanie. Nie jest to instrukcja dla Inventure, Plus ani Dual. Testy pakietu ST-Link są komputerowe; osobnego sprzętowego zapisu tą metodą nie potwierdzono.
 
-## Pakiet STLINK
+## 1. Najpierw własny, zweryfikowany backup
 
-Zawiera 28672 B stage2 pod 0x08001000, 12288 B zasobów pod 0x0803A000, sparse HEX wyłącznie tych zakresów, RESTORE.BIN oraz lokalny generator. **Po masowym kasowaniu same te komponenty nie wystarczą**: brakuje prefixu OEM i danych egzemplarza. Nie wgrywaj surowo Update.bin, M300APP.M3B ani RESTORE.BIN.
+Wymagane są **dwa zgodne pełne obrazy** oraz pary UID, SIZE i OPTIONS lub cztery poprawne pliki backupu SD. Zabezpiecz oryginalne 32 KiB BOOT i końcowe 8 KiB, zgodnie z [procedurą backupu](KOPIA_ORYGINALU_PL.md). Zachowaj kopie na drugim nośniku. Bez kopii oryginalnego BOOT nie obiecujemy powrotu do OEM.
 
-## Własny obraz — bez połączenia z drukarką
+Nie publikujemy pełnego wsadu zawierającego dane autora. ZIP STLINK zawiera:
 
-Z rozpakowanego katalogu STLINK:
+| Plik | Zakres |
+|---|---|
+| `M300Boot_v1.1_FULL_STAGE2_0x08001000.bin` | 28672 B od `0x08001000` |
+| `M300Boot_v1.1_FULL_ASSETS_0x0803A000.bin` | 12288 B od `0x0803A000` |
+| `M300Boot_v1.1_FULL_SPARSE.hex` | Wyłącznie powyższe dwa zakresy; bez prefixu OEM i danych |
+| `RESTORE.BIN` | Pakiet M3B oryginalnej aplikacji 1.3.1, nie plik bezpośrednio do SWD |
+| `prepare_stlink.py` i zależne narzędzia hosta | Lokalny generator osobistego obrazu; brak dostępu do urządzeń |
+
+**Sparse HEX i dwa BIN-y nie wystarczą po masowym kasowaniu.** Nie zawierają pierwszych 4 KiB oryginalnego rozruchu ani Twojej tożsamości/NVM. Nie programuj `Update.bin`, `RESTORE.BIN` ani `M300APP.M3B` surowo przez SWD.
+
+## 2. Złóż obraz lokalnie, jeszcze przed ingerencją w urządzenie
+
+Rozpakuj ZIP STLINK i otwórz Terminal w tym katalogu. Python 3.9+; generator nie wymaga pyserial, kluczy OEM ani internetu.
+
+Instalacja własnego boota + stock 1.3.1:
 
 ```sh
-python3 prepare_stlink.py --backup "/wlasny/backup" --mode m300 --out "$HOME/Desktop/M300_PERSONAL_V11"
+python3 prepare_stlink.py --backup "/sciezka/do/wlasnej/kopii" --mode m300 --out "$HOME/Desktop/M300_PERSONAL_V11"
 ```
 
-Powrót do OEM wymaga własnej kopii, która rzeczywiście zawiera oryginalny OEM:
+Odtworzenie OEM v3 + stock 1.3.1, wyłącznie z kopii zawierającej oryginalny OEM:
 
 ```sh
-python3 prepare_stlink.py --backup "/wlasny/backup_OEM" --mode oem --out "$HOME/Desktop/M300_PERSONAL_OEM"
+python3 prepare_stlink.py --backup "/sciezka/do/wlasnej/kopii_OEM" --mode oem --out "$HOME/Desktop/M300_PERSONAL_OEM"
 ```
 
-Oczekiwane PASS_PERSONAL_IMAGE_OFFLINE. Powstaje nowy prywatny BIN 262144 B, HEX, manifest i sumy. Narzędzie nie otwiera portów ani nie zapisuje MCU; odmawia nadpisania katalogu i niezgodnej tożsamości. Zachowuje początek OEM oraz końcowe 8 KiB. To rekonstrukcja, nie dawny nienaruszony zrzut; licznik/ustawienia odpowiadają wybranej kopii.
+Wynik: `PASS_PERSONAL_IMAGE_OFFLINE`, osobisty BIN **262144 B**, równoważny HEX, manifest i SHA256SUMS. Istniejący katalog wyjściowy powoduje odmowę. Generator zachowuje prefix OEM i końcowe 8 KiB. Dla v1.1 ustawia metadane zatwierdzające stock; istniejący dziennik UART pozostaje zachowany. Nie wykonuje programowania ani zmiany RDP. Obraz jest **zrekonstruowany**, nie dawnym nienaruszonym zrzutem. Licznik i ustawienia będą odpowiadały dacie wybranej kopii.
 
-## Połączenie i ochrona
+`BACKUP_VALID_BUT_INSTALL_PROFILE_MISMATCH` lub inna odmowa oznacza STOP. Nie edytuj hashy i nie kopiuj tożsamości z cudzej drukarki.
 
-Przy wyłączonym zasilaniu połącz zweryfikowane SWDIO, SWCLK, GND, referencję 3,3 V i NRST. TX/RX VCP nie zastępują SWD. Nie doprowadzaj 5 V ani nie zgaduj numeracji złącza z Inventure. CubeProgrammer: ST-LINK/SWD, Under reset, Hardware reset, początkowo 400 kHz. Under reset wymaga przewodu NRST. Sprawdź napięcie, ID oraz opcje; błąd połączenia nie uzasadnia kasowania.
+## 3. Fizyczne połączenie SWD
 
-**Wyłączenie aktywnego RDP STM32F1 masowo kasuje główną Flash, BOOT i NVM/factory.** Read Unprotect jest dozwolone dopiero jako świadome odzyskiwanie z gotowego pełnego osobistego obrazu, nie metoda backupu. Surowe A5 oznacza brak ochrony, 00 ochronę aktywną; nie stosuj AA z F2/Inventure. Gdy RDP już wyłączone, nie ponawiaj odblokowania.
+Wyłącz zasilanie przed zmianą przewodów. Połącz zweryfikowane sygnały **SWDIO, SWCLK, GND, napięcie odniesienia 3,3 V oraz NRST**. UART TX/RX nie zastępuje SWD. Nie podłączaj 5 V ani napięcia mocy do portu debug. Płytę zasilaj właściwym stabilnym zasilaniem; napięcie odniesienia nie jest poleceniem zasilania jej z programatora. Nie zgaduj numeracji P4 na podstawie Inventure.
 
-Po przeładowaniu opcji połącz się ponownie i porównaj UID/SIZE z własną kopią. Nie programuj UID, SIZE ani SYSROM. Nie wgrywaj surowego OPTIONS.bin jako obrazu Flash. Sprawdź pozostałe opcje względem zapisanego stanu. Podczas zapisu i readback pozostaw RDP nieaktywne.
+CubeProgrammer: ST-LINK / SWD, **Under reset**, **Hardware reset**, początkowo **400 kHz**. Under reset wymaga fizycznego NRST. Sprawdź napięcie i ID rodziny 0x414. Błąd połączenia nie jest poleceniem kasowania. Zapisz bieżące opcje i log.
 
-## Programowanie
+## 4. RDP — punkt destrukcyjny
 
-Wybierz wygenerowany pełny PERSONAL BIN: adres **0x08000000**, długość **0x40000**. Verify włączone, automatyczne Run wyłączone, Skip erase wyłączone. Nie przerywaj zapisu. Po weryfikacji, z zatrzymanym MCU, odczytaj cały zakres do READBACK.bin i porównaj cmp oraz SHA-256 z osobistym obrazem. Wymagane są identyczne bajty.
+Jeżeli SWD jest zablokowane aktywnym RDP, jego usunięcie powoduje **masowe kasowanie głównej Flash**. Tylko po przygotowaniu i sprawdzeniu całego osobistego obrazu można świadomie użyć Read Unprotect / wyłączyć RDP. To nie jest etap rutynowego upgrade SD. Dla STM32F1 surowe `A5` oznacza brak ochrony; `00` oznacza aktywne RDP. Nie kopiuj wartości `AA` z Inventure/F2. Jeżeli RDP już jest nieaktywne, nie wywołuj ponownie read-unprotect.
 
-Dopiero potem zakończ debug, wyłącz zasilanie, odłącz programator i uruchom bez karty aktualizacyjnej. Sprawdź menu, hardware, własny serial i licznik przed drukiem/grzaniem. Procedura nie naprawia uszkodzeń elektroniki i nie zapewnia odzyskania po każdej awarii.
+Po przeładowaniu opcji połącz się ponownie. Porównaj UID i rzeczywiste SIZE z wybraną kopią. Nie programuj UID, SYSROM ani rejestru SIZE. Pozostałe ustawienia USER/DATA/WRP sprawdź względem własnego zapisu; nie wgrywaj surowych 16 B OPTIONS jako zwykłego BIN. Na czas kontroli pozostaw RDP wyłączone. Jeżeli docelowa ochrona ma zostać później ponownie włączona, jest to osobna, świadoma operacja po poprawnym readback i starcie.
 
-Źródła: [ST PM0075](https://www.st.com/resource/en/programming_manual/pm0075-stm32f10xxx-flash-memory-microcontrollers-stmicroelectronics.pdf), [CubeProgrammer CLI](https://dev.st.com/stm32cube-docs/prog/2.23.0/en/docs/markup/CubeProg_Command_Lines.html).
+## 5. Programowanie i kontrola
+
+Wybierz osobisty **pełny BIN** utworzony przez generator (nie ogólne komponenty):
+
+```text
+Start address:            0x08000000
+File size:                262144 B (0x40000)
+Verify after programming: enabled
+Run after programming:    disabled
+Skip erase:               disabled
+```
+
+Nie przerywaj zapisu. Po kontroli programu, z zatrzymanym procesorem, odczytaj **dokładnie 0x40000 B od 0x08000000** do nowego `READBACK.bin` i porównaj przed uruchomieniem:
+
+```sh
+cmp M300_BOOT_v1.1_STOCK_1.3.1_PERSONAL_256KiB.bin READBACK.bin
+shasum -a 256 M300_BOOT_v1.1_STOCK_1.3.1_PERSONAL_256KiB.bin READBACK.bin
+```
+
+Dla trybu OEM użyj wygenerowanej nazwy OEM. Wymagane są identyczne bajty. Zakończ sesję debug, wyłącz zasilanie, odłącz programator i uruchom bez karty aktualizacyjnej. Dla v1.1 zatrzymaj autostart pokrętłem, sprawdź Hardware i dopiero potem stock 1.3.1. Dla OEM sprawdź oryginalne menu. Numer, HW i czas muszą odpowiadać Twojemu backupowi. Najpierw test bez ruchu/grzania.
+
+## 6. Co jest chronione, a czego procedura nie gwarantuje
+
+Pełny osobisty obraz pozwala odtworzyć zawartość po skasowaniu, jeśli MCU i interfejs nadal dają się zaprogramować. Nie naprawia uszkodzenia elektroniki ani nie zapewnia odporności na przerwę zasilania. Zachowane pierwsze 4 KiB w drodze SD nie są niezależnym recovery, a stara karta OEM po wymianie drugiego etapu nie jest gwarantowanym ratunkiem.
+
+## References / Źródła
+
+- STMicroelectronics [PM0075, §§2.3–2.4](https://www.st.com/resource/en/programming_manual/pm0075-stm32f10xxx-flash-memory-microcontrollers-stmicroelectronics.pdf): STM32F1 Flash, RDP/WRP, first-page protection, option-byte changes.
+- ST [STM32CubeProgrammer 2.23 command reference](https://dev.st.com/stm32cube-docs/prog/2.23.0/en/docs/markup/CubeProg_Command_Lines.html): SWD under reset, hardware reset, read/program/verify.
+- The device-specific memory map and tested behavior are from the project's retained private audit and operator reports, not an endorsement by ST or Zortrax.

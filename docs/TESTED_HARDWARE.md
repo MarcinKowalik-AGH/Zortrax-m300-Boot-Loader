@@ -1,28 +1,48 @@
-# Tested hardware — M300 boot v1.1 / installer 1.1-i4
+# Tested hardware / Przetestowany sprzęt
 
-Publication documentation: 29 October 2026. This table records project evidence, not manufacturer certification.
+Release: **M300 boot v1.1**, installer **1.1-i4**. Publication date: **29 October 2026**. This table describes the evidence in the project, not a manufacturer compatibility guarantee.
 
-| Parameter | Established value |
+| Parameter / Parametr | Evidence-backed value / Ustalenie |
 |---|---|
-| Printer | One classic Zortrax M300; not Plus/Dual/Android |
-| Mainboard marking | PCB Rev.5.3, photographed |
-| Stock menu hardware | 05; raw factory record E5 |
-| MCU family | STM32F101/F103 high-density reported by ST-Link; target F103-family Cortex-M3 |
-| Exact ordering code | Not established; chip marking not reliably legible |
-| SWD device/silicon ID | 0x414 / Rev X |
-| CPUID | 0x411FC231 |
-| Main Flash | 256 KiB from matching internal SIZE reads, corroborated in SYSROM |
-| Geometry | 128 pages of 2048 B; 0x08000000–0x0803FFFF |
-| Original bootloader | Zortrax Bootloader v3, 32 KiB recovered |
-| Original application | M300 1.3.1; owner also tested 1.3.1 → 1.2.0 → 1.3.1 |
-| Protection during migration | RDP active, extra WRP inactive; options preserved |
-| Host and probe | MacBook Air/macOS, Python 3.9/3.11, pySerial 3.5, CubeProgrammer 2.23.0, STLINK-V3SET and VCP 250000 8N1 |
-| Input/display | OLED, encoder rotation both ways, click/Back, bounded scrolling and responsive rc3-derived rendering confirmed |
+| Printer | Classic **Zortrax M300**, not Plus, Dual or Android/LCD generation |
+| Mainboard silkscreen | **Rev. 5.3** — photographs of the actual board |
+| Hardware version shown by stock | **05**; the factory record stores raw `E5` and the stock display decodes it |
+| MCU | STM32F101/F103 high-density as reported by ST-Link; target code is STM32F103-family Cortex-M3 |
+| Exact full part number | **Not established**: the chip marking was not reliably legible. Do not assert an exact VDT6/VET6 ordering code |
+| Device ID / silicon revision | **0x414 / Rev X**, observed with SWD |
+| CPUID | **0x411FC231**, observed by the running diagnostic app |
+| Main Flash | **256 KiB, 262144 bytes**: two matching 16-bit SIZE reads at `0x1FFFF7E0`, plus corroborating bytes in SYSROM |
+| Misleading old label | CubeProgrammer originally displayed 512 KB. This is **not** the accepted size; runtime `512_PRIOR_SWD` was also only an old label |
+| Memory geometry used | 128 pages × 2048 B, `0x08000000–0x0803FFFF` |
+| Original loader | **Zortrax Bootloader v3**, recovered and independently compared |
+| Original printer application | **1.3.1**; owner also tested **1.3.1 → 1.2.0 → 1.3.1** |
+| Protection during successful migration | RDP active; extra WRP inactive; no Option Bytes changes by the installer |
+| Display/input | OLED and rotary encoder; readable screen, both rotation directions, click, Back, bounded scrolling and smooth rc3-derived rendering confirmed by owner |
+| Host/probe used | MacBook Air/macOS, Python 3.9/3.11 sessions with pySerial 3.5; STM32CubeProgrammer 2.23.0; **STLINK-V3SET** for SWD inspection and later VCP/UART at **250000 8N1** |
+| Number of qualified printers | **One** |
 
-The old GUI report of 512 KB and diagnostic string 512_PRIOR_SWD are not the accepted capacity. Two SIZE reads gave 00 01, i.e. 256 KiB.
+## What the owner confirmed
 
-The owner confirmed complete custom-boot UPGRADE via corrected i4 to v1.1 and successful restoration/startup of original 1.3.1. Earlier records verify exact rc3/stock readback, paired full dumps and retained printer data. One unit has been qualified.
+The owner reported the corrected i4 procedure completing on the printer and original **1.3.1 starting afterwards**. The reported path was **UPGRADE from an already-installed custom bootloader**. Earlier logs verify rc3 migration and exact 1.3.1 payload readback, and a photo confirms retained model, HW05, serial and accumulated operating time. No public raw identity or personal snapshot is bundled.
 
-Not established: a separate FACTORY i4 execution, physical v1.1 programming/recovery through ST-Link, power-loss behavior, all menu/baud combinations, full printing qualification or other PCB revisions.
+### Confirmed / Potwierdzone
 
-Unchanged i4 uses a fixed qualified identity profile. Two boards with the same HW05 label may still differ. A mismatch is not permission to patch hashes, clone identity, erase factory data or remove protection. Another unit requires independent qualification/build. No raw UID, private serial or personal snapshot is published.
+- Read-only internal Flash export while RDP remained active, with two matching complete 256-KiB snapshots and separate identity/options copies.
+- Custom rc3 FULL boot and exact original 1.3.1 restored via UART; stock UI startup.
+- i2 SD upgrade procedure on an already-identical rc3, including the no-write branch and stock restoration reported by the owner.
+- Owner report: **i4 upgrade to v1.1 and successful return to stock 1.3.1**.
+
+### Not established / Niepotwierdzone
+
+- A separate full FACTORY i4 run directly from OEM v3 into v1.1.
+- Physical programming/recovery of v1.1 via ST-Link.
+- Power interruption tolerance, automatic rollback, every menu branch, all baud-rate/reboot combinations, full print/heater/motor qualification or other mainboard revisions.
+- Universality across all HW05 boards. The distributed installer is bound to the qualification unit through UID/options/factory-page hashes.
+
+## Why the installer may reject another printer
+
+The unchanged i4 images compare a fixed profile: OEM prefix, source code hashes, UID hash, options hash and factory-page hash. **Two printers may both say M300/HW05 and still not match.** There is no FORCE mode. Do not edit hashes, erase factory records, copy another printer's identity, or remove RDP to get around a refusal.
+
+Before using an installer, run the read-only profile checker against your private verified backups. `BACKUP_VALID_BUT_INSTALL_PROFILE_MISMATCH` means the backup may be useful but this installer must not be used. A different printer needs independent qualification and a separate build; this release does not silently produce one.
+
+Brak zgody profilu nie jest błędem pliku ani powodem do wyzerowania numeru seryjnego/licznika. Nie wgrywaj pośrednika tylko po to, żeby poznać wynik blokady: jego instalacja już zastępuje aplikację drukującą.
