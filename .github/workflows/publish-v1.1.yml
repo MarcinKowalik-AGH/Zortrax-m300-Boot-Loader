@@ -1,0 +1,117 @@
+name: Publish M300 boot v1.1
+on:
+  push:
+    branches: [main]
+    paths: [.github/release-request-v1.1.json]
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: publish-m300-v1.1
+  cancel-in-progress: false
+jobs:
+  publish:
+    if: github.repository == 'MarcinKowalik-AGH/Zortrax-m300-Boot-Loader' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - name: Verify publication payload, commit files and publish assets
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPOSITORY: ${{ github.repository }}
+          EXPECTED_HEAD: ${{ github.sha }}
+        run: |
+          python3 - <<'PY'
+          import base64, hashlib, io, json, os, pathlib, re, time, urllib.request, urllib.error, urllib.parse, zipfile
+          repo = os.environ['REPOSITORY']
+          assert repo == 'MarcinKowalik-AGH/Zortrax-m300-Boot-Loader'
+          api_base = 'https://api.github.com/repos/' + repo
+          token = os.environ['GH_TOKEN']
+          def api(path, data=None, method=None):
+              body = None if data is None else json.dumps(data).encode()
+              req = urllib.request.Request(api_base + path, body, method=method or ('POST' if data is not None else 'GET'), headers={'Authorization': 'Bearer ' + token, 'Accept': 'application/vnd.github+json', 'Content-Type': 'application/json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'M300-release-publisher'})
+              with urllib.request.urlopen(req, timeout=90) as response:
+                  return json.load(response)
+          expected = os.environ['EXPECTED_HEAD']
+          head = api('/git/ref/heads/main')['object']['sha']
+          if head != expected:
+              raise SystemExit('Branch moved; no force update is permitted')
+          request_file = api('/contents/.github/release-request-v1.1.json?ref=' + expected)
+          request = json.loads(base64.b64decode(request_file['content']))
+          assert request['repository'] == repo and request['tag'] == 'v1.1'
+          assert re.fullmatch('[0-9a-f]{64}', request['sha256'])
+          url = request['url']
+          parsed = urllib.parse.urlparse(url)
+          assert parsed.scheme == 'https' and parsed.hostname.endswith('.oaiusercontent.com')
+          with urllib.request.urlopen(url, timeout=90) as response:
+              payload = response.read(4 * 1024 * 1024 + 1)
+          assert len(payload) <= 4 * 1024 * 1024
+          assert hashlib.sha256(payload).hexdigest() == request['sha256'], 'Payload checksum mismatch'
+          files = {}
+          allowed_roots = {'docs', 'tools', 'firmware'}
+          allowed_top = {'README.md', 'LICENSE', '.gitignore', 'CITATION.cff', 'THIRD_PARTY_NOTICES.md', 'CHANGELOG.md', 'RELEASE_NOTES_v1.1.md', 'SHA256SUMS.txt'}
+          with zipfile.ZipFile(io.BytesIO(payload)) as archive:
+              assert archive.testzip() is None
+              assert len(archive.infolist()) == request['file_count']
+              for entry in archive.infolist():
+                  parts = pathlib.PurePosixPath(entry.filename).parts
+                  assert len(parts) >= 2 and parts[0] == 'repo' and '..' not in parts
+                  assert not entry.is_dir() and entry.file_size < 2 * 1024 * 1024
+                  assert ((entry.external_attr >> 16) & 0o170000) != 0o120000
+                  path = '/'.join(parts[1:])
+                  assert path not in files
+                  assert (len(parts) == 2 and path in allowed_top) or parts[1] in allowed_roots
+                  assert pathlib.PurePosixPath(path).suffix.lower() not in {'.c','.h','.s','.asm','.elf','.map','.pyc','.ttf','.otf','.woff','.woff2'}
+                  files[path] = archive.read(entry)
+          assert len(files) == request['file_count']
+          for line in files['SHA256SUMS.txt'].decode().splitlines():
+              digest, path = line.split('  ', 1)
+              assert path in files and hashlib.sha256(files[path]).hexdigest() == digest
+          # Do not overwrite an existing published release or tag.
+          try:
+              existing = api('/releases/tags/v1.1')
+          except urllib.error.HTTPError as error:
+              if error.code != 404: raise
+          else:
+              raise SystemExit('v1.1 release already exists; no overwrite performed')
+          manifest = json.loads(files['firmware/v1.1/RELEASE_MANIFEST.json'])
+          for asset in manifest['assets']:
+              data = files['firmware/v1.1/' + asset['name']]
+              assert len(data) == asset['bytes'] and hashlib.sha256(data).hexdigest() == asset['sha256']
+          commit = api('/git/commits/' + expected)
+          tree = []
+          for path, data in sorted(files.items()):
+              blob = api('/git/blobs', {'content':base64.b64encode(data).decode(), 'encoding':'base64'})
+              tree.append({'path':path,'mode':'100644','type':'blob','sha':blob['sha']})
+          # The signed transfer URL is temporary; remove its request from the final tree.
+          tree.append({'path':'.github/release-request-v1.1.json','mode':'100644','type':'blob','sha':None})
+          new_tree = api('/git/trees', {'base_tree':commit['tree']['sha'], 'tree':tree})
+          new_commit = api('/git/commits', {'message':'release: M300 boot v1.1, i4 packages, backup-first PL/EN manuals and ST-Link tools','tree':new_tree['sha'],'parents':[expected]})
+          if api('/git/ref/heads/main')['object']['sha'] != expected:
+              raise SystemExit('Branch moved before update; aborting')
+          api('/git/refs/heads/main', {'sha':new_commit['sha'],'force':False}, 'PATCH')
+          release = api('/releases', {'tag_name':'v1.1','target_commitish':new_commit['sha'],'name':'M300 boot v1.1 · SD installer 1.1-i4','body':files['RELEASE_NOTES_v1.1.md'].decode(),'draft':True,'prerelease':False})
+          upload = release['upload_url'].split('{')[0]
+          assert urllib.parse.urlparse(upload).hostname == 'uploads.github.com'
+          assets = [(a['name'], files['firmware/v1.1/' + a['name']], 'application/zip') for a in manifest['assets']]
+          assets += [('SHA256SUMS.txt',files['firmware/v1.1/SHA256SUMS.txt'],'text/plain'),('RELEASE_MANIFEST.json',files['firmware/v1.1/RELEASE_MANIFEST.json'],'application/json')]
+          full = io.BytesIO()
+          with zipfile.ZipFile(full,'w',zipfile.ZIP_DEFLATED,compresslevel=9) as archive:
+              for path, data in sorted(files.items()):
+                  entry=zipfile.ZipInfo('M300Boot_v1.1/'+path,(2026,10,29,12,0,0));entry.external_attr=0o100644<<16;entry.compress_type=zipfile.ZIP_DEFLATED
+                  archive.writestr(entry,data)
+          assets.append(('M300Boot_v1.1_PUBLIC_RELEASE.zip',full.getvalue(),'application/zip'))
+          for name, data, content_type in assets:
+              req=urllib.request.Request(upload+'?name='+urllib.parse.quote(name),data,method='POST',headers={'Authorization':'Bearer '+token,'Content-Type':content_type,'User-Agent':'M300-release-publisher'})
+              with urllib.request.urlopen(req,timeout=120) as response:
+                  result=json.load(response)
+              assert result['state']=='uploaded' and result['size']==len(data)
+              if result.get('digest'):
+                  assert result['digest']=='sha256:'+hashlib.sha256(data).hexdigest()
+              print('ASSET OK',name,len(data),hashlib.sha256(data).hexdigest())
+          published=api('/releases/'+str(release['id']), {'draft':False,'make_latest':'true'}, 'PATCH')
+          assert published['draft'] is False and published['tag_name']=='v1.1'
+          print('PUBLISHED',published['html_url'])
+          with open(os.environ['GITHUB_STEP_SUMMARY'],'a') as summary:
+              summary.write('# Published M300 boot v1.1\n\n'+published['html_url']+'\n\nCommit: '+new_commit['sha']+'\n')
+          PY
