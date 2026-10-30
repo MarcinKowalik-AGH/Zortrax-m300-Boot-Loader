@@ -1,0 +1,17 @@
+{
+  "status": "PASS_PUBLIC_V131_HOST_TOOLS",
+  "checks": 94,
+  "device_access_performed": false,
+  "private_test_fixtures_published": false,
+  "coverage": [
+    "all recognized source images",
+    "two-segment readback and protected ranges",
+    "every UID/options byte",
+    "active RDP refusal",
+    "explicit images directory",
+    "target corruption",
+    "exclusive plan creation",
+    "CLI plan and verify",
+    "console version acceptance/rejection"
+  ]
+}

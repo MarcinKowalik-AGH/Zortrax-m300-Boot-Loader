@@ -1,5 +1,5 @@
-# M300Boot — current documentation / bieżąca dokumentacja
+# Documentation link / Odsyłacz dokumentacji
 
-Pełna instrukcja / Complete manual: **[v1.3.1 — KOPIA_ORYGINALU_PL.md](v1.3.1/KOPIA_ORYGINALU_PL.md)**.
+[Polski](pl/v1.3.1/original-backup.md)
 
-[Wszystkie wersje / All versions](README.md) · [Archiwum v1.1 / Archive](v1.1/KOPIA_ORYGINALU_PL.md)
+[English index](en/README.md) · [Polski — indeks](pl/README.md)

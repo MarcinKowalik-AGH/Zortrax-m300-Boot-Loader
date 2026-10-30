@@ -163,7 +163,7 @@ def main() -> int:
     for fn in ['BOOT_MAIN_MENU.png','INSTALLER_MAIN_MENU.png','BOOT_PROGRESS_50.png','INSTALLER_PROGRESS_50.png']:
         png=(ROOT/'docs/v1.1/images'/fn).read_bytes()
         c.ok(png[:8]==b'\x89PNG\r\n\x1a\n' and struct.unpack('>II',png[16:24])==(1024,256),f'Unexpected PNG {fn}','structure')
-    c.ok((ROOT/'docs/v1.1/README.md').read_text().count('](')>=6,'Archived v1.1 documentation index incomplete','structure')
+    c.ok((ROOT/'docs/en/v1.1/README.md').read_text().count('](')>=6,'Archived v1.1 documentation index incomplete','structure')
     c.details.update({'relative_markdown_links_verified':link_count,
                       'public_files_audited':len(published),
                       'release_zip_assets_unchanged':True,

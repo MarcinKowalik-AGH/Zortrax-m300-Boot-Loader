@@ -1,5 +1,5 @@
-# M300Boot — current documentation / bieżąca dokumentacja
+# Documentation link / Odsyłacz dokumentacji
 
-Pełna instrukcja / Complete manual: **[v1.3.1 — TESTED_HARDWARE.md](v1.3.1/TESTED_HARDWARE.md)**.
+[English](en/v1.3.1/tested-hardware.md) · [Polski](pl/v1.3.1/tested-hardware.md)
 
-[Wszystkie wersje / All versions](README.md) · [Archiwum v1.1 / Archive](v1.1/TESTED_HARDWARE.md)
+[English index](en/README.md) · [Polski — indeks](pl/README.md)

@@ -1,6 +1,10 @@
 # M300 boot v1.1 · SD installer 1.1-i4
 
-Independent service bootloader for **classic Zortrax M300**, tested on one **PCB Rev.5.3 / HW05 / measured 256-KiB STM32F1 high-density** unit. Original bootloader: OEM v3; original printer application: **1.3.1**. The owner confirmed custom-boot upgrade through i4 and subsequent successful stock 1.3.1 startup. FACTORY i4 and ST-Link programming are separately documented, not independently hardware-qualified.
+[English](https://github.com/MarcinKowalik-AGH/Zortrax-m300-Boot-Loader/blob/main/docs/en/v1.1/release-notes.md) · [Polski](https://github.com/MarcinKowalik-AGH/Zortrax-m300-Boot-Loader/blob/main/docs/pl/v1.1/release-notes.md) · [Index](https://github.com/MarcinKowalik-AGH/Zortrax-m300-Boot-Loader/blob/main/docs/en/v1.1/README.md)
+
+**Archived v1.1 record, 29 October 2026.** Hardware statements below retain their historical scope. [Current v1.3.1](https://github.com/MarcinKowalik-AGH/Zortrax-m300-Boot-Loader/blob/main/docs/en/v1.3.1/README.md).
+
+Independent service bootloader for **classic Zortrax M300**. Unit A is fully characterized as **PCB Rev.5.3 / HW05 / measured 256-KiB STM32F1 high-density**, OEM v3 and original **1.3.1**. The owner confirmed **UPGRADE** through i4 and successful stock 1.3.1 startup. In a subsequent report, the owner stated **FACTORY works on a second printer** (unit B), without providing that unit’s board/firmware details or individual completion logs. This is owner-reported route evidence, not blanket M300 qualification; fixed identity profile gates still require reconciliation with second-unit checkpoints. **ST-Link programming remains physically unconfirmed.** See [hardware feedback](https://github.com/MarcinKowalik-AGH/Zortrax-m300-Boot-Loader/blob/main/docs/en/v1.1/hardware-feedback.md).
 
 ## Choose your package
 
@@ -12,3 +16,6 @@ Independent service bootloader for **classic Zortrax M300**, tested on one **PCB
 **All installation routes remain profile-gated to the qualified device. HW05 alone is not enough. Other units require independent qualification; do not remove identity checks.** Backup before any write. Removing active STM32F1 RDP causes mass erase; do not use it to obtain a backup. No automatic power-loss rollback.
 
 Firmware is binary-only, without private raw UID/NVM/full-Flash dumps, sources/ELF/maps or vendor-key tools. RESTORE.BIN contains the original 1.3.1 and retains manufacturer rights. Full PL/EN instructions are in docs, SHA-256 beside the assets.
+
+
+[v1.1 documentation](https://github.com/MarcinKowalik-AGH/Zortrax-m300-Boot-Loader/blob/main/docs/en/v1.1/README.md)

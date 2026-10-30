@@ -1,0 +1,62 @@
+{
+  "status": "PASS_DOCUMENTATION_EN_PL",
+  "date": "2026-10-30",
+  "scope": "Documentation organization; no firmware rebuild or hardware action",
+  "current_firmware_version": "1.3.1",
+  "layout_validation": {
+    "result": "PASS",
+    "version": "documentation-en-pl",
+    "checks": 898,
+    "groups": {
+      "layout": 64,
+      "navigation": 50,
+      "content": 76,
+      "compatibility": 150,
+      "shared_evidence": 19,
+      "links": 531,
+      "firmware": 8
+    },
+    "manual_pairs": 19,
+    "legacy_redirect_pages": 42,
+    "markdown_links_verified": 531,
+    "immutable_zip_assets_verified": 8,
+    "device_access_performed": false,
+    "firmware_changed": false
+  },
+  "release_publication_audit": {
+    "result": "PASS",
+    "checks": 87008
+  },
+  "unchanged_release_and_operational_files": [
+    "tools/KONSOLA_M300_v1.3.1.command",
+    "tools/ibtool.py",
+    "tools/requirements.txt",
+    "tools/prepare_stlink.py",
+    "tools/check_backup_profile.py",
+    "tools/m300_service.py",
+    "tools/audit_reference.py",
+    "tools/m300_console.py",
+    "tools/SPRAWDZ_M300_SD_I4.command",
+    "tools/verify_sd_i2.py",
+    "tools/read_flash_m300_055.py",
+    "tools/verify_package.py",
+    "tools/prepare_service_sd.py",
+    "tools/stlink_preflight.py",
+    "tools/KONSOLA_M300_v1.1.command",
+    "firmware/v1.1/M300Boot_v1.1_STLINK_LOCAL_BUILDER.zip",
+    "firmware/v1.1/M300Boot_v1.1_SD_FACTORY_OEMV3_i4.zip",
+    "firmware/v1.1/M300_BACKUP_0.5.5_UART.zip",
+    "firmware/v1.1/M300Boot_v1.1_SD_UPGRADE_i4.zip",
+    "firmware/v1.1/SHA256SUMS.txt",
+    "firmware/v1.1/RELEASE_MANIFEST.json",
+    "firmware/v1.3.1/M300_BACKUP_0.5.5_UART.zip",
+    "firmware/v1.3.1/M300Boot_v1.3.1_SD_UPGRADE.zip",
+    "firmware/v1.3.1/M300Boot_v1.3.1_SD_FACTORY_OEMV3.zip",
+    "firmware/v1.3.1/M300Boot_v1.3.1_STLINK.zip",
+    "firmware/v1.3.1/SHA256SUMS.txt",
+    "firmware/v1.3.1/RELEASE_MANIFEST.json"
+  ],
+  "release_tags_and_assets_modified": false,
+  "hardware_status": "Owner-confirmed UPGRADE, FACTORY and ST-Link; qualification scope unchanged",
+  "old_publication_reports": "Historical snapshots preserved byte-for-byte under docs/reports, with compatibility copies at their original URLs"
+}

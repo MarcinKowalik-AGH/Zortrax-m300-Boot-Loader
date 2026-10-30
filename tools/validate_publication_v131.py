@@ -20,7 +20,8 @@ import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
 FW = ROOT/'firmware/v1.3.1'
-DOC = ROOT/'docs/v1.3.1'
+DOC = ROOT/'docs/en/v1.3.1'
+PL_DOC = ROOT/'docs/pl/v1.3.1'
 PINNED = {
     'stage2': (28672, '26dbb8bb63bb30f77b8cff8f506d9a612b0dc69abd41f86ef4e25b0eb7fd02f5'),
     'assets': (12288, '9cfd25014c85cf9f0b7d9099efc33c69355558f3a63ab12c807c2aeb89ae1d6e'),
@@ -177,13 +178,14 @@ def main(argv=None):
             if not dest or dest.startswith(('http://','https://','mailto:')):
                 continue
             c.ok((x.parent/dest).exists(),'Markdown link '+str(x.relative_to(ROOT))+': '+url,'links');links+=1
-    for en,pl in [('INSTALLATION_EN.md','INSTALACJA_PL.md'),('ORIGINAL_BACKUP_EN.md','KOPIA_ORYGINALU_PL.md'),('FEATURES_AND_CONSOLE_EN.md','FUNKCJE_I_KONSOLA_PL.md'),('UART_EXAMPLES_EN.md','KONSOLA_UART_PRZYKLADY_PL.md'),('STLINK_AND_RECOVERY_EN.md','STLINK_I_ODZYSKIWANIE_PL.md'),('TROUBLESHOOTING_EN.md','DIAGNOSTYKA_PL.md')]:
-        c.ok((DOC/en).stat().st_size>1000 and (DOC/pl).stat().st_size>1000,'Complete EN/PL pair '+en,'docs')
-        c.ok(pl in (DOC/en).read_text() and en in (DOC/pl).read_text(),'Paired language links '+en,'docs')
-    for x in (DOC/'images').glob('*.png'):
+    for name in ('installation.md','original-backup.md','features-and-console.md','uart-examples.md','stlink-and-recovery.md','troubleshooting.md'):
+        c.ok((DOC/name).stat().st_size>1000 and (PL_DOC/name).stat().st_size>1000,'Complete EN/PL pair '+name,'docs')
+        c.ok('/pl/' in (DOC/name).read_text() and '/en/' in (PL_DOC/name).read_text(),'Paired language links '+name,'docs')
+    for x in (ROOT/'docs/assets/v1.3.1').glob('*.png'):
         data=x.read_bytes()
         c.ok(data[:8]==b'\x89PNG\r\n\x1a\n' and struct.unpack('>II',data[16:24])==(1024,256),'Native 256x64 preview x4 '+x.name,'docs')
-    c.ok((ROOT/'README.md').read_text().count('docs/v1.3.1/')>=10,'Current root navigation','docs')
+    c.ok('docs/en/README.md' in (ROOT/'README.md').read_text() and 'README_PL.md' in (ROOT/'README.md').read_text(),'English documentation and language entry','docs')
+    c.ok('docs/pl/README.md' in (ROOT/'README_PL.md').read_text() and 'README.md' in (ROOT/'README_PL.md').read_text(),'Polish documentation and language entry','docs')
     for name in ('m300_console.py','m300_service.py','ibtool.py','verify_sd_i2.py','stlink_preflight.py','verify_package.py'):
         run=subprocess.run([sys.executable,str(ROOT/'tools'/name),'--help'],capture_output=True,text=True)
         c.ok(run.returncode==0,'Executable CLI '+name,'host')

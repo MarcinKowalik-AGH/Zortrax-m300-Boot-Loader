@@ -1,0 +1,459 @@
+{
+  "current_version": "v1.3.1",
+  "languages": [
+    "en",
+    "pl"
+  ],
+  "version_indexes": {
+    "v1.3.1": {
+      "en": "docs/en/v1.3.1/README.md",
+      "pl": "docs/pl/v1.3.1/README.md"
+    },
+    "v1.1": {
+      "en": "docs/en/v1.1/README.md",
+      "pl": "docs/pl/v1.1/README.md"
+    }
+  },
+  "paired_manuals": [
+    {
+      "version": "v1.1",
+      "en": "docs/en/v1.1/installation.md",
+      "pl": "docs/pl/v1.1/installation.md"
+    },
+    {
+      "version": "v1.1",
+      "en": "docs/en/v1.1/features-and-console.md",
+      "pl": "docs/pl/v1.1/features-and-console.md"
+    },
+    {
+      "version": "v1.1",
+      "en": "docs/en/v1.1/original-backup.md",
+      "pl": "docs/pl/v1.1/original-backup.md"
+    },
+    {
+      "version": "v1.1",
+      "en": "docs/en/v1.1/uart-examples.md",
+      "pl": "docs/pl/v1.1/uart-examples.md"
+    },
+    {
+      "version": "v1.1",
+      "en": "docs/en/v1.1/stlink-and-recovery.md",
+      "pl": "docs/pl/v1.1/stlink-and-recovery.md"
+    },
+    {
+      "version": "v1.1",
+      "en": "docs/en/v1.1/tested-hardware.md",
+      "pl": "docs/pl/v1.1/tested-hardware.md"
+    },
+    {
+      "version": "v1.1",
+      "en": "docs/en/v1.1/release-manifest.md",
+      "pl": "docs/pl/v1.1/release-manifest.md"
+    },
+    {
+      "version": "v1.1",
+      "en": "docs/en/v1.1/release-notes.md",
+      "pl": "docs/pl/v1.1/release-notes.md"
+    },
+    {
+      "version": "v1.3.1",
+      "en": "docs/en/v1.3.1/installation.md",
+      "pl": "docs/pl/v1.3.1/installation.md"
+    },
+    {
+      "version": "v1.3.1",
+      "en": "docs/en/v1.3.1/features-and-console.md",
+      "pl": "docs/pl/v1.3.1/features-and-console.md"
+    },
+    {
+      "version": "v1.3.1",
+      "en": "docs/en/v1.3.1/original-backup.md",
+      "pl": "docs/pl/v1.3.1/original-backup.md"
+    },
+    {
+      "version": "v1.3.1",
+      "en": "docs/en/v1.3.1/uart-examples.md",
+      "pl": "docs/pl/v1.3.1/uart-examples.md"
+    },
+    {
+      "version": "v1.3.1",
+      "en": "docs/en/v1.3.1/stlink-and-recovery.md",
+      "pl": "docs/pl/v1.3.1/stlink-and-recovery.md"
+    },
+    {
+      "version": "v1.3.1",
+      "en": "docs/en/v1.3.1/tested-hardware.md",
+      "pl": "docs/pl/v1.3.1/tested-hardware.md"
+    },
+    {
+      "version": "v1.3.1",
+      "en": "docs/en/v1.3.1/release-manifest.md",
+      "pl": "docs/pl/v1.3.1/release-manifest.md"
+    },
+    {
+      "version": "v1.3.1",
+      "en": "docs/en/v1.3.1/release-notes.md",
+      "pl": "docs/pl/v1.3.1/release-notes.md"
+    },
+    {
+      "version": "v1.3.1",
+      "en": "docs/en/v1.3.1/troubleshooting.md",
+      "pl": "docs/pl/v1.3.1/troubleshooting.md"
+    },
+    {
+      "version": "v1.1",
+      "en": "docs/en/v1.1/publication-audit.md",
+      "pl": "docs/pl/v1.1/publication-audit.md"
+    },
+    {
+      "version": "v1.1",
+      "en": "docs/en/v1.1/hardware-feedback.md",
+      "pl": "docs/pl/v1.1/hardware-feedback.md"
+    }
+  ],
+  "legacy_redirects": [
+    {
+      "old": "docs/v1.1/FUNKCJE_I_KONSOLA_PL.md",
+      "targets": {
+        "pl": "docs/pl/v1.1/features-and-console.md"
+      }
+    },
+    {
+      "old": "docs/v1.1/STLINK_AND_RECOVERY_EN.md",
+      "targets": {
+        "en": "docs/en/v1.1/stlink-and-recovery.md"
+      }
+    },
+    {
+      "old": "docs/v1.1/ORIGINAL_BACKUP_EN.md",
+      "targets": {
+        "en": "docs/en/v1.1/original-backup.md"
+      }
+    },
+    {
+      "old": "docs/v1.1/RELEASE_NOTES.md",
+      "targets": {
+        "en": "docs/en/v1.1/release-notes.md",
+        "pl": "docs/pl/v1.1/release-notes.md"
+      }
+    },
+    {
+      "old": "docs/v1.1/INSTALACJA_PL.md",
+      "targets": {
+        "pl": "docs/pl/v1.1/installation.md"
+      }
+    },
+    {
+      "old": "docs/v1.1/KONSOLA_UART_PRZYKLADY_PL.md",
+      "targets": {
+        "pl": "docs/pl/v1.1/uart-examples.md"
+      }
+    },
+    {
+      "old": "docs/v1.1/AUDYT_REPOZYTORIUM_PL.md",
+      "targets": {
+        "pl": "docs/pl/v1.1/publication-audit.md",
+        "en": "docs/en/v1.1/publication-audit.md"
+      }
+    },
+    {
+      "old": "docs/v1.1/KOPIA_ORYGINALU_PL.md",
+      "targets": {
+        "pl": "docs/pl/v1.1/original-backup.md"
+      }
+    },
+    {
+      "old": "docs/v1.1/RELEASE_MANIFEST.md",
+      "targets": {
+        "en": "docs/en/v1.1/release-manifest.md",
+        "pl": "docs/pl/v1.1/release-manifest.md"
+      }
+    },
+    {
+      "old": "docs/v1.1/HARDWARE_FEEDBACK_2026-10-29.md",
+      "targets": {
+        "en": "docs/en/v1.1/hardware-feedback.md",
+        "pl": "docs/pl/v1.1/hardware-feedback.md"
+      }
+    },
+    {
+      "old": "docs/v1.1/FEATURES_AND_CONSOLE_EN.md",
+      "targets": {
+        "en": "docs/en/v1.1/features-and-console.md"
+      }
+    },
+    {
+      "old": "docs/v1.1/README.md",
+      "targets": {
+        "en": "docs/en/v1.1/README.md",
+        "pl": "docs/pl/v1.1/README.md"
+      }
+    },
+    {
+      "old": "docs/v1.1/UART_EXAMPLES_EN.md",
+      "targets": {
+        "en": "docs/en/v1.1/uart-examples.md"
+      }
+    },
+    {
+      "old": "docs/v1.1/TESTED_HARDWARE.md",
+      "targets": {
+        "en": "docs/en/v1.1/tested-hardware.md",
+        "pl": "docs/pl/v1.1/tested-hardware.md"
+      }
+    },
+    {
+      "old": "docs/v1.1/STLINK_I_ODZYSKIWANIE_PL.md",
+      "targets": {
+        "pl": "docs/pl/v1.1/stlink-and-recovery.md"
+      }
+    },
+    {
+      "old": "docs/v1.1/INSTALLATION_EN.md",
+      "targets": {
+        "en": "docs/en/v1.1/installation.md"
+      }
+    },
+    {
+      "old": "docs/v1.3.1/FUNKCJE_I_KONSOLA_PL.md",
+      "targets": {
+        "pl": "docs/pl/v1.3.1/features-and-console.md"
+      }
+    },
+    {
+      "old": "docs/v1.3.1/STLINK_AND_RECOVERY_EN.md",
+      "targets": {
+        "en": "docs/en/v1.3.1/stlink-and-recovery.md"
+      }
+    },
+    {
+      "old": "docs/v1.3.1/ORIGINAL_BACKUP_EN.md",
+      "targets": {
+        "en": "docs/en/v1.3.1/original-backup.md"
+      }
+    },
+    {
+      "old": "docs/v1.3.1/RELEASE_NOTES.md",
+      "targets": {
+        "en": "docs/en/v1.3.1/release-notes.md",
+        "pl": "docs/pl/v1.3.1/release-notes.md"
+      }
+    },
+    {
+      "old": "docs/v1.3.1/INSTALACJA_PL.md",
+      "targets": {
+        "pl": "docs/pl/v1.3.1/installation.md"
+      }
+    },
+    {
+      "old": "docs/v1.3.1/DIAGNOSTYKA_PL.md",
+      "targets": {
+        "pl": "docs/pl/v1.3.1/troubleshooting.md"
+      }
+    },
+    {
+      "old": "docs/v1.3.1/KONSOLA_UART_PRZYKLADY_PL.md",
+      "targets": {
+        "pl": "docs/pl/v1.3.1/uart-examples.md"
+      }
+    },
+    {
+      "old": "docs/v1.3.1/KOPIA_ORYGINALU_PL.md",
+      "targets": {
+        "pl": "docs/pl/v1.3.1/original-backup.md"
+      }
+    },
+    {
+      "old": "docs/v1.3.1/RELEASE_MANIFEST.md",
+      "targets": {
+        "en": "docs/en/v1.3.1/release-manifest.md",
+        "pl": "docs/pl/v1.3.1/release-manifest.md"
+      }
+    },
+    {
+      "old": "docs/v1.3.1/FEATURES_AND_CONSOLE_EN.md",
+      "targets": {
+        "en": "docs/en/v1.3.1/features-and-console.md"
+      }
+    },
+    {
+      "old": "docs/v1.3.1/README.md",
+      "targets": {
+        "en": "docs/en/v1.3.1/README.md",
+        "pl": "docs/pl/v1.3.1/README.md"
+      }
+    },
+    {
+      "old": "docs/v1.3.1/UART_EXAMPLES_EN.md",
+      "targets": {
+        "en": "docs/en/v1.3.1/uart-examples.md"
+      }
+    },
+    {
+      "old": "docs/v1.3.1/TROUBLESHOOTING_EN.md",
+      "targets": {
+        "en": "docs/en/v1.3.1/troubleshooting.md"
+      }
+    },
+    {
+      "old": "docs/v1.3.1/TESTED_HARDWARE.md",
+      "targets": {
+        "en": "docs/en/v1.3.1/tested-hardware.md",
+        "pl": "docs/pl/v1.3.1/tested-hardware.md"
+      }
+    },
+    {
+      "old": "docs/v1.3.1/STLINK_I_ODZYSKIWANIE_PL.md",
+      "targets": {
+        "pl": "docs/pl/v1.3.1/stlink-and-recovery.md"
+      }
+    },
+    {
+      "old": "docs/v1.3.1/INSTALLATION_EN.md",
+      "targets": {
+        "en": "docs/en/v1.3.1/installation.md"
+      }
+    },
+    {
+      "old": "docs/FUNKCJE_I_KONSOLA_PL.md",
+      "targets": {
+        "pl": "docs/pl/v1.3.1/features-and-console.md"
+      }
+    },
+    {
+      "old": "docs/STLINK_AND_RECOVERY_EN.md",
+      "targets": {
+        "en": "docs/en/v1.3.1/stlink-and-recovery.md"
+      }
+    },
+    {
+      "old": "docs/ORIGINAL_BACKUP_EN.md",
+      "targets": {
+        "en": "docs/en/v1.3.1/original-backup.md"
+      }
+    },
+    {
+      "old": "docs/INSTALACJA_PL.md",
+      "targets": {
+        "pl": "docs/pl/v1.3.1/installation.md"
+      }
+    },
+    {
+      "old": "docs/KOPIA_ORYGINALU_PL.md",
+      "targets": {
+        "pl": "docs/pl/v1.3.1/original-backup.md"
+      }
+    },
+    {
+      "old": "docs/RELEASE_MANIFEST.md",
+      "targets": {
+        "en": "docs/en/v1.3.1/release-manifest.md",
+        "pl": "docs/pl/v1.3.1/release-manifest.md"
+      }
+    },
+    {
+      "old": "docs/FEATURES_AND_CONSOLE_EN.md",
+      "targets": {
+        "en": "docs/en/v1.3.1/features-and-console.md"
+      }
+    },
+    {
+      "old": "docs/TESTED_HARDWARE.md",
+      "targets": {
+        "en": "docs/en/v1.3.1/tested-hardware.md",
+        "pl": "docs/pl/v1.3.1/tested-hardware.md"
+      }
+    },
+    {
+      "old": "docs/STLINK_I_ODZYSKIWANIE_PL.md",
+      "targets": {
+        "pl": "docs/pl/v1.3.1/stlink-and-recovery.md"
+      }
+    },
+    {
+      "old": "docs/INSTALLATION_EN.md",
+      "targets": {
+        "en": "docs/en/v1.3.1/installation.md"
+      }
+    }
+  ],
+  "shared_compatibility_copies": [
+    {
+      "old": "docs/v1.1/AUDIT_CHECKS.json",
+      "canonical": "docs/reports/v1.1/AUDIT_CHECKS.json"
+    },
+    {
+      "old": "docs/v1.1/PUBLICATION_VALIDATION.json",
+      "canonical": "docs/reports/v1.1/PUBLICATION_VALIDATION.json"
+    },
+    {
+      "old": "docs/v1.1/images/INSTALLER_MAIN_MENU.png",
+      "canonical": "docs/assets/v1.1/INSTALLER_MAIN_MENU.png"
+    },
+    {
+      "old": "docs/v1.1/images/BOOT_MAIN_MENU.png",
+      "canonical": "docs/assets/v1.1/BOOT_MAIN_MENU.png"
+    },
+    {
+      "old": "docs/v1.1/images/INSTALLER_PROGRESS_50.png",
+      "canonical": "docs/assets/v1.1/INSTALLER_PROGRESS_50.png"
+    },
+    {
+      "old": "docs/v1.1/images/BOOT_PROGRESS_50.png",
+      "canonical": "docs/assets/v1.1/BOOT_PROGRESS_50.png"
+    },
+    {
+      "old": "docs/v1.3.1/HOST_TOOL_VALIDATION.json",
+      "canonical": "docs/reports/v1.3.1/HOST_TOOL_VALIDATION.json"
+    },
+    {
+      "old": "docs/v1.3.1/PUBLICATION_VALIDATION.json",
+      "canonical": "docs/reports/v1.3.1/PUBLICATION_VALIDATION.json"
+    },
+    {
+      "old": "docs/v1.3.1/images/INSTALLER_MAIN_MENU.png",
+      "canonical": "docs/assets/v1.3.1/INSTALLER_MAIN_MENU.png"
+    },
+    {
+      "old": "docs/v1.3.1/images/BOOT_MAIN_MENU.png",
+      "canonical": "docs/assets/v1.3.1/BOOT_MAIN_MENU.png"
+    },
+    {
+      "old": "docs/v1.3.1/images/UART_BAUD_1500000.png",
+      "canonical": "docs/assets/v1.3.1/UART_BAUD_1500000.png"
+    },
+    {
+      "old": "docs/v1.3.1/images/INSTALLER_PROGRESS_50.png",
+      "canonical": "docs/assets/v1.3.1/INSTALLER_PROGRESS_50.png"
+    },
+    {
+      "old": "docs/v1.3.1/images/UART_BOOTWAIT_ON.png",
+      "canonical": "docs/assets/v1.3.1/UART_BOOTWAIT_ON.png"
+    },
+    {
+      "old": "docs/v1.3.1/images/UART_BOOTWAIT_OFF.png",
+      "canonical": "docs/assets/v1.3.1/UART_BOOTWAIT_OFF.png"
+    },
+    {
+      "old": "docs/v1.3.1/images/BOOT_PROGRESS_50.png",
+      "canonical": "docs/assets/v1.3.1/BOOT_PROGRESS_50.png"
+    },
+    {
+      "old": "docs/images/INSTALLER_MAIN_MENU.png",
+      "canonical": "docs/assets/v1.1/INSTALLER_MAIN_MENU.png"
+    },
+    {
+      "old": "docs/images/BOOT_MAIN_MENU.png",
+      "canonical": "docs/assets/v1.1/BOOT_MAIN_MENU.png"
+    },
+    {
+      "old": "docs/images/INSTALLER_PROGRESS_50.png",
+      "canonical": "docs/assets/v1.1/INSTALLER_PROGRESS_50.png"
+    },
+    {
+      "old": "docs/images/BOOT_PROGRESS_50.png",
+      "canonical": "docs/assets/v1.1/BOOT_PROGRESS_50.png"
+    }
+  ],
+  "scope": "Documentation paths only; immutable firmware packages and release tags retained"
+}

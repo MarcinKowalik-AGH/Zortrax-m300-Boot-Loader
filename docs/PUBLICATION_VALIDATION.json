@@ -1,5 +1,6 @@
 {
   "current_version": "1.3.1",
-  "current_report": "v1.3.1/PUBLICATION_VALIDATION.json",
-  "archived_report": "v1.1/PUBLICATION_VALIDATION.json"
+  "current_report": "reports/v1.3.1/PUBLICATION_VALIDATION.json",
+  "archived_report": "reports/v1.1/PUBLICATION_VALIDATION.json",
+  "documentation_map": "DOCUMENTATION_MAP.json"
 }
