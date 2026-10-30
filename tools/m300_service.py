@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""M300Boot v1.1 (rc3-compatible format): receive read-only UART dumps; verify SD backups/logs.
+"""M300Boot v1.3.1 (rc3-compatible format): receive read-only UART dumps; verify SD backups/logs.
 This program has NO erase, Flash programming, OTP-write or option-write command.
 """
 from __future__ import annotations
@@ -7,7 +7,7 @@ import argparse, hashlib, json, re, struct, sys, time, zlib
 from pathlib import Path
 from typing import Callable
 REGIONS={'FLASH':262144,'BOOT':32768,'NVM':8192,'FACTORY':2048,'SYSROM':2048,'SIZE':2,'UID':12,'OPTIONS':16}
-BAUDRATES=(19200,57600,115200,250000,500000)
+BAUDRATES=(115200,250000,500000,750000,1000000,1500000)
 EVENTS=['?','RESET','CHECK','INSTALL_BEGIN','INSTALL_END','ERROR','BOOT','BACKUP','DUMP','LOGSAVE','RECOVERY_CLEAR','USER_RESET','SKIPPED']
 
 def crc(data: bytes) -> int:

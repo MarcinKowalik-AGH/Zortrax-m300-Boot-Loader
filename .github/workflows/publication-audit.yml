@@ -1,4 +1,4 @@
-name: M300 v1.1 publication audit (no device access)
+name: M300 publication audit (v1.3.1 and preserved v1.1)
 on:
   push:
     branches: [main]
@@ -21,5 +21,5 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Verify repository SHA-256 checksums
         run: sha256sum -c SHA256SUMS.txt
-      - name: Independently validate v1.1 release (read-only)
+      - name: Independently validate current and archived releases (read-only)
         run: python tools/validate_publication.py --json

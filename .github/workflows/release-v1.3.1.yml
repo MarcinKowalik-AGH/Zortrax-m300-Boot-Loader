@@ -1,0 +1,51 @@
+name: Release M300Boot v1.3.1
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'firmware/v1.3.1/**'
+      - '.github/workflows/release-v1.3.1.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: release-m300boot-v1.3.1
+  cancel-in-progress: false
+jobs:
+  release:
+    if: github.repository == 'MarcinKowalik-AGH/Zortrax-m300-Boot-Loader'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify all tracked publication checksums
+        run: sha256sum -c SHA256SUMS.txt
+      - name: Validate current and archived public releases without device access
+        run: python tools/validate_publication.py --json
+      - name: Verify v1.3.1 assets
+        working-directory: firmware/v1.3.1
+        run: sha256sum -c SHA256SUMS.txt
+      - name: Publish immutable original v1.3.1 assets
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          if gh release view v1.3.1 >/dev/null 2>&1; then
+            echo 'Release v1.3.1 exists; no replacement performed.'
+            exit 0
+          fi
+          gh release create v1.3.1 \
+            firmware/v1.3.1/M300Boot_v1.3.1_SD_FACTORY_OEMV3.zip \
+            firmware/v1.3.1/M300Boot_v1.3.1_SD_UPGRADE.zip \
+            firmware/v1.3.1/M300Boot_v1.3.1_STLINK.zip \
+            firmware/v1.3.1/M300_BACKUP_0.5.5_UART.zip \
+            firmware/v1.3.1/SHA256SUMS.txt \
+            firmware/v1.3.1/RELEASE_MANIFEST.json \
+            --target "$GITHUB_SHA" \
+            --title 'M300Boot v1.3.1 — UART 1500000 and bootwait OFF/ON' \
+            --notes-file RELEASE_NOTES_v1.3.1.md \
+            --latest

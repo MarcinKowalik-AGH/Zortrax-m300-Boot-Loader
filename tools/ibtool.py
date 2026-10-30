@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Offline package builder and bounded serial file server for M300 boot v1.1.
+"""Offline package builder and bounded serial file server for M300 boot v1.3.1.
 
 This does not install the bootloader, bypass stock validation, read arbitrary
 printer memory, or change protection. Serial requires this loader ALREADY running.
@@ -53,7 +53,7 @@ def inspect(data: bytes) -> dict:
     return {"format": "M3BOOT1", "application_base": hex(base), "payload_bytes": length,
             "sha256": digest.hex(), "initial_msp": hex(sp), "reset_vector": hex(pc),
             "signature": "NONE: integrity check, not authentication",
-            "compatibility": "M300Boot v1.1 (rc3-compatible format) M3B format; NOT the stock Update format"}
+            "compatibility": "M300Boot v1.3.1 (rc3-compatible format) M3B format; NOT the stock Update format"}
 
 
 def read_bounded(path: Path, maximum: int) -> bytes:
@@ -114,7 +114,7 @@ def main() -> int:
     p = sub.add_parser("serial", help="Serve a package to an already-installed M300Boot")
     p.add_argument("package", type=Path)
     p.add_argument("--port", required=True)
-    p.add_argument("--baud", type=int, choices=(19200,57600,115200,250000,500000), default=250000)
+    p.add_argument("--baud", type=int, choices=(115200,250000,500000,750000,1000000,1500000), default=250000)
     p.add_argument("--update", action="store_true", help="Explicitly request application replacement (physical confirmation still required)")
     args = parser.parse_args()
     try:

@@ -1,4 +1,16 @@
-# Changelog
+# Changelog / Historia zmian
+
+## 1.3.1 — 2026-10-30
+
+- UART up to **1500000**, ordered menu from 115200; legacy saved indices retained. / UART do 1500000, zgodność starych zapisów.
+- Persistent bootwait UART OFF/ON, binary RX isolation, corrected local baud busy handling. / Trwałe OFF/ON i poprawki autostartu oraz ustawiania baud.
+- Reviewed OLED dirty rectangles/direct detents and protected settings journals. / Częściowe OLED, kroki enkodera, zachowane dzienniki.
+- Public FACTORY, UPGRADE and two-segment STLINK packages; current PL/EN manuals and tools. / Nowe paczki i dokumentacja.
+- Owner confirms all three installation routes on hardware and UART8 at 1500000. / Wszystkie drogi potwierdzone sprzętowo przez właściciela.
+- 2941 boot/installer tests re-run PASS; v1.1 assets and tag preserved.
+
+[Full release notes / Pełne zmiany](docs/v1.3.1/RELEASE_NOTES.md).
+
 
 ## 1.1 — documentation follow-up 2026-10-29
 

@@ -1,7 +1,5 @@
-# RELEASE MANIFEST — compatibility link
+# M300Boot — current documentation / bieżąca dokumentacja
 
-This document has moved to the versioned **M300 boot v1.1** documentation. / Dokument przeniesiono do wersjonowanej dokumentacji **M300 boot v1.1**.
+Pełna instrukcja / Complete manual: **[v1.3.1 — RELEASE_MANIFEST.md](v1.3.1/RELEASE_MANIFEST.md)**.
 
-**[Read the current v1.1 guide / Otwórz aktualną instrukcję](v1.1/RELEASE_MANIFEST.md)**
-
-[All documentation / Indeks dokumentacji](README.md) · [Project](../README.md)
+[Wszystkie wersje / All versions](README.md) · [Archiwum v1.1 / Archive](v1.1/RELEASE_MANIFEST.md)

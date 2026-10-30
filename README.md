@@ -1,68 +1,79 @@
-# M300 boot v1.1 — classic Zortrax M300
+# M300Boot v1.3.1 — classic Zortrax M300
 
-**Independent service bootloader · SD installer 1.1-i4**  
-**Autor / Author:** Marcin Kowalik · mkowalik@agh.edu.pl  
-**Fully characterized test unit:** classic M300, **PCB Rev. 5.3 / hardware 05 / measured 256 KiB Flash**. A second printer has owner-reported FACTORY success; its board revision and firmware have not yet been supplied.
+**Independent service bootloader / Niezależny bootloader serwisowy**
+**Autor / Author:** Marcin Kowalik · mkowalik@agh.edu.pl
+**Target / Sprzęt:** classic M300, PCB Rev.5.3 / HW05 / STM32F103-family / measured 256 KiB Flash.
 
-> **Najpierw kopia / Backup first.** Nie zdejmuj RDP, żeby odczytać pamięć: wyłączenie aktywnej ochrony w tym STM32F1 kasuje główną Flash. Najpierw zachowaj dwie zgodne kopie bootloadera, NVM/danych fabrycznych, UID, SIZE i Option Bytes. [Pełna procedura PL](docs/v1.1/KOPIA_ORYGINALU_PL.md) · [English](docs/v1.1/ORIGINAL_BACKUP_EN.md).
+**Current / Bieżące: BOOT 1.3.1 · SD installer 1.3.1 · 2026-10-30.**
+**UPGRADE, FACTORY i ST-Link potwierdzone na sprzęcie przez właściciela / all three installation routes owner-confirmed on hardware.** UART8 at **1500000 baud** and the standalone MCU waiting/display stage were also confirmed.
 
-> **Ważne ograniczenie / Important restriction:** opublikowane, niezmienione pakiety i4 są **przypisane do jednego zakwalifikowanego egzemplarza** przez hashe UID, opcji i strony fabrycznej. Sama zgodność „M300 / HW05” nie wystarcza. Nie zdejmuj tych blokad i nie wgrywaj pośrednika na inną drukarkę, żeby sprawdzić, czy odmówi. / The unchanged i4 installers are **single-device-profile locked**. They are not universal M300 installers. A different unit requires its own qualification and build, not patched hash checks. See [tested hardware and compatibility](docs/v1.1/TESTED_HARDWARE.md).
+## Pobierz / Download
 
-## Pobierz / Download v1.1
-
-| Stan urządzenia / Current state | Pakiet / Package |
+| Stan urządzenia / Device state | Pakiet / Package |
 |---|---|
-| Rozpoznany oryginalny **Zortrax Bootloader v3**, profil zgodny / recognized factory OEM v3, matching profile | **[SD_FACTORY_OEMV3_i4](firmware/v1.1/M300Boot_v1.1_SD_FACTORY_OEMV3_i4.zip)** |
-| Rozpoznany własny M300Boot FULL rc1/rc2/rc3 lub v1.1, profil zgodny / recognized custom FULL, matching profile | **[SD_UPGRADE_i4](firmware/v1.1/M300Boot_v1.1_SD_UPGRADE_i4.zip)** |
-| Świadoma procedura ST-Link/SWD z własną kopią / deliberate SWD installation or recovery using your private backup | **[STLINK — obrazy i lokalny generator / images and offline builder](firmware/v1.1/M300Boot_v1.1_STLINK_LOCAL_BUILDER.zip)** |
-| Zabezpieczenie oryginalnego bootloadera i danych przy RDP / original boot and data backup under RDP | **[Diagnostyka UART 0.5.5 / UART backup application](firmware/v1.1/M300_BACKUP_0.5.5_UART.zip)** |
+| Rozpoznany własny M300Boot / recognized custom boot | [SD_UPGRADE v1.3.1](firmware/v1.3.1/M300Boot_v1.3.1_SD_UPGRADE.zip) |
+| Oryginalny OEM v3, zgodny profil / original OEM v3, matching profile | [SD_FACTORY_OEMV3 v1.3.1](firmware/v1.3.1/M300Boot_v1.3.1_SD_FACTORY_OEMV3.zip) |
+| SWD, RDP już wyłączone / SWD, RDP already off | [STLINK v1.3.1 — dwa segmenty / two segments](firmware/v1.3.1/M300Boot_v1.3.1_STLINK.zip) |
+| Zachowanie OEM BOOT/NVM przy RDP / preserve original BOOT/NVM under RDP | [Diagnostyka UART 0.5.5 / unchanged backup diagnostic](firmware/v1.3.1/M300_BACKUP_0.5.5_UART.zip) |
 
-**[Instrukcja instalacji PL](docs/v1.1/INSTALACJA_PL.md)** · **[Installation manual EN](docs/v1.1/INSTALLATION_EN.md)**  
-[ST-Link i odzyskiwanie PL](docs/v1.1/STLINK_I_ODZYSKIWANIE_PL.md) · [ST-Link and recovery EN](docs/v1.1/STLINK_AND_RECOVERY_EN.md)  
-[Funkcje, Hardware i konsola PL](docs/v1.1/FUNKCJE_I_KONSOLA_PL.md) · [Features and console EN](docs/v1.1/FEATURES_AND_CONSOLE_EN.md)  
-[Manifest wydania / Release manifest](docs/v1.1/RELEASE_MANIFEST.md) · [SHA-256](firmware/v1.1/SHA256SUMS.txt)
+**[Instrukcje PL](docs/v1.3.1/INSTALACJA_PL.md) · [English installation](docs/v1.3.1/INSTALLATION_EN.md) · [Wszystkie instrukcje / Complete documentation](docs/v1.3.1/README.md)**
+[GitHub Release v1.3.1](https://github.com/MarcinKowalik-AGH/Zortrax-m300-Boot-Loader/releases/tag/v1.3.1) · [SHA-256](firmware/v1.3.1/SHA256SUMS.txt) · [Manifest](docs/v1.3.1/RELEASE_MANIFEST.md)
 
-## Dokumentacja według wersji / Versioned documentation
+**Najpierw kopia / Backup first:** zachowaj własne BOOT/NVM/UID/SIZE/Option Bytes i zgodne niezależne kopie Flash. Zdjęcie aktywnego RDP w STM32F1 kasuje główną Flash. Publiczne instalatory zachowują blokady profilu konkretnego egzemplarza; samo M300/HW05 nie wystarcza. / Preserve your own verified backups; do not remove RDP to obtain a read or bypass installer identity checks. [PL](docs/v1.3.1/KOPIA_ORYGINALU_PL.md) · [EN](docs/v1.3.1/ORIGINAL_BACKUP_EN.md).
 
-**[Wszystkie instrukcje v1.1 / Complete v1.1 manuals](docs/v1.1/README.md)** · [Indeks dokumentacji](docs/README.md) · [GitHub Release v1.1](https://github.com/MarcinKowalik-AGH/Zortrax-m300-Boot-Loader/releases/tag/v1.1)
+## Nowe funkcje / Current features
 
-| Wersja | Status | Dokumentacja | Pliki |
-|---|---|---|---|
-| **v1.1 / i4** | **Aktualna / Current** | [docs/v1.1](docs/v1.1/README.md) | [firmware/v1.1](firmware/v1.1) |
+| Funkcja / Feature | Działanie / Behavior |
+|---|---|
+| UART **115200 / 250000 / 500000 / 750000 / 1000000 / 1500000** | W tej kolejności w menu; zapis Flash z kontrolą odczytu. / Ordered menu, persistent selection with readback. Legacy 19200/57600 records remain readable. |
+| **UART on bootwait OFF / ON** | OFF: ruch Orange Pi nie przerywa autostartu. ON: pełne dozwolone linie otwierają diagnostykę. / Host binary traffic does not interrupt the countdown; ON allows complete diagnostic lines. Default 250000/OFF. |
+| Zmiana baud / Baud selection | Poprawione fałszywe busy i porzucanie części linii hosta; lokalne ekrany ustawień odrzucają RX. / Corrected local busy handling and isolated settings screens. |
+| OLED i enkoder / OLED and encoder | Częściowa aktualizacja, pomijanie identycznych klatek, bezpośrednie kroki, Back w podmenu, brak zawijania. / Dirty rectangles, identical-frame skip, direct detents, pinned Back and bounded scrolling. |
+| Rozruch / Startup | Pięć sekund po inicjalizacji; pokrętło otwiera serwis; przytrzymanie przy włączeniu wymusza 250000 tylko na tę sesję. / Five-second countdown and temporary 250000 recovery entry. |
+| Instalacja / Installation | SD: profil, kontrola karty, dwie kopie i świeże potwierdzenie 5 s. ST-Link: dwa zakresy i pełny readback 256 KiB. / Guarded SD transaction or two-segment SWD with full readback. |
+| Diagnostyka / Diagnostics | Odczytywane Hardware/serial/czas, kontrola Flash, kopie, historia i postęp bieżącej fazy. / Live hardware records, verification, backup, history and phase progress. |
 
-[Przykłady UART i aktualizacji APP PL](docs/v1.1/KONSOLA_UART_PRZYKLADY_PL.md) · [UART examples EN](docs/v1.1/UART_EXAMPLES_EN.md) · [Niezależny audyt publikacji](docs/v1.1/AUDYT_REPOZYTORIUM_PL.md) · [Publiczne narzędzia PC](tools/README.md)
+**[Pełny opis PL](docs/v1.3.1/FUNKCJE_I_KONSOLA_PL.md) · [Features EN](docs/v1.3.1/FEATURES_AND_CONSOLE_EN.md) · [UART PL](docs/v1.3.1/KONSOLA_UART_PRZYKLADY_PL.md) · [UART EN](docs/v1.3.1/UART_EXAMPLES_EN.md)**
 
-**Tag `v1.1` zachowuje pierwotne pliki wydania; na gałęzi `main` aktualizujemy dokumentację i testy publikacyjne, bez zmian przetestowanych binariów.** Nie tworzono nieistniejącego publicznego archiwum v1.0. Kompatybilne odsyłacze z historycznych `docs/*.md` zachowano.
+![M300Boot v1.3.1 — native renderer preview](docs/v1.3.1/images/BOOT_MAIN_MENU.png)
 
-## Co robi / Features
+*Render z rzeczywistego kodu OLED, nie zdjęcie testu / Actual OLED renderer output, not a hardware-test photograph.*
 
-- Nagłówek **M300 boot v1.1 © Marcin Kowalik**; czytelne menu OLED, `Back`, brak zawijania na końcu, płynne przewijanie z częściową aktualizacją ekranu.
-- **Diagnostics → Hardware**: hardware revision, serial number and accumulated operating time decoded from the printer, not a fixed `OK`. The model label is the M300 target profile, not an independently detected marketing model.
-- Pierścień postępu z procentami / progress ring with percentages for measured operations; neutral indication for indeterminate waits.
-- 5-second cancellable autoboot, manual boot, firmware selection on SD, image verification, SD/UART application updates and identical-image skip.
-- UART: **19200 / 57600 / 115200 / 250000 / 500000, 8N1**, persisted selection, recovery entry at 250000 by holding the encoder during startup.
-- Full-Flash and identity backup; service diagnostics and history. The SD installer makes **two independent 256-KiB snapshots** and requires a separate physical confirmation before replacing boot pages.
+## Po aktualizacji / After installation
 
-![Boot menu — rendered from the release UI](docs/v1.1/images/BOOT_MAIN_MENU.png)
+**SD pozostawia instalator jako APP** — przywróć `RESTORE.BIN` (oryginalny Zortrax M300 1.3.1) albo zgodny MCU M3B. **ST-Link zachowuje APP.** BOOT, stock APP i MCU Klipper mają osobne wersje. Ekran `Waiting for Klipper` i obsługa zapisanego baud po stronie MCU należą do osobnej aplikacji UART8; ta publikacja jej nie dołącza.
 
-*Ilustracje są renderami kodu interfejsu, nie zdjęciami potwierdzającymi test sprzętowy. / Illustrations are UI renders, not hardware-test photographs.*
-
-## Potwierdzenie sprzętowe / Hardware status
-
-**UPGRADE:** właściciel potwierdził instalację v1.1/i4 i uruchomienie oryginalnego **Zortrax 1.3.1** na pierwszej, dokładnie scharakteryzowanej M300 (Rev. 5.3 / HW05 / 256 KiB). **FACTORY:** właściciel następnie zgłosił, że ścieżka FACTORY działa na **drugiej drukarce**. Parametry tej płyty, log i dokładny punkt zakończenia instalacji nie zostały podane; przy deklarowanych blokadach UID/Option Bytes/strony fabrycznej wymaga to dodatkowej weryfikacji. **ST-Link pozostaje niepotwierdzony sprzętowo.**
-
-Owner reports **UPGRADE and restored stock 1.3.1 startup** on unit A, plus **FACTORY functioning on a second printer** (unit B). This second report is recorded as owner evidence, **not** proof of universal compatibility or of specific permanent-write/stock-start checkpoints without logs. The embedded identity gates have not been removed. [Hardware feedback and test matrix](docs/v1.1/HARDWARE_FEEDBACK_2026-10-29.md) · [Tested hardware](docs/v1.1/TESTED_HARDWARE.md). No power-loss or general print-performance certification is claimed.
+**SD leaves the intermediary in APP**: restore stock or the intended MCU application after BOOT replacement. Matching UART8 MCU/host support is required at 1500000. A working display/Ready state is not motion/heater or print-load qualification. [Diagnostyka PL](docs/v1.3.1/DIAGNOSTYKA_PL.md) · [Troubleshooting EN](docs/v1.3.1/TROUBLESHOOTING_EN.md).
 
 ## Mapa pamięci / Memory layout
 
-The original **first 4 KiB at 0x08000000 are preserved**. The custom second stage occupies `0x08001000–0x08007FFF`; assets occupy `0x0803A000–0x0803CFFF`. One replaceable application slot starts at `0x08008000` and has **200 KiB** capacity. Own metadata/journal use `0x0803D000–0x0803DFFF`. The final **8 KiB at 0x0803E000–0x0803FFFF** are outside normal bootloader write APIs.
+| Zakres / Range | Przeznaczenie / Purpose |
+|---|---|
+| `0x08000000–0x08000FFF` | Zachowany prefix OEM / preserved first 4 KiB |
+| `0x08001000–0x08007FFF` | BOOT stage2 — 28 KiB |
+| `0x08008000–0x08039FFF` | Jeden slot APP / one application slot — 200 KiB |
+| `0x0803A000–0x0803CFFF` | Zasoby / assets — 12 KiB |
+| `0x0803D000–0x0803D7FF` | Metadane APP / application metadata |
+| `0x0803D800–0x0803DBFF` | Osobne dzienniki baud i bootwait / separate journals |
+| `0x0803E000–0x0803FFFF` | Dane producenta/NVM poza normalnym zapisem / protected manufacturer data |
 
-**There is no standalone public “32 KiB at 0x08000000” image.** The ST-Link archive contains two address-specific components and a sparse HEX. A complete personal recovery image is assembled **offline from your own verified backup**. Do not flash an encrypted `Update.bin` with ST-Link.
+Nie ma publicznego pełnego BIN-a pod 0x08000000 ani automatycznego rollbacku po utracie zasilania. / No complete personal Flash image or automatic power-loss rollback is published. [ST-Link PL](docs/v1.3.1/STLINK_I_ODZYSKIWANIE_PL.md) · [ST-Link EN](docs/v1.3.1/STLINK_AND_RECOVERY_EN.md).
+
+## Wersje / Versions
+
+| Wersja / Version | Status | Dokumentacja / Docs | Pliki / Files |
+|---|---|---|---|
+| **v1.3.1** | **Bieżąca / Current** | [docs/v1.3.1](docs/v1.3.1/README.md) | [firmware/v1.3.1](firmware/v1.3.1) |
+| v1.1 / i4 | Archiwalna / Archived, immutable original assets | [docs/v1.1](docs/v1.1/README.md) | [firmware/v1.1](firmware/v1.1) |
+
+[Indeks dokumentacji](docs/README.md) · [Zmiany / Changelog](CHANGELOG.md) · [Potwierdzenia sprzętowe / Hardware evidence](docs/v1.3.1/TESTED_HARDWARE.md) · [Narzędzia / Tools](tools/README.md).
+
+Układ jak dotąd: `docs/v<version>` — pełne instrukcje EN/PL, `firmware/v<version>` — publiczne binaria i manifest, `docs/*.md` — zgodne odsyłacze. Nie tworzymy fikcyjnych publicznych wydań dla prywatnych etapów 1.2/1.3. / Versioned docs and binaries retain the established layout; no synthetic historical releases.
 
 ## Zakres publikacji / Publication scope
 
-Following the Inventure publication model: binaries, public host tools, PL/EN documentation, checksums and selected UI previews. **No C/ASM firmware source, ELF/map/disassembly, raw UID, serial-bearing screenshots, full personal Flash/NVM dumps, cryptographic key tools or complete private recovery image are published.** Installer identity hashes remain embedded to preserve the tested safety gate.
+2941 testów BOOT/instalatora ponownie PASS; archiwa, protokoły, HEX, linki i prywatność kontrolowane osobno. / 2941 boot/installer tests re-run successfully, with separate public-package validation. Owner-confirmed UPGRADE, FACTORY, ST-Link and 1.5-Mb/s link; no universal board/power-loss/printing qualification inferred.
 
-`RESTORE.BIN` contains the original **Zortrax M300 1.3.1** application and retains manufacturer rights. MIT licensing applies to newly authored material, not manufacturer firmware/assets. See [third-party notice](THIRD_PARTY_NOTICES.md).
+Publiczne są binaria, narzędzia operacyjne, instrukcje PL/EN, sumy i podglądy. Bez C/ASM firmware, ELF/map, kluczy OEM, prywatnych pełnych Flash/NVM/UID, numerów seryjnych i gotowych osobistych obrazów odtworzeniowych. / Binary firmware publication; no private device dumps, firmware sources or vendor-key tools.
 
-**Independent project; not affiliated with or endorsed by Zortrax or STMicroelectronics. Keep a verified private backup on a second physical medium.**
+`RESTORE.BIN` zachowuje prawa producenta. MIT dotyczy nowo napisanych elementów, nie firmware/zasobów producenta. / Manufacturer material retains its rights. [Notices](THIRD_PARTY_NOTICES.md). Independent project, not endorsed by Zortrax or STMicroelectronics. **Classic M300 only — not M300 Plus, Dual or Inventure.**

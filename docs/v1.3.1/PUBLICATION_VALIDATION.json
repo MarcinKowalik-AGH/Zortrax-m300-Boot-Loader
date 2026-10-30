@@ -1,0 +1,83 @@
+{
+  "status": "PASS_M300BOOT_V131_PUBLICATION",
+  "version": "1.3.1",
+  "date": "2026-10-30",
+  "firmware_executable_bytes_changed": false,
+  "firmware_rebuilt_for_publication": false,
+  "software_tests_rerun": {
+    "boot": 2116,
+    "installer_stlink_migration": 825,
+    "total": 2941,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "public_host_validation": {
+    "status": "PASS_PUBLIC_V131_HOST_TOOLS",
+    "checks": 94,
+    "device_access_performed": false,
+    "private_test_fixtures_published": false,
+    "coverage": [
+      "all recognized source images",
+      "two-segment readback and protected ranges",
+      "every UID/options byte",
+      "active RDP refusal",
+      "explicit images directory",
+      "target corruption",
+      "exclusive plan creation",
+      "CLI plan and verify",
+      "console version acceptance/rejection"
+    ]
+  },
+  "public_audit": {
+    "result": "PASS",
+    "current_version": "1.3.1",
+    "device_access_performed": false,
+    "checks": 85257
+  },
+  "v131_audit": {
+    "result": "PASS",
+    "version": "1.3.1",
+    "checks": 46720,
+    "groups": {
+      "release": 22,
+      "archives": 85,
+      "privacy": 264,
+      "firmware": 5,
+      "hex": 46093,
+      "host": 41,
+      "protocol": 2,
+      "links": 188,
+      "docs": 20
+    },
+    "relative_markdown_links_verified": 188,
+    "firmware_rebuilt": false,
+    "device_access_performed": false,
+    "owner_confirmed_routes": [
+      "UPGRADE",
+      "FACTORY",
+      "STLINK"
+    ],
+    "scope": "Offline publication checks; hardware evidence is the owner report, not this script"
+  },
+  "hardware_evidence": {
+    "source": "Owner reports in this session, including explicit FACTORY and ST-Link confirmation on 2026-10-30",
+    "UPGRADE": true,
+    "FACTORY": true,
+    "STLINK": true,
+    "UART_1500000": true,
+    "standalone_oled_and_display_transmission_accepted": true,
+    "publishing_assistant_performed_on_device_test": false
+  },
+  "publication_scope": {
+    "firmware": "binary only",
+    "private_identity_or_flash_published": false,
+    "firmware_source_elf_map_keys_published": false,
+    "klipper_mcu_host_bundle_included": false
+  },
+  "limitations": [
+    "Per-device installation gates retained",
+    "No automatic BOOT power-loss rollback",
+    "No inferred universal-board or printing qualification"
+  ]
+}

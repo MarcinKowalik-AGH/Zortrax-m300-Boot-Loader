@@ -1,9 +1,10 @@
-# M300 boot — dokumentacja według wersji / versioned documentation
+# Dokumentacja według wersji / Versioned documentation
 
-| Wersja | Status | Dokumentacja | Binaria |
+| Wersja / Version | Status | Dokumentacja / Docs | Binaria / Binaries |
 |---|---|---|---|
-| **v1.1 / 1.1-i4** | **Bieżąca / Current** | **[docs/v1.1](v1.1/README.md)** | [Firmware v1.1](../firmware/v1.1) |
+| **v1.3.1** | **Bieżąca / Current** | [Pełne instrukcje PL/EN](v1.3.1/README.md) | [Firmware v1.3.1](../firmware/v1.3.1) |
+| v1.1 / i4 | Archiwalna / Archived | [Oryginalna dokumentacja](v1.1/README.md) | [Niezmienione pliki](../firmware/v1.1) |
 
-Bieżąca v1.1 jest **pierwszym publicznym wydaniem M300Boot w tym repozytorium**. Nie tworzono fikcyjnego archiwum v1.0. Poprzednie linki `docs/*.md` pozostały jako odsyłacze do tej samej pełnej dokumentacji w `docs/v1.1`. Dotychczasowe ilustracje `docs/images` zachowano jako zgodne linki, a bieżące kopie są pod `docs/v1.1/images`.
+v1.1 remains the first public release; its tag/assets and versioned records are preserved. The private 1.2/1.3 development stages do not acquire invented public releases. `docs/*.md` remains a compatibility entry point to current manuals. / Historyczne wydanie pozostaje zachowane, a krótkie odsyłacze prowadzą do bieżącej wersji.
 
-Do not mix packages or instructions with Inventure, M300 Plus or M300 Dual. [Project](../README.md) · [Release](https://github.com/MarcinKowalik-AGH/Zortrax-m300-Boot-Loader/releases/tag/v1.1).
+All current procedures have paired English and Polish manuals. Do not mix M300 packages with Inventure, M300 Plus or M300 Dual. [Project / Projekt](../README.md).

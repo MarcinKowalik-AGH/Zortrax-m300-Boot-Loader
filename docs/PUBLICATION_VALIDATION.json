@@ -1,21 +1,5 @@
 {
-  "date": "2026-10-29",
-  "publication_tests": 31,
-  "result": "PASS",
-  "hardware_test_performed_this_session": false,
-  "firmware_binaries_modified": false,
-  "sd_archives_match_supplied_i4_byte_for_byte": true,
-  "private_uid_serial_scan": "PASS across all public files and nested archives",
-  "full_device_dumps_published": false,
-  "firmware_sources_elf_maps_published": false,
-  "public_host_changes": [
-    "Remove private historical NVM pins from read-only .055 receiver; retain CRC/SHA/paired reads and payload pin",
-    "Add offline profile checker and PERSONAL ST-Link image builder; no device access"
-  ],
-  "historical_build_evidence_not_rerun": {
-    "bootloader_tests": 1687,
-    "installer_tests": 655,
-    "installer_static_and_rebuild_checks": 59
-  },
-  "physical_status": "Owner reported successful i4 UPGRADE to v1.1 and restored stock 1.3.1 startup; FACTORY i4 and SWD not separately confirmed"
+  "current_version": "1.3.1",
+  "current_report": "v1.3.1/PUBLICATION_VALIDATION.json",
+  "archived_report": "v1.1/PUBLICATION_VALIDATION.json"
 }
