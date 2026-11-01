@@ -1,0 +1,87 @@
+name: M300 MCU R14.3 isolated GNU ARM build
+on:
+  push:
+    branches:
+      - lab/m300-r14-3-build-20261101
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check exact source bytes
+        shell: bash
+        run: |
+          echo "78fe6d764890b6c778127564908ebe1cc8a1f96ff391e7b65f11b9f83a6aa48c  .build-tmp/M300_R14_3_SOURCE.zip" | sha256sum -c -
+      - name: Install GNU ARM toolchain
+        shell: bash
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gcc-arm-none-eabi binutils-arm-none-eabi libnewlib-dev libnewlib-arm-none-eabi
+          arm-none-eabi-gcc --version
+          arm-none-eabi-gcc --print-file-name=libc_nano.a
+      - name: Obtain pinned upstream source
+        shell: bash
+        run: |
+          mkdir -p "$RUNNER_TEMP/m300" "$RUNNER_TEMP/m300_output"
+          unzip -q .build-tmp/M300_R14_3_SOURCE.zip -d "$RUNNER_TEMP/m300"
+          curl -fL --retry 4 --retry-delay 3 --connect-timeout 20 -o "$RUNNER_TEMP/m300/UPSTREAM_KLIPPER_PINNED.zip" https://codeload.github.com/Klipper3d/klipper/zip/ee2c6fb6b00b2b5d097ef70d0868df7d74943b51
+          python3 - <<'PY'
+          import hashlib,os,pathlib,zipfile
+          p=pathlib.Path(os.environ['RUNNER_TEMP'])/'m300/UPSTREAM_KLIPPER_PINNED.zip'
+          h=hashlib.sha256(p.read_bytes()).hexdigest()
+          with zipfile.ZipFile(p) as z:
+              ns=z.namelist()
+              assert ns and all(n.startswith('klipper-ee2c6fb6b00b2b5d097ef70d0868df7d74943b51/') for n in ns)
+          print('PINNED_UPSTREAM_ARCHIVE_SHA256='+h)
+          original='fe4c6a25c370c32f519a008e46e14612ddb116a5ac135146afeee7d0bc4c2bf0'
+          root=pathlib.Path(os.environ['RUNNER_TEMP'])/'m300/M300_MCU_R14_3_SOURCE_CANDIDATE_2026-11-01/SOURCE_MCU'
+          for name in ['tools/build.py','tools/patch_upstream.py']:
+              q=root/name
+              s=q.read_text()
+              assert s.count(original)==1,(name,s.count(original))
+              q.write_text(s.replace(original,h))
+          (pathlib.Path(os.environ['RUNNER_TEMP'])/'m300_output/UPSTREAM_SHA256.txt').write_text(h+'\n')
+          PY
+      - name: Compile genuine STM32F103 firmware
+        shell: bash
+        run: |
+          set -euo pipefail
+          SRC="$RUNNER_TEMP/m300/M300_MCU_R14_3_SOURCE_CANDIDATE_2026-11-01"
+          python3 "$SRC/tools/check_sources.py"
+          python3 "$SRC/SOURCE_MCU/tools/build.py" --archive "$RUNNER_TEMP/m300/UPSTREAM_KLIPPER_PINNED.zip" --work "$RUNNER_TEMP/m300/klipper_work" --output "$RUNNER_TEMP/m300_output" --jobs 4 --fresh
+      - name: Verify image and preserve build evidence
+        shell: bash
+        if: success()
+        run: |
+          python3 - <<'PY'
+          import hashlib,json,os,pathlib,struct
+          d=pathlib.Path(os.environ['RUNNER_TEMP'])/'m300_output'
+          bin=d/'klipper.bin'
+          data=bin.read_bytes()
+          msp,reset=struct.unpack_from('<II',data)
+          assert msp==0x20005000
+          assert 0x08008000 <= (reset & ~1) < 0x08008000 + len(data) and reset&1
+          assert 0<len(data)<65536 and 0x08008000+len(data) < 0x0803a000
+          f=json.loads((d/'klipper.dict').read_text())
+          assert f['config']['M300_MCU_RELEASE']=='0.13.14.3-R15-SCHED-UART8'
+          assert f['config']['M300_MODEL']=='M300_CLASSIC'
+          assert f['config']['M300_LOCAL_COOLING_ABI']==1
+          assert f['config']['M300_UART_RATE_COUNT']==8
+          assert f['config']['M300_OLED_FAST_QUEUE']==4
+          report={'result':'FULL_ARM_BIN_COMPILED_VERIFIED_NOT_FLASHED','bytes':len(data),'sha256':hashlib.sha256(data).hexdigest(),'msp':hex(msp),'reset':hex(reset),'bootloader_unchanged':True,'physical_tested':False}
+          (d/'BUILD_ACCEPTANCE.json').write_text(json.dumps(report,indent=2)+'\n')
+          print(json.dumps(report,indent=2))
+          PY
+          sha256sum "$RUNNER_TEMP/m300_output/klipper.bin" "$RUNNER_TEMP/m300_output/klipper.elf" "$RUNNER_TEMP/m300_output/klipper.dict" > "$RUNNER_TEMP/m300_output/SHA256SUMS.txt"
+      - name: Upload firmware and evidence
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: m300-r14-3-gnu-arm-build
+          path: ${{ runner.temp }}/m300_output/
+          if-no-files-found: warn
+          retention-days: 7
