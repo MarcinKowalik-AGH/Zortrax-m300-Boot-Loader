@@ -10,11 +10,11 @@ This release writes **two segments while preserving APP and device data**. The 1
 | `M300Boot_v1.4_FULL_STAGE2_0x08001000.bin` | `0x08001000` | 28672 B | 2–15 |
 | `M300Boot_v1.4_FULL_SPARSE.hex` | Encoded in HEX | 40960 B addressed memory | Same two ranges |
 
-**STAGE2 is not a BIN for 0x08000000.** The HEX has the full FF-padded tails and no application, OEM prefiks, journal or NVM range. It is not a whole-chip recovery image after erase. `Update.bin`, `RESTORE.BIN` and M3B are containers, not direct SWD images.
+**STAGE2 is not a BIN for 0x08000000.** The HEX has the full FF-padded tails and no application, OEM prefix, journal or NVM range. It is not a whole-chip recovery image after erase. `Update.bin`, `RESTORE.BIN` and M3B are containers, not direct SWD images.
 
 ## Preconditions and connection
 
-RDP must be **already off**, SWD reads working, WRP permitting the required targets, hardware/UID/prefiks/factory profile matching, and APP valid. If RDP is active, use SD. Do not perform Read Unprotect, Mass Erase, RDP changes or Apply Option Bytes to continue this procedure. Removing active STM32F1 RDP destroys main Flash, which these two segments cannot reconstruct.
+RDP must be **already off**, SWD reads working, WRP permitting the required targets, hardware/UID/prefix/factory profile matching, and APP valid. If RDP is active, use SD. Do not perform Read Unprotect, Mass Erase, RDP changes or Apply Option Bytes to continue this procedure. Removing active STM32F1 RDP destroys main Flash, which these two segments cannot reconstruct.
 
 With power off, connect independently verified **SWDIO, SWCLK, GND, 3.3-V VTref and NRST**. UART TX/RX is not SWD. No unverified M300 header numbering is specified here. In CubeProgrammer select ST-LINK/SWD, Under reset, Hardware reset, initially 400 kHz; NRST is required. Confirm target voltage, Cortex-M3/F103-family target and **measured 256 KiB**. Halt the core; do not run it between reads/writes.
 
@@ -26,7 +26,12 @@ Unzip the STLINK archive and change into its extracted root:
 
 ```sh
 python3 tools/verify_package.py
-python3 tools/stlink_preflight.py plan   --backup-a "/private/FLASH_A.bin" --backup-b "/private/FLASH_B.bin"   --uid "/private/UID.bin" --options "/private/OPTIONS.bin"   --out-dir "/private/NEW_M300_V14_PLAN"
+python3 tools/stlink_preflight.py plan \
+  --backup-a "/private/FLASH_A.bin" \
+  --backup-b "/private/FLASH_B.bin" \
+  --uid "/private/UID.bin" \
+  --options "/private/OPTIONS.bin" \
+  --out-dir "/private/NEW_M300_V14_PLAN"
 ```
 
 Require `PASS_OFFLINE_STLINK_PLAN`. This writes only a private local plan, never opens the probe and refuses an existing output directory. If `changed: false`, do not reprogram an identical image. The retained UID/profile checks and already-unprotected option pattern are deliberate. A refusal does not authorize patching them. When using repository-root tools instead, add `--images "/path/to/extracted-STLINK/03_TARGET_FULL"` to both plan and verify.
@@ -40,11 +45,22 @@ Require `PASS_OFFLINE_STLINK_PLAN`. This writes only a private local plan, never
 5. Check the complete expected image and every byte outside the two segments:
 
 ```sh
-python3 tools/stlink_preflight.py verify   --plan "/private/NEW_M300_V14_PLAN/PRIVATE_STLINK_PLAN.json"   --before "/private/FLASH_A.bin" --after "/private/FLASH_AFTER.bin"   --uid-after "/private/UID_AFTER.bin" --options-after "/private/OPTIONS_AFTER.bin"
+python3 tools/stlink_preflight.py verify \
+  --plan "/private/NEW_M300_V14_PLAN/PRIVATE_STLINK_PLAN.json" \
+  --before "/private/FLASH_A.bin" \
+  --after "/private/FLASH_AFTER.bin" \
+  --uid-after "/private/UID_AFTER.bin" \
+  --options-after "/private/OPTIONS_AFTER.bin"
 ```
 
-Require `PASS_STLINK_READBACK_ALL_256K`. If anything differs, preserve the reads and keep the core halted; do not automatically reset or erase. After a match, end debug, power off, disconnect the probe and start without an update card. Check version **1.4**, saved baud/bootwait and the previously installed application. If migrating from a removed saved rate, explicitly save 250000 in BOOT before starting an older APP; see [UART migration](uart-examples.md). APP was not replaced, so this route does not require installing a new APP merely because BOOT changed.
+Require `PASS_STLINK_READBACK_ALL_256K`. If anything differs, preserve the reads and keep the core halted; do not automatically reset or erase. After a match, end debug, power off, disconnect the probe and start without an update card. **At this first start, interrupt the five-second countdown with the knob, then release it.** Check the BOOT header **1.4** and saved baud/bootwait before launching APP. If migrating from a removed saved rate, explicitly save 250000 in BOOT and match the host before starting an older APP; see [UART migration](uart-examples.md). Then use `Start application → Launch application`, release the knob and make its fresh 2-second hold. APP was not replaced, so this route does not require installing a new APP merely because BOOT changed.
 
 Power loss during BOOT programming can prevent startup. Recovery after a whole-chip erase needs your complete verified personal recovery material and a separately reviewed plan. The old v1.1 `prepare_stlink.py` builds **v1.1**, not 1.4; do not use it for this release.
 
 Manufacturer references: [ST PM0075](https://www.st.com/resource/en/programming_manual/pm0075-stm32f10xxx-flash-memory-microcontrollers-stmicroelectronics.pdf), Flash/RDP/WRP; [ST UM2237](https://www.st.com/resource/en/user_manual/dm00403500-stm32cubeprogrammer-stmicroelectronics.pdf), programming/readback.
+
+## Readback failure versus live SD recovery
+
+A mismatch from the offline `verify` command is a programming/readback problem: retain all before/after/identity files and keep the core halted while reviewing the plan. Do not click Run to see whether the printer boots. These two target segments do not supply the preserved OEM prefix, APP or manufacturer data after a full erase.
+
+`Recover saved boot` is an option of the separate, still-running **SD intermediary**, not a function of the ST-Link preflight program. It requires that intermediary's valid same-session double backups and a physical 5-second confirmation. The saved material in an ST-Link plan does not establish such a session. See the [live recovery procedure](installation.md#live-recovery-after-an-interrupted-boot-write). After a power failure or a reset that destroys the live session, no automatic SD recovery is promised.

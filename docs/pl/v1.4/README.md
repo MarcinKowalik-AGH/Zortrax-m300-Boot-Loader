@@ -8,7 +8,7 @@ M300Boot **1.4** jest przeznaczony dla zakwalifikowanego profilu klasycznej M300
 
 - [Instalacja SD i kolejność wgrywania](installation.md)
 - [Oryginalna pamięć i niezależne kopie](original-backup.md)
-- [Menu, funkcje i konsola](features-and-console.md)
+- [Pełny wykaz menu, opcji i komend](features-and-console.md)
 - [UART i przekazanie ustawień aplikacji](uart-examples.md)
 - [Instalacja ST-Link i odzyskiwanie](stlink-and-recovery.md)
 - [Rozwiązywanie problemów](troubleshooting.md)

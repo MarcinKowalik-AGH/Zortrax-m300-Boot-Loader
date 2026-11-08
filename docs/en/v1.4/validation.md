@@ -24,3 +24,13 @@ The release [manifest](../../../firmware/v1.4/RELEASE_MANIFEST.json) records com
 No probe or printer is opened by offline publication checks. Physical acceptance of rebuilt 1.4 must follow [the target matrix](tested-hardware.md). There is no automatic rollback after loss of power during BOOT programming. Existing device identity and protection gates remain. A software PASS does not establish compatibility with every M300 board or print-load headroom.
 
 Final offline validation: **2784 tests passed, 0 failed, 0 skipped**; **51 BOOT binary checks** and **59 installer / clean rebuild checks** passed. All three BOOT variants and the intermediary rebuild byte-for-byte with Clang/LLD 19.1.1. Physical acceptance of 1.4 remains pending.
+
+## Documentation completeness review — 2026-11-09
+
+A follow-up source review covers all 13 BOOT pages / 50 initial menu positions, 27 BOOT command forms, eight DUMP regions, seven intermediary options and nine intermediary command forms. The public inventory records the matching source hashes. The added check prevents an option or accepted command from silently disappearing from either language; semantic correctness and procedure order were additionally reviewed against the implementation. Firmware packages were not changed.
+
+[Inventory](../../reports/v1.4/DOCUMENTED_OPTIONS.json) · [Review report](../../reports/v1.4/DOCUMENTATION_REVIEW.json)
+
+```sh
+python3 tools/validate_option_coverage.py --json
+```

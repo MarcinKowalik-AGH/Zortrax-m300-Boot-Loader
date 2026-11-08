@@ -42,3 +42,7 @@ bash tools/KONSOLA_M300_v1.4.command --port /dev/cu.usbmodem14203 --baud 1500000
 ```
 
 Choose the example matching the active rate. Require version 1.4, `BOARD_CHECK OK`, `PONG` and READY. `INFO`, `PING`, `HELP`, `VERIFY`, fixed-region `DUMP` and history commands provide diagnostics. `UARTCHECK`/`UARTUPDATE` belong to the file-server protocol and should be issued through `ibtool.py`, not by manual binary entry. With bootwait OFF, enter service locally first. ON admits complete recognized diagnostic lines during countdown; binary Klipper probes do not cancel autostart. The intermediary independently uses temporary **250000**.
+
+## Commands accepted during countdown
+
+With `UART on bootwait → ON`, only a complete line containing one of `MENU`, `HOME`, `BACK`, `HELP`, `INFO`, `PING`, `VERIFY`, `ECHO ON`, `ECHO OFF`. Other commands require entering the service menu first. OFF discards received traffic during countdown and does not disable the serial peripheral or its outgoing banner. Once in service, the normal command set is available in either mode. Local UART settings discard host RX so that serial probes cannot overwrite the local selection.

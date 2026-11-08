@@ -6,6 +6,8 @@ Independent service bootloader by **Marcin Kowalik** · mkowalik@agh.edu.pl. Tar
 
 Exactly five UART rates: **115200, 250000, 500000, 750000, 1500000**, 8N1. Default **250000**, UART on bootwait **OFF**. Supported saved choices survive upgrade. Old unsupported records fall back to 250000 in BOOT; explicitly save 250000 before launching an older APP that independently reads those records.
 
+The distributed installers retain a device-specific UID / OEM-prefix / factory-data qualification. Matching the M300 model, HW05 or PCB Rev.5.3 alone does not qualify another printer; a profile refusal must be resolved from its own verified backup rather than bypassed.
+
 ## Download and installation order
 
 | Current state | Package |

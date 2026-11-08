@@ -26,7 +26,12 @@ Rozpakuj archiwum STLINK i przejdź do jego głównego katalogu:
 
 ```sh
 python3 tools/verify_package.py
-python3 tools/stlink_preflight.py plan   --backup-a "/private/FLASH_A.bin" --backup-b "/private/FLASH_B.bin"   --uid "/private/UID.bin" --options "/private/OPTIONS.bin"   --out-dir "/private/NOWY_PLAN_M300_V14"
+python3 tools/stlink_preflight.py plan \
+  --backup-a "/private/FLASH_A.bin" \
+  --backup-b "/private/FLASH_B.bin" \
+  --uid "/private/UID.bin" \
+  --options "/private/OPTIONS.bin" \
+  --out-dir "/private/NOWY_PLAN_M300_V14"
 ```
 
 Oczekiwane `PASS_OFFLINE_STLINK_PLAN`. Powstaje wyłącznie prywatny plan na komputerze; skrypt nie otwiera programatora i odmawia nadpisania katalogu. Przy `changed: false` nie programuj identycznego obrazu. Kontrole UID/profilu i już wyłączonego RDP są celowe. Odmowa nie pozwala na ich usunięcie. Używając narzędzi z repozytorium zamiast paczki, dodaj do plan i verify `--images "/sciezka/STLINK/03_TARGET_FULL"`.
@@ -40,14 +45,23 @@ Oczekiwane `PASS_OFFLINE_STLINK_PLAN`. Powstaje wyłącznie prywatny plan na kom
 5. Sprawdź cały obraz i każdy bajt poza segmentami:
 
 ```sh
-python3 tools/stlink_preflight.py verify   --plan "/private/NOWY_PLAN_M300_V14/PRIVATE_STLINK_PLAN.json"   --before "/private/FLASH_A.bin" --after "/private/FLASH_AFTER.bin"   --uid-after "/private/UID_AFTER.bin" --options-after "/private/OPTIONS_AFTER.bin"
+python3 tools/stlink_preflight.py verify \
+  --plan "/private/NOWY_PLAN_M300_V14/PRIVATE_STLINK_PLAN.json" \
+  --before "/private/FLASH_A.bin" \
+  --after "/private/FLASH_AFTER.bin" \
+  --uid-after "/private/UID_AFTER.bin" \
+  --options-after "/private/OPTIONS_AFTER.bin"
 ```
 
-Oczekiwane `PASS_STLINK_READBACK_ALL_256K`. Przy różnicy zachowaj odczyty i pozostaw rdzeń zatrzymany; nie resetuj ani nie kasuj automatycznie. Po zgodnym odczycie zakończ debug, wyłącz zasilanie, odłącz programator i uruchom bez karty aktualizacji. Sprawdź wersję **1.4**, zapisane baud/bootwait i dotychczasową aplikację. Ta droga nie zastępuje APP i nie wymaga wgrywania jej ponownie tylko z powodu zmiany BOOT.
+Oczekiwane `PASS_STLINK_READBACK_ALL_256K`. Przy różnicy zachowaj odczyty i pozostaw rdzeń zatrzymany; nie resetuj ani nie kasuj automatycznie. Po zgodnym odczycie zakończ debug, wyłącz zasilanie, odłącz programator i uruchom bez karty aktualizacji. **Przy tym pierwszym starcie przerwij pokrętłem odliczanie pięciu sekund i zwolnij pokrętło.** Przed uruchomieniem APP sprawdź nagłówek BOOT **1.4** i zapisane baud/bootwait. Przy migracji z usuniętej prędkości jawnie zapisz w BOOT 250000 i dopasuj hosta przed uruchomieniem starszej APP; zobacz [migrację UART](uart-examples.md). Następnie użyj `Start application → Launch application`, zwolnij pokrętło i wykonaj nowe przytrzymanie 2 s. Ta droga nie zastępuje APP i nie wymaga wgrywania jej ponownie tylko z powodu zmiany BOOT.
 
 Utrata zasilania podczas programowania BOOT może uniemożliwić rozruch. Odzyskanie po pełnym kasowaniu wymaga własnych kompletnych kopii i osobno sprawdzonego planu. Dawny `prepare_stlink.py` tworzy **v1.1**, nie v1.4; nie używaj go do tego wydania.
 
 Dokumentacja producenta: [ST PM0075](https://www.st.com/resource/en/programming_manual/pm0075-stm32f10xxx-flash-memory-microcontrollers-stmicroelectronics.pdf), Flash/RDP/WRP; [ST UM2237](https://www.st.com/resource/en/user_manual/dm00403500-stm32cubeprogrammer-stmicroelectronics.pdf), programowanie i odczyt zwrotny.
 
 
-Po migracji z usuniętej prędkości jawnie zapisz 250000 w BOOT przed uruchomieniem starszej APP; zobacz [migrację UART](uart-examples.md).
+## Błąd odczytu kontrolnego a odzyskiwanie w działającej sesji SD
+
+Niezgodność zgłoszona przez komputerowe `verify` oznacza problem zapisu lub odczytu kontrolnego: zachowaj komplet przed/po/tożsamość i pozostaw rdzeń zatrzymany podczas sprawdzania planu. Nie naciskaj Run, aby zobaczyć, czy drukarka wystartuje. Dwa segmenty docelowe nie zawierają zachowanego prefiksu OEM, APP ani danych producenta potrzebnych po skasowaniu całego układu.
+
+`Recover saved boot` jest opcją osobnego, nadal działającego **instalatora SD**, a nie funkcją programu kontrolującego ST-Link. Wymaga poprawnych podwójnych kopii z tej samej sesji instalatora i fizycznego potwierdzenia 5 s. Pliki zapisane przy przygotowaniu planu ST-Link nie tworzą takiej sesji. Zobacz [procedurę odzyskiwania w działającym instalatorze](installation.md#odzyskiwanie-po-przerwanym-zapisie-boot-w-działającej-sesji). Po utracie zasilania lub resecie likwidującym sesję nie jest obiecywane automatyczne odzyskanie z SD.

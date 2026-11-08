@@ -6,6 +6,8 @@ Niezależny bootloader serwisowy: **Marcin Kowalik** · mkowalik@agh.edu.pl. Cel
 
 Dokładnie pięć prędkości UART: **115200, 250000, 500000, 750000, 1500000**, 8N1. Domyślnie **250000**, UART on bootwait **OFF**. Obsługiwane zapisy pozostają po aktualizacji. Dawne niedozwolone rekordy dają w BOOT 250000; przed starszą APP samodzielnie odczytującą te rekordy jawnie zapisz 250000.
 
+Udostępnione instalatory zachowują kwalifikację konkretnego egzemplarza według UID, prefiksu OEM i danych fabrycznych. Sama zgodność modelu M300, HW05 lub PCB Rev.5.3 nie kwalifikuje innej drukarki; odmowę profilu trzeba wyjaśnić na podstawie jej własnej zweryfikowanej kopii, bez omijania kontroli.
+
 ## Pobieranie i kolejność instalacji
 
 | Stan urządzenia | Paczka |

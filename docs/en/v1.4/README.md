@@ -8,7 +8,7 @@ M300Boot **1.4** is for the qualified classic M300 HW05 / PCB Rev.5.3 / measured
 
 - [SD installation and update order](installation.md)
 - [Original memory and independent backups](original-backup.md)
-- [Menus, features and console](features-and-console.md)
+- [Complete menu, options and console reference](features-and-console.md)
 - [UART settings and application handoff](uart-examples.md)
 - [ST-Link installation and recovery](stlink-and-recovery.md)
 - [Troubleshooting](troubleshooting.md)

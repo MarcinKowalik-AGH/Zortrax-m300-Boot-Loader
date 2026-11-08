@@ -4,9 +4,11 @@
 
 ## 1.4 — 2026-11-08
 
+- Documentation review, 2026-11-09: complete menu/command catalog, OLED-only installation and recovery steps, option-coverage checks and current-manual links in the release description. Firmware assets retain their original identities.
+
 - Unified permanent BOOT and intermediary identity 1.4, without development suffixes.
-- Exactly five UART rates 115200/250000/500000/750000/1500000; default250000/bootwaitOFF.
-- Removed stored-rate fallback and explicit older-APP migration, preserving supported codes.
+- Exactly five UART rates 115200/250000/500000/750000/1500000; default 250000 / bootwait OFF.
+- Unsupported historical saved rates use active 250000 without automatic Flash rewriting; supported codes are preserved and explicit older-APP migration is documented.
 - Rebuilt packages, matching current tools and offline validation; physical acceptance pending.
 - Complete EN/PL instructions and native-font cyan OLED renders. [Release notes](docs/en/v1.4/release-notes.md).
 

@@ -24,3 +24,13 @@ python3 tools/validate_publication.py --json
 Kontrole programowe publikacji nie otwierają sondy ani drukarki. Odbiór fizyczny przebudowanej 1.4 należy przeprowadzić według [tabeli sprzętu](tested-hardware.md). Nie ma automatycznego cofania zapisu BOOT po utracie zasilania. Zachowano kontrole tożsamości i zabezpieczeń. PASS programu nie oznacza zgodności każdej płyty M300 ani rezerwy podczas druku.
 
 Końcowa walidacja komputerowa: **2784 testy PASS, 0 błędów, 0 pominięć**; zaliczono **51 kontroli binariów BOOT** oraz **59 kontroli instalatora i czystej przebudowy**. Trzy warianty BOOT i instalator odtwarzają się bajt w bajt przy Clang/LLD 19.1.1. Odbiór fizyczny wersji 1.4 pozostaje do wykonania.
+
+## Przegląd kompletności instrukcji — 09.11.2026
+
+Ponowny przegląd kodu obejmuje wszystkie 13 stron BOOT / 50 początkowych pozycji menu, 27 form komend BOOT, osiem obszarów DUMP, siedem opcji i dziewięć form komend instalatora. Publiczny spis zawiera skróty odpowiadających mu źródeł. Dodana kontrola wykrywa pominięcie opcji lub przyjmowanej komendy w obu językach; poprawność znaczenia i kolejności procedur porównano dodatkowo z implementacją. Paczki firmware nie były zmieniane.
+
+[Inventory](../../reports/v1.4/DOCUMENTED_OPTIONS.json) · [Review report](../../reports/v1.4/DOCUMENTATION_REVIEW.json)
+
+```sh
+python3 tools/validate_option_coverage.py --json
+```

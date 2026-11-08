@@ -4,6 +4,8 @@
 
 M300Boot **1.4** jest przeznaczony dla zakwalifikowanego profilu klasycznej M300 HW05 / PCB Rev.5.3 / zmierzone 256 KiB Flash. BOOT, instalator SD, aplikacja oryginalna i aplikacja MCU Klippera pełnią odrębne role. Wydanie 1.4 jest sprawdzane programowo; przebudowany firmware wymaga potwierdzenia na drukarce. Wcześniejsze próby sprzętowe dotyczą archiwalnej wersji 1.3.1.
 
+Udostępnione instalatory zachowują kwalifikację konkretnego egzemplarza według UID, prefiksu OEM i danych fabrycznych. Sama zgodność modelu M300, HW05 lub PCB Rev.5.3 nie kwalifikuje innej drukarki; odmowę profilu trzeba wyjaśnić na podstawie jej własnej zweryfikowanej kopii, bez omijania kontroli.
+
 ## Sprzęt i chroniona pamięć
 
 | Element | Zakres |

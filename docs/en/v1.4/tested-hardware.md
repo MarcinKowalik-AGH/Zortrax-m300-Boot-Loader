@@ -4,6 +4,8 @@
 
 M300Boot **1.4** is for the qualified classic M300 HW05 / PCB Rev.5.3 / measured 256-KiB profile. BOOT, the SD installer, stock application and Klipper MCU application have separate roles. The 1.4 release is validated offline; its rebuilt firmware still requires physical acceptance on the printer. Earlier hardware reports belong to the archived 1.3.1 build.
 
+The distributed installers retain a device-specific UID / OEM-prefix / factory-data qualification. Matching the M300 model, HW05 or PCB Rev.5.3 alone does not qualify another printer; a profile refusal must be resolved from its own verified backup rather than bypassed.
+
 ## Target and protected memory
 
 | Item | Scope |

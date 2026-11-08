@@ -4,9 +4,11 @@
 
 ## 1.4 — 08.11.2026
 
+- Przegląd instrukcji 09.11.2026: pełny wykaz menu i komend, instalacja oraz odzyskiwanie z obsługą samym OLED-em i pokrętłem, kontrola pokrycia opcji i odsyłacze do bieżących instrukcji w opisie wydania. Paczki firmware zachowują pierwotną tożsamość.
+
 - Spójne 1.4 stałego BOOT i instalatora pośredniego, bez dopisków rozwojowych.
-- Dokładnie pięć prędkości 115200/250000/500000/750000/1500000; domyślnie 250000/bootwaitOFF.
-- Zastępowanie usuniętych zapisów prędkości oraz jawna migracja starszej APP, z zachowaniem obsługiwanych kodów.
+- Dokładnie pięć prędkości 115200/250000/500000/750000/1500000; domyślnie 250000 / bootwait OFF.
+- Nieobsługiwane stare zapisy dają aktywne 250000 bez samoczynnego przepisania Flash; opisano jawną migrację przed uruchomieniem starszej APP, z zachowaniem obsługiwanych kodów.
 - Przebudowane paczki, zgodne narzędzia i walidacja programowa; odbiór sprzętowy pozostaje do wykonania.
 - Pełne instrukcje EN/PL i rendery cyan z czcionką OLED. [Zmiany](v1.4/release-notes.md).
 

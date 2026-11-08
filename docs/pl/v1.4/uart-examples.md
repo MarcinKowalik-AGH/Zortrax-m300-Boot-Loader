@@ -42,3 +42,7 @@ bash tools/KONSOLA_M300_v1.4.command --port /dev/cu.usbmodem14203 --baud 1500000
 ```
 
 Wybierz przykład zgodny z aktywną prędkością. Wymagaj wersji 1.4, `BOARD_CHECK OK`, `PONG` i READY. `INFO`, `PING`, `HELP`, `VERIFY`, `DUMP` stałych obszarów i polecenia historii służą diagnostyce. `UARTCHECK`/`UARTUPDATE` należą do protokołu serwera plików; używaj ich przez `ibtool.py`, zamiast ręcznie wpisywać dane binarne. Przy bootwait OFF wejdź do serwisu lokalnie. ON dopuszcza podczas odliczania pełne rozpoznane linie diagnostyczne; binarne próby Klippera nie przerywają autostartu. Instalator pośredni niezależnie korzysta chwilowo z **250000**.
+
+## Komendy przyjmowane podczas odliczania
+
+Przy `UART on bootwait → ON` wejście do serwisu może wywołać tylko pełna linia jednej z komend: `MENU`, `HOME`, `BACK`, `HELP`, `INFO`, `PING`, `VERIFY`, `ECHO ON`, `ECHO OFF`. Pozostałe komendy wymagają wcześniejszego wejścia do menu serwisowego. OFF odrzuca odbierany ruch podczas odliczania; nie wyłącza portu ani nadawanego nagłówka. Po wejściu do serwisu pełny zestaw komend jest dostępny w obu trybach. Podczas lokalnego ustawiania UART odbiór hosta jest odrzucany, aby nie zmienił on dokonywanego wyboru.
