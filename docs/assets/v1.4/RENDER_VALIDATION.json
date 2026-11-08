@@ -1,0 +1,17 @@
+{
+  "version": "1.4",
+  "screens": 29,
+  "png_files": 58,
+  "deterministic_pngs": true,
+  "canary_buffers": true,
+  "exact_menu_baudrates": [
+    115200,
+    250000,
+    500000,
+    750000,
+    1500000
+  ],
+  "cyan_palette_levels": 16,
+  "hardware_test": false,
+  "private_device_data": false
+}

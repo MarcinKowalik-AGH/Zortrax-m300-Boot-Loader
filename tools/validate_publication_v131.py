@@ -20,6 +20,7 @@ import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
 FW = ROOT/'firmware/v1.3.1'
+HOST = ROOT/'tools/archive/v1.3.1'
 DOC = ROOT/'docs/en/v1.3.1'
 PL_DOC = ROOT/'docs/pl/v1.3.1'
 PINNED = {
@@ -142,8 +143,8 @@ def main(argv=None):
     for name,item in inner['files'].items():
         c.ok(len(s[name])==item['bytes'] and sha(s[name])==item['sha256'],'Inner checksum '+name,'archives')
     for name in ('stlink_preflight.py','verify_sd_i2.py','verify_package.py'):
-        c.ok(s['tools/'+name]==(ROOT/'tools'/name).read_bytes(),'Installed and packaged tool identity '+name,'host')
-    sys.path.insert(0,str(ROOT/'tools'))
+        c.ok(s['tools/'+name]==(HOST/name).read_bytes(),'Installed and packaged tool identity '+name,'host')
+    sys.path.insert(0,str(HOST))
     import ibtool, m300_service, m300_console, verify_sd_i2
     for data in (u['M300APP.M3B'],u['RESTORE.BIN']):
         meta=ibtool.inspect(data)

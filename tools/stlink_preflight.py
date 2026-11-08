@@ -7,8 +7,8 @@ from verify_sd_i2 import BOOT_ALLOWLIST,OEM_SHA,PREFIX_SHA,UID_SHA
 
 R=Path(__file__).resolve().parents[1]
 SIZE=0x40000
-REGIONS=((0x3a000,0x3d000,'M300Boot_v1.3.1_FULL_ASSETS_0x0803A000.bin'),
-         (0x1000,0x8000,'M300Boot_v1.3.1_FULL_STAGE2_0x08001000.bin'))
+REGIONS=((0x3a000,0x3d000,'M300Boot_v1.4_FULL_ASSETS_0x0803A000.bin'),
+         (0x1000,0x8000,'M300Boot_v1.4_FULL_STAGE2_0x08001000.bin'))
 FACTORY_SHA='fc8445c612fcdec3d236ae67451371bf462eceabd23943b1844c9c239b684bb4'
 # USER/DATA/WRP remain the qualified values. Only an ALREADY unprotected
 # RDP pair A5/5A is accepted; this utility never changes it.
@@ -51,7 +51,7 @@ def construct(a,b,uid,options,images=None):
     if sha(a[:4096])!=PREFIX_SHA or sha(a[0x3f800:])!=FACTORY_SHA:raise ValueError('Unqualified OEM prefix/factory page')
     source=source_kind(a)
     if not app_ok(a):raise ValueError('Application/metadata not validated; use a separately qualified recovery procedure')
-    current=next(x for x in BOOT_ALLOWLIST if x['version']=='1.3.1')
+    current=next(x for x in BOOT_ALLOWLIST if x['version']=='1.4')
     expected=bytearray(a);writes=[]
     for lo,hi,name in REGIONS:
         data=read(images/name,hi-lo)
@@ -59,22 +59,22 @@ def construct(a,b,uid,options,images=None):
         if sha(data)!=target_sha:raise ValueError('Modified target segment: '+name)
         expected[lo:hi]=data
         writes.append({'file':name,'address':hex(0x08000000+lo),'bytes':len(data),'sha256':sha(data),'pages':list(range(lo//2048,hi//2048))})
-    manifest={'status':'PASS_OFFLINE_STLINK_PLAN','version':'1.3.1','source':source,'device_access_performed':False,'owner_confirmed_stlink':True,
+    manifest={'status':'PASS_OFFLINE_STLINK_PLAN','version':'1.4','source':source,'device_access_performed':False,'owner_confirmed_stlink':False,
               'before_sha256':sha(a),'expected_readback_sha256':sha(expected),'uid_sha256':sha(uid),'options_hex':options.hex(),
               'changed':bytes(expected)!=a,'write_order':writes,'protected_ranges':'All bytes outside the two listed slots must remain identical.',
               'instruction':'Keep MCU halted. Verify each write and entire 256 KiB readback. Never erase all, change options or run automatically.'}
     return bytes(expected),manifest
 def verify(plan,before,after,uid,options,images=None):
-    if plan.get('version')!='1.3.1' or plan.get('status')!='PASS_OFFLINE_STLINK_PLAN':raise ValueError('Invalid plan')
+    if plan.get('version')!='1.4' or plan.get('status')!='PASS_OFFLINE_STLINK_PLAN':raise ValueError('Invalid plan')
     if len(before)!=SIZE or len(after)!=SIZE or sha(before)!=plan['before_sha256']:raise ValueError('Wrong preflight snapshot or readback size')
     expected,_=construct(before,before,uid,options,images)
     if sha(expected)!=plan['expected_readback_sha256'] or sha(uid)!=plan['uid_sha256'] or options.hex()!=plan['options_hex']:raise ValueError('Plan/identity/options changed')
     if after!=expected:raise ValueError('Readback differs from the complete expected image; keep MCU halted')
-    return {'status':'PASS_STLINK_READBACK_ALL_256K','version':'1.3.1','sha256':sha(after),'outside_target_bytes_unchanged':True,'uid_and_options_unchanged':True,'device_access_performed':False,'owner_confirmed_stlink':True}
+    return {'status':'PASS_STLINK_READBACK_ALL_256K','version':'1.4','sha256':sha(after),'outside_target_bytes_unchanged':True,'uid_and_options_unchanged':True,'device_access_performed':False,'owner_confirmed_stlink':False}
 def main(argv=None):
     ap=argparse.ArgumentParser(description=__doc__);sub=ap.add_subparsers(dest='mode',required=True)
     p=sub.add_parser('plan');p.add_argument('--backup-a',required=True,type=Path);p.add_argument('--backup-b',required=True,type=Path)
-    p.add_argument('--uid',required=True,type=Path);p.add_argument('--options',required=True,type=Path);p.add_argument('--out-dir',required=True,type=Path);p.add_argument('--images',type=Path,default=R/'03_TARGET_FULL',help='Directory containing the two exact v1.3.1 segments')
+    p.add_argument('--uid',required=True,type=Path);p.add_argument('--options',required=True,type=Path);p.add_argument('--out-dir',required=True,type=Path);p.add_argument('--images',type=Path,default=R/'03_TARGET_FULL',help='Directory containing the two exact v1.4 segments')
     p=sub.add_parser('verify');p.add_argument('--plan',required=True,type=Path);p.add_argument('--before',required=True,type=Path);p.add_argument('--after',required=True,type=Path)
     p.add_argument('--uid-after',required=True,type=Path);p.add_argument('--options-after',required=True,type=Path);p.add_argument('--images',type=Path,default=R/'03_TARGET_FULL')
     a=ap.parse_args(argv)

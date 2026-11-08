@@ -1,10 +1,14 @@
 {
-  "current_version": "v1.3.1",
+  "current_version": "v1.4",
   "languages": [
     "en",
     "pl"
   ],
   "version_indexes": {
+    "v1.4": {
+      "en": "docs/en/v1.4/README.md",
+      "pl": "docs/pl/v1.4/README.md"
+    },
     "v1.3.1": {
       "en": "docs/en/v1.3.1/README.md",
       "pl": "docs/pl/v1.3.1/README.md"
@@ -109,6 +113,56 @@
       "version": "v1.1",
       "en": "docs/en/v1.1/hardware-feedback.md",
       "pl": "docs/pl/v1.1/hardware-feedback.md"
+    },
+    {
+      "version": "v1.4",
+      "en": "docs/en/v1.4/features-and-console.md",
+      "pl": "docs/pl/v1.4/features-and-console.md"
+    },
+    {
+      "version": "v1.4",
+      "en": "docs/en/v1.4/installation.md",
+      "pl": "docs/pl/v1.4/installation.md"
+    },
+    {
+      "version": "v1.4",
+      "en": "docs/en/v1.4/original-backup.md",
+      "pl": "docs/pl/v1.4/original-backup.md"
+    },
+    {
+      "version": "v1.4",
+      "en": "docs/en/v1.4/release-manifest.md",
+      "pl": "docs/pl/v1.4/release-manifest.md"
+    },
+    {
+      "version": "v1.4",
+      "en": "docs/en/v1.4/release-notes.md",
+      "pl": "docs/pl/v1.4/release-notes.md"
+    },
+    {
+      "version": "v1.4",
+      "en": "docs/en/v1.4/stlink-and-recovery.md",
+      "pl": "docs/pl/v1.4/stlink-and-recovery.md"
+    },
+    {
+      "version": "v1.4",
+      "en": "docs/en/v1.4/tested-hardware.md",
+      "pl": "docs/pl/v1.4/tested-hardware.md"
+    },
+    {
+      "version": "v1.4",
+      "en": "docs/en/v1.4/troubleshooting.md",
+      "pl": "docs/pl/v1.4/troubleshooting.md"
+    },
+    {
+      "version": "v1.4",
+      "en": "docs/en/v1.4/uart-examples.md",
+      "pl": "docs/pl/v1.4/uart-examples.md"
+    },
+    {
+      "version": "v1.4",
+      "en": "docs/en/v1.4/validation.md",
+      "pl": "docs/pl/v1.4/validation.md"
     }
   ],
   "legacy_redirects": [
@@ -317,63 +371,63 @@
     {
       "old": "docs/FUNKCJE_I_KONSOLA_PL.md",
       "targets": {
-        "pl": "docs/pl/v1.3.1/features-and-console.md"
+        "pl": "docs/pl/v1.4/features-and-console.md"
       }
     },
     {
       "old": "docs/STLINK_AND_RECOVERY_EN.md",
       "targets": {
-        "en": "docs/en/v1.3.1/stlink-and-recovery.md"
+        "en": "docs/en/v1.4/stlink-and-recovery.md"
       }
     },
     {
       "old": "docs/ORIGINAL_BACKUP_EN.md",
       "targets": {
-        "en": "docs/en/v1.3.1/original-backup.md"
+        "en": "docs/en/v1.4/original-backup.md"
       }
     },
     {
       "old": "docs/INSTALACJA_PL.md",
       "targets": {
-        "pl": "docs/pl/v1.3.1/installation.md"
+        "pl": "docs/pl/v1.4/installation.md"
       }
     },
     {
       "old": "docs/KOPIA_ORYGINALU_PL.md",
       "targets": {
-        "pl": "docs/pl/v1.3.1/original-backup.md"
+        "pl": "docs/pl/v1.4/original-backup.md"
       }
     },
     {
       "old": "docs/RELEASE_MANIFEST.md",
       "targets": {
-        "en": "docs/en/v1.3.1/release-manifest.md",
-        "pl": "docs/pl/v1.3.1/release-manifest.md"
+        "en": "docs/en/v1.4/release-manifest.md",
+        "pl": "docs/pl/v1.4/release-manifest.md"
       }
     },
     {
       "old": "docs/FEATURES_AND_CONSOLE_EN.md",
       "targets": {
-        "en": "docs/en/v1.3.1/features-and-console.md"
+        "en": "docs/en/v1.4/features-and-console.md"
       }
     },
     {
       "old": "docs/TESTED_HARDWARE.md",
       "targets": {
-        "en": "docs/en/v1.3.1/tested-hardware.md",
-        "pl": "docs/pl/v1.3.1/tested-hardware.md"
+        "en": "docs/en/v1.4/tested-hardware.md",
+        "pl": "docs/pl/v1.4/tested-hardware.md"
       }
     },
     {
       "old": "docs/STLINK_I_ODZYSKIWANIE_PL.md",
       "targets": {
-        "pl": "docs/pl/v1.3.1/stlink-and-recovery.md"
+        "pl": "docs/pl/v1.4/stlink-and-recovery.md"
       }
     },
     {
       "old": "docs/INSTALLATION_EN.md",
       "targets": {
-        "en": "docs/en/v1.3.1/installation.md"
+        "en": "docs/en/v1.4/installation.md"
       }
     }
   ],
@@ -455,5 +509,5 @@
       "canonical": "docs/assets/v1.1/BOOT_PROGRESS_50.png"
     }
   ],
-  "scope": "Documentation paths only; immutable firmware packages and release tags retained"
+  "scope": "Current1.4 manuals; preserved1.3.1/1.1 historical firmware and evidence; compatibility links"
 }

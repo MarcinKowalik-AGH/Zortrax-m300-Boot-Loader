@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Create PREALLOCATED files for M300 boot v1.1; never overwrite a backup.
+"""Create PREALLOCATED files for M300 boot v1.4; never overwrite a backup.
 Use an already formatted, checked FAT16/FAT32 card. No formatting is performed.
 """
 from pathlib import Path

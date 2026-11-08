@@ -1,0 +1,10 @@
+{
+  "version": "1.4",
+  "result": "PASS",
+  "tests_passed": 2784,
+  "failed": 0,
+  "skipped": 0,
+  "compiler": "Ubuntu clang version 19.1.1 (1ubuntu1~24.04.2)",
+  "hardware_tested": false,
+  "command": "python3 -m pytest -q source/tests tests"
+}

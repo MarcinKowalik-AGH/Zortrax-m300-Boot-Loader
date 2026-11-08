@@ -1,0 +1,57 @@
+{
+  "version": "1.4",
+  "installer": "1.4",
+  "date": "2026-11-08",
+  "scope": "single qualified device profile retained; classic M300 HW05 Rev.5.3 256 KiB",
+  "publication": "binary firmware, operational host tools, EN/PL docs; no private dumps or firmware sources",
+  "target_stage2_sha256": "faa278235c20a7507d8d1d2306d1208ed89d2fa0fab6de6f273da7f9b3dbf598",
+  "target_assets_sha256": "9519fb00f591d62383c5e5faea71e923ff5ea071dae89116916b2ee7b6cd9c5c",
+  "hardware_tested": false,
+  "owner_confirmed_hardware": {
+    "UPGRADE": false,
+    "FACTORY": false,
+    "STLINK": false
+  },
+  "baud_menu": [
+    115200,
+    250000,
+    500000,
+    750000,
+    1500000
+  ],
+  "unsupported_legacy_saved_baud": [
+    19200,
+    57600,
+    1000000
+  ],
+  "default_baud": 250000,
+  "default_uart_on_bootwait": false,
+  "firmware_binaries_rebuilt_for_publication": true,
+  "prior_v11_assets_unchanged": true,
+  "prior_v131_assets_unchanged": true,
+  "compiler": "Ubuntu clang version 19.1.1 (1ubuntu1~24.04.2)",
+  "stage2_code_slack_bytes": 40,
+  "boot_installer_tests_rerun": 2784,
+  "assets": [
+    {
+      "name": "M300Boot_v1.4_SD_FACTORY_OEMV3.zip",
+      "bytes": 186427,
+      "sha256": "d0f6a157aff470d510fb28c0f400b1f64b3b5c53a5750e1d1caf92e5bf1e831f"
+    },
+    {
+      "name": "M300Boot_v1.4_SD_UPGRADE.zip",
+      "bytes": 148076,
+      "sha256": "002e313a7ead97cebdc0a4da0c897a6a788a5ebc43491a6fbc11af13531b8b20"
+    },
+    {
+      "name": "M300Boot_v1.4_STLINK.zip",
+      "bytes": 83763,
+      "sha256": "8409a1871fb167ca3b91ddc640007b8db1123102f17256678bb6e6ee6d0403c5"
+    },
+    {
+      "name": "M300_BACKUP_0.5.5_UART.zip",
+      "bytes": 30476,
+      "sha256": "61a72b7e296c2b3066324aa0352bea2c86c760673cb0b5c4536e7b065cf02149"
+    }
+  ]
+}

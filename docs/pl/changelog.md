@@ -2,6 +2,14 @@
 
 [English](../../CHANGELOG.md) · [Polski](changelog.md)
 
+## 1.4 — 08.11.2026
+
+- Spójne 1.4 stałego BOOT i instalatora pośredniego, bez dopisków rozwojowych.
+- Dokładnie pięć prędkości 115200/250000/500000/750000/1500000; domyślnie 250000/bootwaitOFF.
+- Zastępowanie usuniętych zapisów prędkości oraz jawna migracja starszej APP, z zachowaniem obsługiwanych kodów.
+- Przebudowane paczki, zgodne narzędzia i walidacja programowa; odbiór sprzętowy pozostaje do wykonania.
+- Pełne instrukcje EN/PL i rendery cyan z czcionką OLED. [Zmiany](v1.4/release-notes.md).
+
 ## Porządek dokumentacji — 30.10.2026
 
 - Pełne instrukcje w `docs/en/<wersja>` i `docs/pl/<wersja>`, z identycznymi nazwami plików i przełącznikiem języka.

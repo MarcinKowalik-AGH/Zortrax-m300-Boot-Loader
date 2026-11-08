@@ -2,7 +2,7 @@
 
 [English](../../en/v1.3.1/README.md) · [Polski](../../pl/v1.3.1/README.md) · [Index](README.md)
 
-**Current: BOOT 1.3.1, SD installer 1.3.1.**
+**Archive: BOOT 1.3.1, SD installer 1.3.1. Current: [1.4](../v1.4/README.md).**
 
 - [Installation and SD upgrade](installation.md)
 - [Original-memory backup](original-backup.md)

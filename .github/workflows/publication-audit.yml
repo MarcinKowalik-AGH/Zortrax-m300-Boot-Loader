@@ -1,4 +1,4 @@
-name: M300 publication audit (v1.3.1 and preserved v1.1)
+name: M300Boot 1.4 publication audit and archived releases
 on:
   push:
     branches: [main]

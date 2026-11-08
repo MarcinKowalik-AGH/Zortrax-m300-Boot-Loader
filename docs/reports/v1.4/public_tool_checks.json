@@ -1,0 +1,54 @@
+{
+  "result": "PASS",
+  "version": "1.4",
+  "command": "python3 tools/validate_publication.py --json",
+  "all_current_and_archived_checks": 135485,
+  "current_release": {
+    "result": "PASS",
+    "version": "1.4",
+    "checks": 47621,
+    "groups": {
+      "release": 22,
+      "archives": 85,
+      "privacy": 539,
+      "firmware": 16,
+      "hex": 46093,
+      "host": 62,
+      "protocol": 4,
+      "cli_negative_baud": 21,
+      "links": 706,
+      "docs": 73
+    },
+    "relative_markdown_links_verified": 706,
+    "firmware_rebuilt": true,
+    "device_access_performed": false,
+    "hardware_tested": false,
+    "scope": "Offline complete publication checks; no physical printer qualification"
+  },
+  "documentation": {
+    "result": "PASS",
+    "version": "documentation-en-pl",
+    "checks": 1180,
+    "groups": {
+      "layout": 96,
+      "navigation": 72,
+      "content": 116,
+      "compatibility": 150,
+      "shared_evidence": 19,
+      "links": 715,
+      "firmware": 12
+    },
+    "manual_pairs": 29,
+    "legacy_redirect_pages": 42,
+    "markdown_links_verified": 715,
+    "immutable_zip_assets_verified": 12,
+    "device_access_performed": false,
+    "firmware_changed": false
+  },
+  "preserved_archives": [
+    "1.1",
+    "1.3.1"
+  ],
+  "device_access_performed": false,
+  "hardware_tested": false
+}

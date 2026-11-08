@@ -1,0 +1,265 @@
+{
+  "status": "PASS",
+  "count": 51,
+  "ARM_executed": false,
+  "hardware_executed": false,
+  "checks": [
+    {
+      "name": "OEM exact 32K SHA",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "OEM reset vector",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "OEM reset loads absolute hook then BLX",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "PREVIEW SRAM stack >=8KiB",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "PREVIEW stack cap 0x2000BC00",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "PREVIEW No unresolved ELF symbols",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "PREVIEW no Inventure UI / P4 UI",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "PREVIEW title v1.4",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "PREVIEW fault executor in RAM",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "PREVIEW lacks real programming executor",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "PREVIEW no handoff symbol",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "PREVIEW load confined application",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "PREVIEW ZRTX UPD3 E1 version",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "PREVIEW code exactly packaged",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "PREVIEW OEM header",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "PREVIEW HMAC hashlib",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "PREVIEW HMAC OpenSSL",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "PREVIEW CD padding",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "READONLY SRAM stack >=8KiB",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "READONLY stack cap 0x2000BC00",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "READONLY No unresolved ELF symbols",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "READONLY no Inventure UI / P4 UI",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "READONLY title v1.4",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "READONLY fault executor in RAM",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "READONLY lacks real programming executor",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "READONLY no protected prefix in ELF",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "READONLY fixed hook address",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "READONLY hook branches to Reset_Handler",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "READONLY asset region distinct",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "READONLY reset MSP correct",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "FULL SRAM stack >=8KiB",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "FULL stack cap 0x2000BC00",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "FULL No unresolved ELF symbols",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "FULL no Inventure UI / P4 UI",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "FULL title v1.4",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "FULL fault executor in RAM",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "FULL no protected prefix in ELF",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "FULL fixed hook address",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "FULL hook branches to Reset_Handler",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "FULL asset region distinct",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "FULL reset MSP correct",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "ib_flash_execute in SRAM",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "ib_p4_flash_execute in SRAM",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "ib_bootwait_flash_execute in SRAM",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "execute in SRAM",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "wait_idle in SRAM",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "RAM direct branch 20000036",
+      "pass": true,
+      "detail": "20000036: f000 f8bf    \tbl\t0x200001b8 <wait_idle>  @ imm = #0x17e"
+    },
+    {
+      "name": "RAM direct branch 2000016c",
+      "pass": true,
+      "detail": "2000016c: f000 f824    \tbl\t0x200001b8 <wait_idle>  @ imm = #0x48"
+    },
+    {
+      "name": "RAM direct branch 20000214",
+      "pass": true,
+      "detail": "20000214: f7ff fefa    \tbl\t0x2000000c <ib_flash_panic> @ imm = #-0x20c"
+    },
+    {
+      "name": "RAM direct branch 20000240",
+      "pass": true,
+      "detail": "20000240: f7ff bee4    \tb.w\t0x2000000c <ib_flash_panic> @ imm = #-0x238"
+    },
+    {
+      "name": "F1 halfword program store inside SRAM execute",
+      "pass": true,
+      "detail": [
+        "20000164: 8025         \tstrh\tr5, [r4]"
+      ]
+    }
+  ]
+}

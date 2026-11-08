@@ -1,0 +1,351 @@
+{
+  "status": "PASS",
+  "count": 59,
+  "hardware_tested": false,
+  "ARM_executed": false,
+  "checks": [
+    {
+      "check": "installer_vectors_entry",
+      "pass": true,
+      "detail": "0x800813d"
+    },
+    {
+      "check": "installer_own_app_only",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "installer_OEM_header",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "installer_stack_headroom_8KiB",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "FPEC_SRAM_executor_unchanged",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "in_page_allowed_body_unchanged",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "in_invariants_body_unchanged",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "replace_body_unchanged",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "install_20page_order",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "execute_SRAM",
+      "pass": true,
+      "detail": "0x200000c5"
+    },
+    {
+      "check": "in_page_write_SRAM",
+      "pass": true,
+      "detail": "0x20000029"
+    },
+    {
+      "check": "ib_sram_fault_SRAM",
+      "pass": true,
+      "detail": "0x2000026d"
+    },
+    {
+      "check": "ib_flash_panic_SRAM",
+      "pass": true,
+      "detail": "0x20000015"
+    },
+    {
+      "check": "image_stage_target_embedded",
+      "pass": true,
+      "detail": "faa278235c20a7507d8d1d2306d1208ed89d2fa0fab6de6f273da7f9b3dbf598"
+    },
+    {
+      "check": "image_assets_target_embedded",
+      "pass": true,
+      "detail": "9519fb00f591d62383c5e5faea71e923ff5ea071dae89116916b2ee7b6cd9c5c"
+    },
+    {
+      "check": "shared_UI_include/device_info.h",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "shared_UI_src/device_info.c",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "shared_UI_src/oled_render.c",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "01_SD_FACTORY_OEMV3_six_files",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "01_SD_FACTORY_OEMV3_launcher_matches_build",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "01_SD_FACTORY_OEMV3_restore_unchanged",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "01_SD_FACTORY_OEMV3_M3FLASH.BIN_templates",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "01_SD_FACTORY_OEMV3_ZBACK2.BIN_templates",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "01_SD_FACTORY_OEMV3_M3INFO.BIN_templates",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "01_SD_FACTORY_OEMV3_ZINFO2.DAT_templates",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "02_SD_UPGRADE_M300BOOT_six_files",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "02_SD_UPGRADE_M300BOOT_launcher_matches_build",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "02_SD_UPGRADE_M300BOOT_restore_unchanged",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "02_SD_UPGRADE_M300BOOT_M3FLASH.BIN_templates",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "02_SD_UPGRADE_M300BOOT_ZBACK2.BIN_templates",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "02_SD_UPGRADE_M300BOOT_M3INFO.BIN_templates",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "02_SD_UPGRADE_M300BOOT_ZINFO2.DAT_templates",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "OEM9.8.7_wrapper",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "OEM_decoded_app",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "OEM_tail_python",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "OEM_tail_OpenSSL",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "OEM_padding",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "M3B_header",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "M3B_same_application",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "baseline_original_boot",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "baseline_original_DATA",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "source_clean_build",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "reproducible_source/build/FULL/M300Boot_v1.4_FULL.elf",
+      "pass": true,
+      "detail": {
+        "bytes": 80216,
+        "sha256": "412d5cd3faf04243a822d11985bdb15be8e0466c4ca877b4fd09972cbd5898b1"
+      }
+    },
+    {
+      "check": "reproducible_source/build/FULL/M300Boot_v1.4_FULL_ASSETS_0x0803A000.bin",
+      "pass": true,
+      "detail": {
+        "bytes": 12288,
+        "sha256": "9519fb00f591d62383c5e5faea71e923ff5ea071dae89116916b2ee7b6cd9c5c"
+      }
+    },
+    {
+      "check": "reproducible_source/build/FULL/M300Boot_v1.4_FULL_SPARSE.hex",
+      "pass": true,
+      "detail": {
+        "bytes": 112684,
+        "sha256": "c6a7311ff2a8f94ab8eb9cf2ec6ef17ecab9d721002ef277ecc5976095444fdb"
+      }
+    },
+    {
+      "check": "reproducible_source/build/FULL/M300Boot_v1.4_FULL_STAGE2_0x08001000.bin",
+      "pass": true,
+      "detail": {
+        "bytes": 28672,
+        "sha256": "faa278235c20a7507d8d1d2306d1208ed89d2fa0fab6de6f273da7f9b3dbf598"
+      }
+    },
+    {
+      "check": "reproducible_source/build/PREVIEW/M300Boot_v1.4_PREVIEW.bin",
+      "pass": true,
+      "detail": {
+        "bytes": 31112,
+        "sha256": "0cb061ba614448c6f185f4eed3be07deadc15d57b38fdec5f26c965b968e3155"
+      }
+    },
+    {
+      "check": "reproducible_source/build/PREVIEW/M300Boot_v1.4_PREVIEW.elf",
+      "pass": true,
+      "detail": {
+        "bytes": 77404,
+        "sha256": "d0219fe4250f93154ed57b5b7a10c6e4ad23d4b672a553ae3da7d90a7c2af801"
+      }
+    },
+    {
+      "check": "reproducible_source/build/PREVIEW/M300Boot_v1.4_PREVIEW_SPARSE.hex",
+      "pass": true,
+      "detail": {
+        "bytes": 85592,
+        "sha256": "4612f0d2306f0aea515a64446fb1d96059b44f3bab45f203dd5dc24c620ce07f"
+      }
+    },
+    {
+      "check": "reproducible_source/build/PREVIEW/Update.bin",
+      "pass": true,
+      "detail": {
+        "bytes": 31189,
+        "sha256": "c3bfe442bcf13fca27c62df694acb3ef33f3a8927c9b787d7564580dcad0fdef"
+      }
+    },
+    {
+      "check": "reproducible_source/build/READONLY/M300Boot_v1.4_READONLY.elf",
+      "pass": true,
+      "detail": {
+        "bytes": 78028,
+        "sha256": "0deea80317d7b37c2b24e143d62674c36c3506358b7cfbfa7eedb74bd6fbc8b1"
+      }
+    },
+    {
+      "check": "reproducible_source/build/READONLY/M300Boot_v1.4_READONLY_ASSETS_0x0803A000.bin",
+      "pass": true,
+      "detail": {
+        "bytes": 12288,
+        "sha256": "7e683e224ad33852f72fcf27f18e4ed295b77186bda3d44ee0510ee82ee79a50"
+      }
+    },
+    {
+      "check": "reproducible_source/build/READONLY/M300Boot_v1.4_READONLY_SPARSE.hex",
+      "pass": true,
+      "detail": {
+        "bytes": 112684,
+        "sha256": "60c36e39ec09c8407dc78615df2d4189e51623296c55bfbe5248c0db3f4ac552"
+      }
+    },
+    {
+      "check": "reproducible_source/build/READONLY/M300Boot_v1.4_READONLY_STAGE2_0x08001000.bin",
+      "pass": true,
+      "detail": {
+        "bytes": 28672,
+        "sha256": "b352846d6d1da6806440aaaca4c8021c01c733580c997235ecad871abb59b562"
+      }
+    },
+    {
+      "check": "firmware_clean_build",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "reproducible_firmware/build/M300APP.M3B",
+      "pass": true,
+      "detail": {
+        "bytes": 102340,
+        "sha256": "55007605d0d3eb2a3237f68ae7a0c379a188d928305809ea897ce126aea46b8d"
+      }
+    },
+    {
+      "check": "reproducible_firmware/build/M300_INSTALL_1.4.bin",
+      "pass": true,
+      "detail": {
+        "bytes": 102276,
+        "sha256": "316f59d93cf6144a9f09fa1e5a64652c66f84726b25b3b63e536a9c5470ef636"
+      }
+    },
+    {
+      "check": "reproducible_firmware/build/M300_INSTALL_1.4.elf",
+      "pass": true,
+      "detail": {
+        "bytes": 208612,
+        "sha256": "f1778b28a11bb2a4bede9a4b6d0992c912f0bd80272caccf3b4dbacf4e542a62"
+      }
+    },
+    {
+      "check": "reproducible_firmware/build/Update.bin",
+      "pass": true,
+      "detail": {
+        "bytes": 102357,
+        "sha256": "af36eb27ffcc578217369d4500538b9499569be12dd0dad73976789a35bece8a"
+      }
+    }
+  ]
+}

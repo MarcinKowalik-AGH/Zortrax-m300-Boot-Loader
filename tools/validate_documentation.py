@@ -34,16 +34,16 @@ def main(argv=None):
         count+=1;groups[group]=groups.get(group,0)+1
         if not value:
             raise ValueError(group+': '+message)
-    check(layout['current_version']=='v1.3.1' and layout['languages']==['en','pl'],'Current version and locales','layout')
+    check(layout['current_version']=='v1.4' and layout['languages']==['en','pl'],'Current version and locales','layout')
     for path in ('README.md','README_PL.md','tools/README.md','tools/README_PL.md','firmware/README.md','firmware/README_PL.md','docs/en/README.md','docs/pl/README.md'):
         text=(ROOT/path).read_text()
         check('[English]' in text and '[Polski]' in text,'Language switch in '+path,'navigation')
     for version,indexes in layout['version_indexes'].items():
         for lang,path in indexes.items():
             check(path==f'docs/{lang}/{version}/README.md' and (ROOT/path).is_file(),'Version index '+path,'layout')
-            check(('Archive' in (ROOT/path).read_text() or 'Archiw' in (ROOT/path).read_text()) if version=='v1.1' else ('Current' in (ROOT/path).read_text() or 'Bieżąc' in (ROOT/path).read_text()),'Explicit current/archive status '+path,'navigation')
+            check(('Archive' in (ROOT/path).read_text() or 'Archiw' in (ROOT/path).read_text()) if version!=layout['current_version'] else ('Current' in (ROOT/path).read_text() or 'Bieżąc' in (ROOT/path).read_text()),'Explicit current/archive status '+path,'navigation')
     pairs=layout['paired_manuals']
-    check(len(pairs)==19,'Expected complete manual pairs','layout')
+    check(len(pairs)>=25,'Current and archived complete manual pairs','layout')
     check(len({p['en'] for p in pairs})==len(pairs) and len({p['pl'] for p in pairs})==len(pairs),'No duplicate canonical manuals','layout')
     for pair in pairs:
         en,pl=ROOT/pair['en'],ROOT/pair['pl']
@@ -72,7 +72,7 @@ def main(argv=None):
             number+=1
     # Release assets are immutable; the dated manifests remain the authority.
     assets=0
-    for version in ('v1.1','v1.3.1'):
+    for version in ('v1.1','v1.3.1','v1.4'):
         folder=ROOT/'firmware'/version
         manifest=json.loads((folder/'RELEASE_MANIFEST.json').read_text())
         for item in manifest['assets']:

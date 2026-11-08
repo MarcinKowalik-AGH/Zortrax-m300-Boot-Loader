@@ -1,14 +1,15 @@
-# Paczki firmware
+# M300Boot 1.4 — pobieranie
 
 [English](README.md) · [Polski](README_PL.md)
 
-| Wersja | Status | Pliki | Instrukcje |
-|---|---|---|---|
-| **v1.3.1** | **Bieżąca** | [Paczki i SHA-256](v1.3.1) | [Polskie instrukcje](../docs/pl/v1.3.1/README.md) |
-| v1.1 / i4 | Archiwalna | [Pierwotne pliki](v1.1) | [Historyczne instrukcje](../docs/pl/v1.1/README.md) |
+| Droga | Paczka |
+|---|---|
+| UPGRADE | [M300Boot_v1.4_SD_UPGRADE.zip](v1.4/M300Boot_v1.4_SD_UPGRADE.zip) |
+| FACTORY OEMv3 | [M300Boot_v1.4_SD_FACTORY_OEMV3.zip](v1.4/M300Boot_v1.4_SD_FACTORY_OEMV3.zip) |
+| ST-Link | [M300Boot_v1.4_STLINK.zip](v1.4/M300Boot_v1.4_STLINK.zip) |
 
-Wybierz UPGRADE dla rozpoznanego własnego M300Boot, FACTORY dla OEM v3 ze zgodnym profilem albo STLINK dla osobno sprawdzonej procedury SWD. Archiwum diagnostyki 0.5.5 służy do zachowania oryginalnego BOOT/NVM według własnej procedury kopii.
+[SHA-256](v1.4/SHA256SUMS.txt) · [Manifest](v1.4/RELEASE_MANIFEST.json) · [Instalacja](../docs/pl/v1.4/installation.md) · [Walidacja](../docs/pl/v1.4/validation.md).
 
-Manifest i plik SHA-256 przy danej wersji opisują dokładne publiczne ZIP-y. Nie mieszaj wydań ani pośrednika BOOT M300APP.M3B z aplikacją MCU Klippera. Migracja SD tymczasowo zastępuje APP; ST-Link ją zachowuje.
+Wybierz wyłącznie drogę właściwą dla istniejącej drukarki. Archiwa SD mają sześć plików i chwilowo zastępują APP instalatorem 1.4. Po zmianie BOOT przywróć docelową aplikację stock lub Klipper. ST-Link zawiera dwa adresowane segmenty i zachowuje APP. RESTORE.BIN to oryginalny Zortrax 1.3.1; diagnostyka kopii 0.5.5 jest niezależna. Przebudowana 1.4 jest walidowana programowo, a odbiór sprzętowy pozostaje do wykonania.
 
-Porządkowanie dokumentacji nie zmienia tych paczek ani tagów wydania. [Bieżąca instalacja](../docs/pl/v1.3.1/installation.md).
+Niezmienione archiwum: [1.3.1](v1.3.1), [1.1](v1.1). [0.5.5 diagnostic](v1.3.1/M300_BACKUP_0.5.5_UART.zip).
