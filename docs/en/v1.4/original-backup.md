@@ -54,3 +54,7 @@ Require exit code 0 and `"verified": true`. The output includes the MCU identity
 The installer fills the four A5 templates during `Backup Flash x2`, verifies both snapshots and retains the session qualification. These copies describe the state after the intermediary APP was installed, before BOOT replacement. Check completed copies with `python3 tools/verify_sd_i2.py --backups "/private/completed-backups"`. Never replace them with fresh templates. The two complete reads and their identity records are made and compared by the installer itself. A reset clears its in-RAM backup qualification even if the files remain on the card; another install attempt requires a new successful `Backup Flash x2` in that session. Do not use `--card` on completed backups: it checks the original A5-template package and will reject changed files by design. Use `--backups` for the completed two-pair set, retaining all four original filenames.
 
 With RDP already off, use the [ST-Link preflight](stlink-and-recovery.md) for two genuine Flash reads, UID and options. The two-segment package does not reconstruct a fully erased chip.
+
+## Published original BOOT
+
+The [original Zortrax Bootloader v3](../../../firmware/original/README.md) retained by the project is available as an unmodified 32-KiB reference image with SHA-256 and provenance. It contains only BOOT and does not replace the full, independent backups of your own printer. The published image is separate from stock application `RESTORE.BIN` and the 1.4 installation packages.

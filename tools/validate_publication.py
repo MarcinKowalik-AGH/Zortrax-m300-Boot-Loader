@@ -10,7 +10,7 @@ import sys
 def main():
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('--json',action='store_true');a=p.parse_args()
     reports=[]
-    for name in ('validate_publication_v11.py','validate_publication_v131.py','validate_publication_v14.py','validate_documentation.py','validate_option_coverage.py'):
+    for name in ('validate_publication_v11.py','validate_publication_v131.py','validate_publication_v14.py','validate_documentation.py','validate_option_coverage.py','validate_original_boot.py'):
         result=subprocess.run([sys.executable,str(Path(__file__).with_name(name)),'--json'],capture_output=True,text=True)
         if result.returncode:
             print(result.stdout+result.stderr,file=sys.stderr)

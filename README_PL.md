@@ -23,10 +23,11 @@ Udostępnione instalatory zachowują kwalifikację konkretnego egzemplarza wedł
 ![BOOT 1.4 — render z kodu OLED, piksele cyan](docs/assets/v1.4/BOOT_MAIN_MENU.png)
 ![Instalator SD 1.4 — render natywnej czcionki](docs/assets/v1.4/INSTALLER_MAIN_MENU.png)
 
-Ilustracje są renderami, a nie fotografiami. Kompilacja 1.4 jest sprawdzana programowo; odbiór fizyczny na drukarce pozostaje do wykonania. Wcześniejsze próby sprzętowe dotyczą 1.3.1. [Walidacja i ograniczenia](docs/pl/v1.4/validation.md) · [Zakres sprzętowy](docs/pl/v1.4/tested-hardware.md).
+Ilustracje są renderami, a nie fotografiami. Właściciel potwierdził pomyślną walidację na drukarce **wszystkich trzech metod instalacji 1.4: FACTORY, UPGRADE i ST-Link**; zgłoszenie zapisano 09.11.2026. [Zapis odbioru właściciela](docs/reports/v1.4/HARDWARE_ACCEPTANCE.json). [Walidacja i ograniczenia](docs/pl/v1.4/validation.md) · [Zakres sprzętowy](docs/pl/v1.4/tested-hardware.md).
 
 ## Obsługa i odzyskiwanie
 
+- [Oryginalny Zortrax Bootloader v3 — plik 32 KiB, pochodzenie i SHA-256](firmware/original/README_PL.md)
 - [Zachowanie oryginalnej pamięci](docs/pl/v1.4/original-backup.md)
 - [Menu i konsola](docs/pl/v1.4/features-and-console.md)
 - [Ustawienia i migracja UART](docs/pl/v1.4/uart-examples.md)

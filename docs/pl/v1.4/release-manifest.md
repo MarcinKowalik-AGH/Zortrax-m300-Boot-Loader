@@ -14,3 +14,5 @@
 Stały BOOT i instalator pośredni mają 1.4. Oryginalna aplikacja Zortraxa w RESTORE.BIN pozostaje 1.3.1. Diagnostyka pozostaje 0.5.5. Techniczna numeracja kontenera OEM jest niezależna. To rozróżnienie pozwala odróżnić stary BOOT lub instalator od nowego wydania.
 
 Firmware jest udostępniany jako binaria, z narzędziami hosta i instrukcjami EN/PL. Prywatne C/ASM, linker/ELF/mapy, narzędzia kluczy OEM i dane drukarki są wyłączone. Archiwalne składniki1.3.1 i1.1 pozostają niezmienione. Ilustracje 1.4 powstają z renderera OLED wydania, z oryginalnymi znakami i pikselami ekranu cyan. [Kolejność instalacji](installation.md) · [Walidacja](validation.md).
+
+[Oryginalny Zortrax Bootloader v3](../../../firmware/original/README_PL.md) jest opublikowany osobno jako niezmieniony surowy obraz 32 KiB z pochodzeniem i SHA-256. Pozostaje poza niezmiennym katalogiem paczek instalacyjnych 1.4. Późniejszy [odbiór sprzętowy właściciela](../../reports/v1.4/HARDWARE_ACCEPTANCE.json) uzupełnia stan z chwili publikacji, bez zmiany manifestu.

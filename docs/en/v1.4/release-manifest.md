@@ -14,3 +14,5 @@ The [machine-readable manifest](../../../firmware/v1.4/RELEASE_MANIFEST.json) an
 The permanent BOOT and SD intermediary are 1.4. The original Zortrax application in RESTORE.BIN remains 1.3.1. The diagnostic remains 0.5.5. Technical OEM container numbering is independent. These distinctions prevent an old boot or intermediary from being mistaken for the new release.
 
 Firmware is distributed as binaries, with operational host tools and EN/PL manuals. Private C/ASM, linker/ELF/maps, OEM-key tools and personal printer data are excluded. Historical 1.3.1 and1.1 assets remain unchanged. Current 1.4 images are generated from the release OLED renderer with original glyphs and cyan display pixels. [Installation sequence](installation.md) · [Validation](validation.md).
+
+The [original Zortrax Bootloader v3](../../../firmware/original/README.md) is published separately as an unmodified 32-KiB raw binary with provenance and SHA-256. It is outside the immutable 1.4 installation asset catalog. The later [owner hardware acceptance](../../reports/v1.4/HARDWARE_ACCEPTANCE.json) supplements the publication-time manifest without changing it.

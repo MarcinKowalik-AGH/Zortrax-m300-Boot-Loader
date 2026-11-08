@@ -4,7 +4,7 @@
 
 **Bieżące wydanie: 1.4.**
 
-M300Boot **1.4** jest przeznaczony dla zakwalifikowanego profilu klasycznej M300 HW05 / PCB Rev.5.3 / zmierzone 256 KiB Flash. BOOT, instalator SD, aplikacja oryginalna i aplikacja MCU Klippera pełnią odrębne role. Wydanie 1.4 jest sprawdzane programowo; przebudowany firmware wymaga potwierdzenia na drukarce. Wcześniejsze próby sprzętowe dotyczą archiwalnej wersji 1.3.1.
+M300Boot **1.4** jest przeznaczony dla zakwalifikowanego profilu klasycznej M300 HW05 / PCB Rev.5.3 / zmierzone 256 KiB Flash. BOOT, instalator SD, aplikacja oryginalna i aplikacja MCU Klippera pełnią odrębne role. Wydanie 1.4 jest sprawdzane programowo, a właściciel potwierdził na drukarce instalację FACTORY, UPGRADE i ST-Link; zgłoszenie zapisano 09.11.2026. [Odbiór właściciela](../../reports/v1.4/HARDWARE_ACCEPTANCE.json) jest osobny od dawnych raportów archiwalnej 1.3.1.
 
 - [Instalacja SD i kolejność wgrywania](installation.md)
 - [Oryginalna pamięć i niezależne kopie](original-backup.md)

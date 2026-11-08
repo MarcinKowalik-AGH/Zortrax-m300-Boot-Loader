@@ -4,12 +4,14 @@
 
 ## 1.4 — 08.11.2026
 
+- Odbiór właściciela zapisany 09.11.2026: FACTORY, UPGRADE i ST-Link zwalidowane na drukarce. Opublikowano niezmieniony oryginalny Zortrax Bootloader v3 z pochodzeniem i SHA-256. Paczki instalacyjne i tag wydania pozostają niezmienione.
+
 - Przegląd instrukcji 09.11.2026: pełny wykaz menu i komend, instalacja oraz odzyskiwanie z obsługą samym OLED-em i pokrętłem, kontrola pokrycia opcji i odsyłacze do bieżących instrukcji w opisie wydania. Paczki firmware zachowują pierwotną tożsamość.
 
 - Spójne 1.4 stałego BOOT i instalatora pośredniego, bez dopisków rozwojowych.
 - Dokładnie pięć prędkości 115200/250000/500000/750000/1500000; domyślnie 250000 / bootwait OFF.
 - Nieobsługiwane stare zapisy dają aktywne 250000 bez samoczynnego przepisania Flash; opisano jawną migrację przed uruchomieniem starszej APP, z zachowaniem obsługiwanych kodów.
-- Przebudowane paczki, zgodne narzędzia i walidacja programowa; odbiór sprzętowy pozostaje do wykonania.
+- Przebudowane paczki, zgodne narzędzia i walidacja programowa; późniejszy odbiór sprzętowy właściciela zapisano osobno.
 - Pełne instrukcje EN/PL i rendery cyan z czcionką OLED. [Zmiany](v1.4/release-notes.md).
 
 ## Porządek dokumentacji — 30.10.2026

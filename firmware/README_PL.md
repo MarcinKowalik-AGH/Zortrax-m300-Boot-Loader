@@ -10,6 +10,8 @@
 
 [SHA-256](v1.4/SHA256SUMS.txt) · [Manifest](v1.4/RELEASE_MANIFEST.json) · [Instalacja](../docs/pl/v1.4/installation.md) · [Walidacja](../docs/pl/v1.4/validation.md).
 
-Wybierz wyłącznie drogę właściwą dla istniejącej drukarki. Archiwa SD mają sześć plików i chwilowo zastępują APP instalatorem 1.4. Po zmianie BOOT przywróć docelową aplikację stock lub Klipper. ST-Link zawiera dwa adresowane segmenty i zachowuje APP. RESTORE.BIN to oryginalny Zortrax 1.3.1; diagnostyka kopii 0.5.5 jest niezależna. Przebudowana 1.4 jest walidowana programowo, a odbiór sprzętowy pozostaje do wykonania.
+Wybierz wyłącznie drogę właściwą dla istniejącej drukarki. Archiwa SD mają sześć plików i chwilowo zastępują APP instalatorem 1.4. Po zmianie BOOT przywróć docelową aplikację stock lub Klipper. ST-Link zawiera dwa adresowane segmenty i zachowuje APP. RESTORE.BIN to oryginalny Zortrax 1.3.1; diagnostyka kopii 0.5.5 jest niezależna. Właściciel potwierdził na drukarce wszystkie trzy metody instalacji 1.4; zobacz [zapis odbioru](../docs/reports/v1.4/HARDWARE_ACCEPTANCE.json).
+
+Osobno udostępniono [oryginalny Zortrax Bootloader v3](original/README_PL.md): niezmieniony surowy BOOT 32 KiB z opisem pochodzenia i SHA-256.
 
 Niezmienione archiwum: [1.3.1](v1.3.1), [1.1](v1.1). [0.5.5 diagnostic](v1.3.1/M300_BACKUP_0.5.5_UART.zip).

@@ -21,9 +21,9 @@ The release [manifest](../../../firmware/v1.4/RELEASE_MANIFEST.json) records com
 
 ## Limits
 
-No probe or printer is opened by offline publication checks. Physical acceptance of rebuilt 1.4 must follow [the target matrix](tested-hardware.md). There is no automatic rollback after loss of power during BOOT programming. Existing device identity and protection gates remain. A software PASS does not establish compatibility with every M300 board or print-load headroom.
+No probe or printer is opened by offline publication checks. The owner confirmed all three installation methods of rebuilt 1.4; [the target matrix](tested-hardware.md) records the scope. There is no automatic rollback after loss of power during BOOT programming. Existing device identity and protection gates remain. A software PASS does not establish compatibility with every M300 board or print-load headroom.
 
-Final offline validation: **2784 tests passed, 0 failed, 0 skipped**; **51 BOOT binary checks** and **59 installer / clean rebuild checks** passed. All three BOOT variants and the intermediary rebuild byte-for-byte with Clang/LLD 19.1.1. Physical acceptance of 1.4 remains pending.
+Final offline validation: **2784 tests passed, 0 failed, 0 skipped**; **51 BOOT binary checks** and **59 installer / clean rebuild checks** passed. All three BOOT variants and the intermediary rebuild byte-for-byte with Clang/LLD 19.1.1. The later [owner acceptance report](../../reports/v1.4/HARDWARE_ACCEPTANCE.json), recorded on 2026-11-09, confirms FACTORY, UPGRADE and ST-Link on the printer. The unchanged release manifest records the original publication-time status. The offline tools did not perform those physical tests.
 
 ## Documentation completeness review — 2026-11-09
 

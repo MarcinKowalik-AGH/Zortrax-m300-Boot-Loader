@@ -12,6 +12,7 @@ Python **3.9+**. pySerial is required only for UART. Match the active rate and c
 | `verify_sd_i2.py` | Current six-file cards and completed backups |
 | `stlink_preflight.py`, `verify_package.py` | Offline plan, protected ranges, full readback and package checks |
 | `validate_publication.py` | Current and historical release audit |
+| `validate_original_boot.py` | Original OEM BOOT identity and later owner acceptance record |
 | `read_flash_m300_055.py` | Independent diagnostic 0.5.5 receiver |
 
 ```sh

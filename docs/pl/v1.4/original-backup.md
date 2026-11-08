@@ -54,3 +54,7 @@ Wymagaj kodu zakończenia 0 i `"verified": true`. Wynik zawiera tożsamość MCU
 Instalator wypełnia cztery szablony A5 podczas `Backup Flash x2`, sprawdza oba zrzuty i zachowuje kwalifikację sesji. Kopie opisują stan po wgraniu pośredniej APP, przed zmianą BOOT. Sprawdź gotowe pliki: `python3 tools/verify_sd_i2.py --backups "/private/completed-backups"`. Nigdy nie zastępuj ich świeżymi szablonami. Instalator sam wykonuje i porównuje oba pełne odczyty oraz rekordy tożsamości. Reset usuwa kwalifikację kopii zapamiętaną w RAM, nawet gdy pliki pozostały na karcie; kolejna próba instalacji wymaga ponownego poprawnego `Backup Flash x2` w tej sesji. Nie używaj `--card` do gotowych kopii: ta opcja sprawdza początkowy zestaw z szablonami A5 i celowo odrzuci zmienione pliki. Do gotowego kompletu dwóch par używaj `--backups`, zachowując wszystkie cztery oryginalne nazwy.
 
 Gdy RDP jest już wyłączone, użyj [kontroli ST-Link](stlink-and-recovery.md): dwóch rzeczywistych odczytów Flash, UID i opcji. Paczka dwóch segmentów nie odtwarza całkowicie skasowanego układu.
+
+## Udostępniony oryginalny BOOT
+
+Zachowany w projekcie [oryginalny Zortrax Bootloader v3](../../../firmware/original/README_PL.md) jest dostępny jako niezmieniony obraz referencyjny 32 KiB z SHA-256 i opisem pochodzenia. Zawiera wyłącznie BOOT i nie zastępuje pełnych, niezależnych kopii własnej drukarki. Jest osobny od aplikacji oryginalnej `RESTORE.BIN` i paczek instalacyjnych 1.4.

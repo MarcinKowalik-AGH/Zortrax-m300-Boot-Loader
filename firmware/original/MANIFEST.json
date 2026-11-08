@@ -1,0 +1,30 @@
+{
+  "identity": "Zortrax Bootloader v3",
+  "file": "OEM_BOOT_V3.bin",
+  "format": "raw_binary",
+  "bytes": 32768,
+  "sha256": "dcc69ce6ad7d4ca46ba9363239f1f39863559e286fa3e53abfeb5eb47c82de3a",
+  "flash_start": "0x08000000",
+  "flash_end_inclusive": "0x08007FFF",
+  "initial_stack_pointer": "0x20003FF0",
+  "reset_vector_thumb": "0x08000165",
+  "modified": false,
+  "target": "Classic Zortrax M300; retained HW05 / PCB Rev.5.3 / STM32F103-family / measured 256-KiB profile",
+  "provenance": {
+    "archive": "M300Boot_v1.3.1_KOMPLET_2026-10-30.zip",
+    "member": "04_OEM_ROLLBACK/OEM_BOOT_V3.bin",
+    "matches_retained_reference_copy": true,
+    "matches_retained_original_flash_first_32768_bytes": true,
+    "new_independent_device_reads_performed": false
+  },
+  "published_on": "2026-11-09",
+  "includes_only_boot_range": true,
+  "excluded_regions": [
+    "application",
+    "final_manufacturer_nvm_data",
+    "mcu_uid",
+    "option_bytes"
+  ],
+  "oem_restore_hardware_test_reported": false,
+  "rights": "Manufacturer firmware retains original rights; not relicensed by the project MIT notice."
+}

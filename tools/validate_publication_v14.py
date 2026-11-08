@@ -132,7 +132,7 @@ def main(argv=None):
     c.ok(manifest['scope'].startswith('single qualified device'),'Retained scope','release')
     c.ok(tuple(manifest['baud_menu'])==RATES and manifest['unsupported_legacy_saved_baud']==[19200,57600,1000000],'Rate table','release')
     c.ok(manifest['default_baud']==250000 and manifest['default_uart_on_bootwait'] is False,'Default settings','release')
-    c.ok(manifest['hardware_tested'] is False,'No unsupported 1.4 hardware qualification','release')
+    c.ok(manifest['hardware_tested'] is False,'Immutable publication-time hardware status; later owner acceptance is recorded separately','release')
     c.ok(manifest['firmware_binaries_rebuilt_for_publication'] is True,'Release was rebuilt from 1.4 sources','release')
     expected_names={'M300Boot_v1.4_SD_FACTORY_OEMV3.zip','M300Boot_v1.4_SD_UPGRADE.zip','M300Boot_v1.4_STLINK.zip','M300_BACKUP_0.5.5_UART.zip'}
     c.ok({x['name'] for x in manifest['assets']}==expected_names and len(manifest['assets'])==4,'Exact asset catalog','release')

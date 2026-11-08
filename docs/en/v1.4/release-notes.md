@@ -8,4 +8,6 @@ The update preserves original-prefiks/NVM protection, source/device gates, verif
 
 Documentation is organized as paired complete EN/PL manuals with step-by-step SD and ST-Link procedures. Native OLED renders illustrate BOOT, installer, UART and progress using cyan pixels. They are generated screenshots, not photographs or new physical acceptance evidence.
 
-The 1.4 firmware is rebuilt and checked offline. [Validation evidence](validation.md) records the checks; physical1.4 acceptance is pending. Previous1.3.1 hardware observations and immutable downloads remain in the [archive](../v1.3.1/README.md). RESTORE.BIN remains stock Zortrax 1.3.1, and diagnostic 0.5.5 keeps its independent version.
+The 1.4 firmware is rebuilt and checked offline. [Validation evidence](validation.md) records the checks. The owner confirmed all three 1.4 installation methods on the printer, recorded on 2026-11-09; see [hardware acceptance](tested-hardware.md). Previous 1.3.1 observations and immutable downloads remain in the [archive](../v1.3.1/README.md). RESTORE.BIN remains stock Zortrax 1.3.1, and diagnostic 0.5.5 keeps its independent version.
+
+The [original Zortrax Bootloader v3](../../../firmware/original/README.md) is now also available separately, with its exact 32-KiB image, provenance and SHA-256. The 1.4 installation packages and tag are unchanged.

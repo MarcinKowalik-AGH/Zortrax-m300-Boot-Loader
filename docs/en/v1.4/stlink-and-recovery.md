@@ -2,7 +2,7 @@
 
 [English](../../en/v1.4/stlink-and-recovery.md) · [Polski](../../pl/v1.4/stlink-and-recovery.md) · [Index](README.md)
 
-This release writes **two segments while preserving APP and device data**. The 1.4 plan and complete readback are checked offline; prior physical confirmation concerns archived 1.3.1. The rebuilt 1.4 requires on-printer acceptance.
+This release writes **two segments while preserving APP and device data**. The 1.4 plan and complete readback are checked offline. The owner has also confirmed ST-Link installation of 1.4 on the printer, together with FACTORY and UPGRADE; see [hardware acceptance](tested-hardware.md).
 
 | File in `03_TARGET_FULL` | Address | Exact length | Erase only these 2-KiB pages |
 |---|---|---:|---|

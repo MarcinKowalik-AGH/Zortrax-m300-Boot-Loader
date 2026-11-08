@@ -4,7 +4,7 @@
 
 **Current release: 1.4.**
 
-M300Boot **1.4** is for the qualified classic M300 HW05 / PCB Rev.5.3 / measured 256-KiB profile. BOOT, the SD installer, stock application and Klipper MCU application have separate roles. The 1.4 release is validated offline; its rebuilt firmware still requires physical acceptance on the printer. Earlier hardware reports belong to the archived 1.3.1 build.
+M300Boot **1.4** is for the qualified classic M300 HW05 / PCB Rev.5.3 / measured 256-KiB profile. BOOT, the SD installer, stock application and Klipper MCU application have separate roles. The 1.4 release is validated offline, and the owner confirmed FACTORY, UPGRADE and ST-Link installation on the printer, recorded on 2026-11-09. [Owner acceptance](../../reports/v1.4/HARDWARE_ACCEPTANCE.json) is separate from earlier archived 1.3.1 reports.
 
 - [SD installation and update order](installation.md)
 - [Original memory and independent backups](original-backup.md)

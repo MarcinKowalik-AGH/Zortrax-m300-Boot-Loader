@@ -21,9 +21,9 @@ python3 tools/validate_publication.py --json
 
 ## Ograniczenia
 
-Kontrole programowe publikacji nie otwierają sondy ani drukarki. Odbiór fizyczny przebudowanej 1.4 należy przeprowadzić według [tabeli sprzętu](tested-hardware.md). Nie ma automatycznego cofania zapisu BOOT po utracie zasilania. Zachowano kontrole tożsamości i zabezpieczeń. PASS programu nie oznacza zgodności każdej płyty M300 ani rezerwy podczas druku.
+Kontrole programowe publikacji nie otwierają sondy ani drukarki. Właściciel potwierdził wszystkie trzy metody instalacji przebudowanej 1.4; zakres opisuje [tabela sprzętu](tested-hardware.md). Nie ma automatycznego cofania zapisu BOOT po utracie zasilania. Zachowano kontrole tożsamości i zabezpieczeń. PASS programu nie oznacza zgodności każdej płyty M300 ani rezerwy podczas druku.
 
-Końcowa walidacja komputerowa: **2784 testy PASS, 0 błędów, 0 pominięć**; zaliczono **51 kontroli binariów BOOT** oraz **59 kontroli instalatora i czystej przebudowy**. Trzy warianty BOOT i instalator odtwarzają się bajt w bajt przy Clang/LLD 19.1.1. Odbiór fizyczny wersji 1.4 pozostaje do wykonania.
+Końcowa walidacja komputerowa: **2784 testy PASS, 0 błędów, 0 pominięć**; zaliczono **51 kontroli binariów BOOT** oraz **59 kontroli instalatora i czystej przebudowy**. Trzy warianty BOOT i instalator odtwarzają się bajt w bajt przy Clang/LLD 19.1.1. Późniejsze [zgłoszenie odbioru przez właściciela](../../reports/v1.4/HARDWARE_ACCEPTANCE.json), zapisane 09.11.2026, potwierdza na drukarce FACTORY, UPGRADE i ST-Link. Niezmieniony manifest wydania opisuje stan z chwili pierwotnej publikacji. Narzędzia programowe nie wykonywały tych prób fizycznych.
 
 ## Przegląd kompletności instrukcji — 09.11.2026
 

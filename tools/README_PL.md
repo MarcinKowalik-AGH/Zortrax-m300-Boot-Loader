@@ -12,6 +12,7 @@ Python **3.9+**. pySerial jest wymagany tylko dla UART. Dopasuj aktywną prędko
 | `verify_sd_i2.py` | Bieżące sześcioplikowe karty i gotowe kopie |
 | `stlink_preflight.py`, `verify_package.py` | Programowy plan, chronione obszary, pełny odczyt i kontrola paczki |
 | `validate_publication.py` | Audyt bieżącego i archiwalnych wydań |
+| `validate_original_boot.py` | Tożsamość oryginalnego BOOT OEM i późniejszy odbiór właściciela |
 | `read_flash_m300_055.py` | Odbiornik niezależnej diagnostyki 0.5.5 |
 
 ```sh

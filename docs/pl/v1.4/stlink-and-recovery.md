@@ -2,7 +2,7 @@
 
 [English](../../en/v1.4/stlink-and-recovery.md) · [Polski](../../pl/v1.4/stlink-and-recovery.md) · [Indeks](README.md)
 
-Ta droga zapisuje **dwa segmenty, zachowując APP i dane urządzenia**. Plan oraz pełny odczyt kontrolny wersji 1.4 są sprawdzane programowo. Wcześniejsze potwierdzenie sprzętowe dotyczy archiwalnej wersji 1.3.1; przebudowana 1.4 wymaga odbioru na drukarce.
+Ta droga zapisuje **dwa segmenty, zachowując APP i dane urządzenia**. Plan oraz pełny odczyt kontrolny wersji 1.4 są sprawdzane programowo. Właściciel potwierdził także instalację 1.4 przez ST-Link na drukarce, razem z FACTORY i UPGRADE; zobacz [odbiór sprzętowy](tested-hardware.md).
 
 | Plik w `03_TARGET_FULL` | Adres | Dokładna długość | Kasuj tylko te strony 2 KiB |
 |---|---|---:|---|

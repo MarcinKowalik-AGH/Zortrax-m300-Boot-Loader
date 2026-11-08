@@ -1,0 +1,25 @@
+{
+  "version": "1.4",
+  "recorded_on": "2026-11-09",
+  "recorded_timezone": "Europe/Warsaw",
+  "reported_by": "Marcin Kowalik",
+  "evidence_type": "owner_statement",
+  "statement_pl": "tak zwalidowałem to na drukarce wszystkie 3 metody.",
+  "owner_confirmed_hardware": {
+    "FACTORY": true,
+    "UPGRADE": true,
+    "STLINK": true
+  },
+  "claim_scope": "Owner confirmed M300Boot 1.4 installation on the printer using all three methods.",
+  "independently_observed_by_automation": false,
+  "raw_device_logs_supplied": false,
+  "not_separately_reported": [
+    "all_five_uart_rates",
+    "motion_heating_printing",
+    "oem_boot_restoration"
+  ],
+  "firmware_assets_unchanged": true,
+  "release_tag_commit": "068e1ac2b5842285af14519ea96f4370b2d086ff",
+  "release_manifest_sha256": "526b69cffdb6f198db00ec12080cc18c612f51b78e7cf34fcd80589c9cd82aca",
+  "publication_manifest_note": "The immutable release manifest describes the original publication-time status; this later record adds owner hardware acceptance."
+}

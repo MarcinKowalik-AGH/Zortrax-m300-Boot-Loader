@@ -8,4 +8,6 @@ Aktualizacja zachowuje ochronę prefiksu/NVM, kontrole źródła i urządzenia, 
 
 Dokumentacja obejmuje pełne pary EN/PL z krokami SD i ST-Link. Natywne rendery OLED obrazują BOOT, instalator, UART oraz postęp pikselami cyan. Są wygenerowanymi ekranami, a nie zdjęciami ani nowym dowodem odbioru sprzętowego.
 
-Firmware 1.4 jest przebudowany i sprawdzany programowo. [Dowody walidacji](validation.md) opisują kontrole; odbiór fizyczny 1.4 pozostaje do wykonania. Wcześniejsze obserwacje sprzętowe1.3.1 i niezmienione pliki zachowano w [archiwum](../v1.3.1/README.md). RESTORE.BIN nadal zawiera oryginalny Zortrax 1.3.1, a diagnostyka 0.5.5 zachowuje niezależny numer.
+Firmware 1.4 jest przebudowany i sprawdzany programowo. [Dowody walidacji](validation.md) opisują kontrole. Właściciel potwierdził na drukarce wszystkie trzy metody instalacji 1.4; zgłoszenie zapisano 09.11.2026 w [odbiorze sprzętowym](tested-hardware.md). Wcześniejsze obserwacje 1.3.1 i niezmienione pliki zachowano w [archiwum](../v1.3.1/README.md). RESTORE.BIN nadal zawiera oryginalny Zortrax 1.3.1, a diagnostyka 0.5.5 zachowuje niezależny numer.
+
+Osobno udostępniono także [oryginalny Zortrax Bootloader v3](../../../firmware/original/README_PL.md): dokładny obraz 32 KiB, pochodzenie i SHA-256. Paczki instalacyjne 1.4 i tag pozostają niezmienione.

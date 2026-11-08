@@ -23,10 +23,11 @@ The distributed installers retain a device-specific UID / OEM-prefix / factory-d
 ![BOOT 1.4, rendered from the OLED code with cyan pixels](docs/assets/v1.4/BOOT_MAIN_MENU.png)
 ![SD installer 1.4, native-font render](docs/assets/v1.4/INSTALLER_MAIN_MENU.png)
 
-The screenshots are generated renders, not photographs. The 1.4 build is checked offline; physical acceptance on the printer remains to be completed. Earlier hardware reports concern 1.3.1. [Validation and limitations](docs/en/v1.4/validation.md) · [Hardware scope](docs/en/v1.4/tested-hardware.md).
+The screenshots are generated renders, not photographs. The owner confirmed successful on-printer validation of **all three 1.4 installation methods: FACTORY, UPGRADE and ST-Link**, recorded on 2026-11-09. [Owner acceptance record](docs/reports/v1.4/HARDWARE_ACCEPTANCE.json). [Validation and limitations](docs/en/v1.4/validation.md) · [Hardware scope](docs/en/v1.4/tested-hardware.md).
 
 ## Use and recovery
 
+- [Original Zortrax Bootloader v3 — 32-KiB binary, provenance and SHA-256](firmware/original/README.md)
 - [Preserve original memory](docs/en/v1.4/original-backup.md)
 - [Menus and console](docs/en/v1.4/features-and-console.md)
 - [UART settings and migration](docs/en/v1.4/uart-examples.md)
