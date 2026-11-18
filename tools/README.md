@@ -1,4 +1,4 @@
-# Public host tools — M300Boot 1.4
+# Public host tools — M300Boot 1.4.1
 
 [English](README.md) · [Polski](README_PL.md)
 
@@ -6,7 +6,7 @@ Python **3.9+**. pySerial is required only for UART. Match the active rate and c
 
 | File | Purpose |
 |---|---|
-| `KONSOLA_M300_v1.4.command`, `m300_console.py` | Read-only1.4 identity, board, PING and paired dumps |
+| `KONSOLA_M300_v1.4.1.command`, `m300_console.py` | Read-only 1.4.1 identity, board, PING and paired dumps |
 | `m300_service.py` | UART dumps, backup/history decoding |
 | `ibtool.py` | M3B inspect/pack; serial check, explicit update with --update |
 | `verify_sd_i2.py` | Current six-file cards and completed backups |
@@ -21,6 +21,8 @@ python3 tools/stlink_preflight.py --help
 python3 tools/ibtool.py --help
 ```
 
-Archived 1.1/1.3.1 launchers and image builders retain their original version. In particular prepare_stlink.py builds 1.1, not 1.4. Do not use historical builders to prepare the current BOOT. Current console tools expect1.4. Local backup files, UID/options, plans and logs remain private.
+Archived 1.1/1.3.1/1.4 launchers and image builders retain their original version. In particular prepare_stlink.py builds 1.1, not 1.4.1. Do not use historical builders to prepare the current BOOT. Current console tools expect 1.4.1. Local backup files, UID/options, plans and logs remain private.
 
-[UART](../docs/en/v1.4/uart-examples.md) · [ST-Link](../docs/en/v1.4/stlink-and-recovery.md) · [All manuals](../docs/en/README.md).
+[UART](../docs/en/v1.4.1/uart-examples.md) · [ST-Link](../docs/en/v1.4.1/stlink-and-recovery.md) · [All manuals](../docs/en/README.md).
+
+The service-card helper checks sizes and file types before creating anything; it preserves existing files and does not certify their contents. Use the backup verifier for completed backup integrity. UART connection failures close partially opened logs and leave previous log files untouched.

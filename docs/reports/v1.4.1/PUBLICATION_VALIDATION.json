@@ -1,0 +1,222 @@
+{
+  "result": "PASS",
+  "current_version": "1.4.1",
+  "device_access_performed": false,
+  "checks": 138015,
+  "counting_note": "Aggregate includes historical byte-level HEX assertions; it is not a count of independent functional or hardware tests. The 1.4.1 validator counts file/invariant checks separately.",
+  "releases": [
+    {
+      "result": "PASS",
+      "scope": "Offline public release validation; no printer or GitHub write",
+      "version": "1.1",
+      "installer": "1.1-i4",
+      "checks": 39532,
+      "groups": {
+        "release": 22,
+        "archives": 91,
+        "privacy": 245,
+        "protocol": 7,
+        "hex": 38113,
+        "host": 27,
+        "links": 1013,
+        "structure": 14
+      },
+      "relative_markdown_links_verified": 1013,
+      "public_files_audited": 403,
+      "release_zip_assets_unchanged": true,
+      "hardware_test_performed_during_this_audit": false,
+      "original_release_assets_rebuilt": false,
+      "latest_reference": "Inventure boot v1.5-HW2, docs/v1.5 current, docs/v1.4 archived",
+      "private_reference_test": "executed offline separately, not part of public CI"
+    },
+    {
+      "result": "PASS",
+      "version": "1.3.1",
+      "checks": 48027,
+      "groups": {
+        "release": 22,
+        "archives": 85,
+        "privacy": 722,
+        "firmware": 5,
+        "hex": 46093,
+        "host": 64,
+        "protocol": 2,
+        "links": 1013,
+        "docs": 21
+      },
+      "relative_markdown_links_verified": 1013,
+      "firmware_rebuilt": false,
+      "device_access_performed": false,
+      "owner_confirmed_routes": [
+        "UPGRADE",
+        "FACTORY",
+        "STLINK"
+      ],
+      "scope": "Offline publication checks; hardware evidence is the owner report, not this script"
+    },
+    {
+      "result": "PASS",
+      "version": "1.4",
+      "checks": 48124,
+      "groups": {
+        "release": 22,
+        "archives": 85,
+        "privacy": 722,
+        "firmware": 16,
+        "hex": 46093,
+        "host": 75,
+        "protocol": 4,
+        "cli_negative_baud": 21,
+        "links": 1013,
+        "docs": 73
+      },
+      "relative_markdown_links_verified": 1013,
+      "firmware_rebuilt": true,
+      "device_access_performed": false,
+      "hardware_tested": false,
+      "scope": "Offline complete publication checks; no physical printer qualification"
+    },
+    {
+      "result": "PASS",
+      "version": "1.4.1",
+      "checks": 178,
+      "groups": {
+        "firmware": 22,
+        "release": 12,
+        "evidence": 5,
+        "history": 4,
+        "archives": 24,
+        "privacy": 8,
+        "hex": 4,
+        "host": 17,
+        "protocol": 5,
+        "cli_negative_baud": 24,
+        "docs": 51,
+        "repository": 2
+      },
+      "counting": "One assertion per invariant, file or archive; HEX bytes are not individual checks.",
+      "installation_variants": [
+        "FACTORY",
+        "UPGRADE",
+        "STLINK"
+      ],
+      "supported_uart_baud": [
+        115200,
+        250000,
+        500000,
+        750000,
+        1500000
+      ],
+      "hex_records_validated": 2563,
+      "hex_target_bytes_compared": 40960,
+      "root_checksum_files_verified": 402,
+      "manual_pairs": 11,
+      "relative_markdown_links_verified": 284,
+      "markdown_anchors_verified": 18,
+      "device_access_performed": false,
+      "firmware_rebuild_performed_by_this_validator": false,
+      "release_contains_new_firmware_build": true,
+      "hardware_tested": false,
+      "hardware_evidence": {
+        "base_version": "1.4",
+        "base_owner_reported_duration": "approximately two weeks",
+        "owner_report_date": "2026-11-18",
+        "evidence_type": "owner_statement",
+        "exact_start_date_reported": false,
+        "patch_version": "1.4.1",
+        "patch_hardware_tested": false,
+        "base_testing_is_not_patch_hardware_qualification": true
+      },
+      "scope": "Offline artifact, protocol, host and documentation audit; owner testing applies to the preceding 1.4 base, not the new patch."
+    },
+    {
+      "result": "PASS",
+      "version": "documentation-en-pl",
+      "checks": 1601,
+      "groups": {
+        "layout": 128,
+        "navigation": 94,
+        "content": 156,
+        "compatibility": 150,
+        "shared_evidence": 19,
+        "links": 1038,
+        "firmware": 16
+      },
+      "manual_pairs": 39,
+      "legacy_redirect_pages": 42,
+      "markdown_links_verified": 1038,
+      "immutable_zip_assets_verified": 16,
+      "device_access_performed": false,
+      "firmware_changed": false
+    },
+    {
+      "result": "PASS",
+      "version": "1.4-options-and-procedures",
+      "checks": 252,
+      "groups": {
+        "inventory": 3,
+        "boot_menu": 126,
+        "boot_commands": 54,
+        "dump_regions": 16,
+        "installer_menu": 14,
+        "installer_commands": 18,
+        "oled_installation": 8,
+        "release_links": 13
+      },
+      "boot_pages": 13,
+      "boot_positions": 50,
+      "boot_command_forms": 27,
+      "dump_regions": 8,
+      "installer_menu_items": 7,
+      "installer_command_forms": 9,
+      "languages": [
+        "en",
+        "pl"
+      ],
+      "device_access_performed": false,
+      "firmware_modified": false
+    },
+    {
+      "result": "PASS",
+      "version": "1.4.1-options-and-procedures",
+      "checks": 275,
+      "groups": {
+        "inventory": 3,
+        "boot_menu": 126,
+        "boot_commands": 54,
+        "dump_regions": 16,
+        "installer_menu": 14,
+        "installer_commands": 18,
+        "oled_installation": 8,
+        "renderer": 16,
+        "release_links": 20
+      },
+      "boot_pages": 13,
+      "boot_positions": 50,
+      "boot_command_forms": 27,
+      "dump_regions": 8,
+      "installer_menu_items": 7,
+      "installer_command_forms": 9,
+      "languages": [
+        "en",
+        "pl"
+      ],
+      "device_access_performed": false,
+      "firmware_modified": false
+    },
+    {
+      "result": "PASS",
+      "version": "original-oem-v3-and-owner-acceptance-1.4",
+      "checks": 26,
+      "original_boot_bytes": 32768,
+      "original_boot_sha256": "dcc69ce6ad7d4ca46ba9363239f1f39863559e286fa3e53abfeb5eb47c82de3a",
+      "owner_confirmed_methods": [
+        "FACTORY",
+        "UPGRADE",
+        "STLINK"
+      ],
+      "device_access_performed": false,
+      "oem_restore_hardware_test_reported": false
+    }
+  ]
+}

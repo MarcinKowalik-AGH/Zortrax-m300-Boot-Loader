@@ -1,0 +1,133 @@
+{
+  "result": "PASS",
+  "version": "1.4.1",
+  "date": "2026-11-18",
+  "timezone": "Europe/Warsaw",
+  "baseline_version": "1.4",
+  "baseline_repository_commit": "156daf4d1d5f14d2f0e553a64b352397be397745",
+  "baseline_release_commit": "068e1ac2b5842285af14519ea96f4370b2d086ff",
+  "scope": "Classic Zortrax M300, existing qualified HW05/Rev.5.3/256-KiB profile. Sources, compiled firmware, three distribution routes, active host tools, documentation and publication controls.",
+  "hardware_access_performed": false,
+  "new_firmware_hardware_tested": false,
+  "owner_hardware_evidence": "HARDWARE_STATUS.json; approximately two weeks reported for baseline 1.4, not the new 1.4.1 patch.",
+  "findings": [
+    {
+      "id": "M300-141-01",
+      "component": "APP metadata commit/reinstall",
+      "severity": "high",
+      "status": "fixed",
+      "problem": "Power interruption during the 64-byte metadata header or 4-byte commit leaves NO_COMMIT. Baseline 1.4 refuses ordinary boot correctly but also prevents reinstalling the same verified APP.",
+      "change": "Installation-only retry accepts only an expected halfword prefix, at most one monotonically incomplete halfword and an erased remainder/tail. It additionally verifies the complete existing APP hash and vectors against the verified candidate before any erase.",
+      "retained_requirements": [
+        "qualified profile",
+        "authorization and fresh physical hold",
+        "ordinary committed boot validation",
+        "existing Flash write boundaries"
+      ],
+      "limits": "The new BOOT must already be installed. Does not make old 1.4 already stuck in NO_COMMIT install itself, accept foreign metadata, recover incomplete APP payloads or reconstruct a mass-erased device."
+    },
+    {
+      "id": "M300-141-02",
+      "component": "prepare_service_sd.py",
+      "severity": "medium",
+      "status": "fixed",
+      "problem": "Wrong-sized existing templates or a directory could be reported as prepared, while other files were created.",
+      "change": "Preflight all existing entries as nonsymlink regular files of exact required length before creating any missing template; retain valid existing bytes."
+    },
+    {
+      "id": "M300-141-03",
+      "component": "m300_console.py",
+      "severity": "medium",
+      "status": "fixed",
+      "problem": "Serial-open failure leaked partially opened resources. A close failure could prevent final evidence from being archived.",
+      "change": "Clean up partially initialized resources without masking the original error, attempt all closes, preserve the manifest/archive on close error and return failure. Accept only exact current INFO/BOARD_CHECK lines."
+    },
+    {
+      "id": "M300-141-04",
+      "component": "STLINK inner guide and publication consistency",
+      "severity": "medium",
+      "status": "fixed",
+      "problem": "The previous STLINK ZIP retained a stale internal guide despite newer external instructions.",
+      "change": "Package current complete EN/PL STLINK instructions with exact addresses, halt/readback procedure, first-start interruption, UART migration and explicit recovery scope. Align tools, version indexes, release notes, checksum catalogs and automated checks."
+    },
+    {
+      "id": "M300-141-05",
+      "component": "UART baud selection",
+      "severity": "verification",
+      "status": "confirmed",
+      "finding": "1,000,000 baud was already removed in baseline 1.4. 1.4.1 retains exactly 115200, 250000, 500000, 750000 and 1500000; default 250000. 1,000,000 and 10,000,000 are rejected by active host CLIs before device/file I/O.",
+      "migration": "Saved baud-code holes are retained; removed settings fall back to the existing default. No automatic save or experimental Orange Pi divider override is introduced."
+    }
+  ],
+  "memory": {
+    "stage2_range": [
+      "0x08001000",
+      "0x08008000"
+    ],
+    "assets_range": [
+      "0x0803A000",
+      "0x0803D000"
+    ],
+    "range_end_convention": "exclusive",
+    "unchanged_oem_hook": "0x08001304",
+    "unchanged_reset_entry": "0x08001311",
+    "unchanged_vector_bytes": 388,
+    "recovery_gap_start": "0x08001184",
+    "recovery_gap_end_exclusive": "0x0800127C",
+    "recovery_gap_bytes": 248,
+    "main_code_slack_bytes": 24,
+    "assets_slack_bytes": 4764,
+    "engineering_limit": "Main BOOT slot is nearly full. Future firmware changes must pass linker/layout checks and may require deliberate code-size work; no additional free space is claimed."
+  },
+  "validation": {
+    "private_regression": {
+      "passed": 2992,
+      "skipped": 34,
+      "failures": 0,
+      "errors": 0,
+      "report": "REGRESSION_SUMMARY.json"
+    },
+    "independent_clean_rebuild": {
+      "checks": 59,
+      "result": "PASS",
+      "report": "REPRODUCIBLE_BUILD.json",
+      "byte_identical": "FULL, READONLY, PREVIEW and installer artifacts"
+    },
+    "compiled_arm_predicate": {
+      "cases": 105,
+      "result": "PASS",
+      "report": "COMPILED_ARM_RECOVERY.json",
+      "scope": "Actual compiled board predicate and linked helpers in Unicorn; no complete boot or physical Flash hardware emulation."
+    },
+    "public_host_regressions": {
+      "tests": 13,
+      "result": "PASS",
+      "command": "python3 -m unittest discover -s tests -v",
+      "serial_device_opened": false
+    },
+    "oled_renders": {
+      "screens": 29,
+      "png_files": 58,
+      "result": "PASS",
+      "manifest": "../../assets/v1.4.1/RENDER_MANIFEST.json",
+      "synthetic_hardware_inputs": true
+    },
+    "publication": {
+      "result": "PASS",
+      "report": "PUBLICATION_VALIDATION.json",
+      "checks": 178,
+      "historical_asset_and_documentation_checks_included": true
+    }
+  },
+  "public_downloads": {
+    "installation_variants": [
+      "SD_FACTORY_OEMV3",
+      "SD_UPGRADE",
+      "STLINK"
+    ],
+    "diagnostic": "Existing 0.5.5 backup utility is a separate unchanged auxiliary download.",
+    "manifest": "../../../firmware/v1.4.1/RELEASE_MANIFEST.json",
+    "prior_release_assets_unchanged": true
+  },
+  "public_content": "Compiled distributables, operational tools and EN/PL manuals. Private firmware sources, OEM tooling secrets, complete personal Flash backups and raw device identity remain excluded."
+}

@@ -34,7 +34,7 @@ def main(argv=None):
         count+=1;groups[group]=groups.get(group,0)+1
         if not value:
             raise ValueError(group+': '+message)
-    check(layout['current_version']=='v1.4' and layout['languages']==['en','pl'],'Current version and locales','layout')
+    check(layout['current_version']=='v1.4.1' and layout['languages']==['en','pl'],'Current version and locales','layout')
     for path in ('README.md','README_PL.md','tools/README.md','tools/README_PL.md','firmware/README.md','firmware/README_PL.md','docs/en/README.md','docs/pl/README.md'):
         text=(ROOT/path).read_text()
         check('[English]' in text and '[Polski]' in text,'Language switch in '+path,'navigation')
@@ -72,7 +72,7 @@ def main(argv=None):
             number+=1
     # Release assets are immutable; the dated manifests remain the authority.
     assets=0
-    for version in ('v1.1','v1.3.1','v1.4'):
+    for version in ('v1.1','v1.3.1','v1.4','v1.4.1'):
         folder=ROOT/'firmware'/version
         manifest=json.loads((folder/'RELEASE_MANIFEST.json').read_text())
         for item in manifest['assets']:

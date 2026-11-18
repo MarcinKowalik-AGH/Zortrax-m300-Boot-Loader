@@ -2,6 +2,16 @@
 
 [English](../../CHANGELOG.md) · [Polski](changelog.md)
 
+## 1.4.1 — 18.11.2026
+
+- Usunięto blokadę ponowienia APP po przerwanym zapisie metadanych: wymagane są ta sama zweryfikowana paczka, rozpoznany przerwany rekord, zgodność całej APP we Flash i nowe fizyczne potwierdzenie. Niepełny commit nadal blokuje start; obce rekordy i uszkodzona APP powodują odmowę.
+- Przebudowano BOOT i instalator jako 1.4.1. Kontrole ponowienia wykorzystują istniejącą lukę pomiędzy wektorami a punktem wejścia OEM; jego stały adres, początek APP, granice obszarów programowania, prefiks OEM, NVM i dzienniki ustawień pozostają chronione.
+- Przygotowanie karty serwisowej odrzuca niepoprawne istniejące pliki docelowe przed tworzeniem brakujących szablonów. Poprawiono zamykanie portu i logów po błędach połączenia oraz dokładną kontrolę linii wersji i stanu płyty. Bieżące narzędzia pasują do wydania; narzędzia 1.4 zachowano w archiwum.
+- Zachowano dokładnie 115200/250000/500000/750000/1500000, domyślnie 250000 / bootwait OFF. 1000000 usunięto już w 1.4; 10000000 nie jest obsługiwane. Zachowano obsługiwane kody ustawień i jawną migrację przed starszą APP.
+- Zaktualizowano trzy warianty: FACTORY, UPGRADE i STLINK, wraz z kompletem instrukcji EN/PL, instrukcjami w paczkach, bezpośrednimi linkami, manifestami, sumami kontrolnymi i aktualnymi renderami OLED z kodu C.
+- Rozdzielono dowody: właściciel zgłasza około dwóch tygodni używania bazowej 1.4, której drogi instalacji wcześniej zaakceptowano; nowa poprawka 1.4.1 ma walidację offline z 18.11.2026, bez przypisywania jej dwóch tygodni testów sprzętowych. [Status sprzętowy](../reports/v1.4.1/HARDWARE_STATUS.json) · [Audyt](../reports/v1.4.1/AUDIT_2026-11-18.json).
+- Ponowienie wymaga działającego BOOT 1.4.1. Starszy BOOT już zatrzymany w `NO_COMMIT` wymaga osobnej oceny odzyskiwania; zwykły ST-Link preflight wciąż wymaga poprawnej APP. Nie dodano automatycznego powrotu po zaniku zasilania. [Dwujęzyczny opis i pobieranie](../../RELEASE_NOTES_v1.4.1.md).
+
 ## 1.4 — 08.11.2026
 
 - Odbiór właściciela zapisany 09.11.2026: FACTORY, UPGRADE i ST-Link zwalidowane na drukarce. Opublikowano niezmieniony oryginalny Zortrax Bootloader v3 z pochodzeniem i SHA-256. Paczki instalacyjne i tag wydania pozostają niezmienione.

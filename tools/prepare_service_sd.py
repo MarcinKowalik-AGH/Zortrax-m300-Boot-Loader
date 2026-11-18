@@ -3,14 +3,29 @@
 Use an already formatted, checked FAT16/FAT32 card. No formatting is performed.
 """
 from pathlib import Path
-import argparse, os, sys
+import argparse, os, stat, sys
 FILES={'M3FLASH.BIN':262144,'M3INFO.BIN':1024,'M3LOG.BIN':4096}
 def prepare(folder:Path):
     if not folder.is_dir():raise ValueError('Choose the existing root directory of your SD card')
+    # Check every existing entry before creating anything. A completed backup
+    # is kept verbatim; a truncated file, directory or symlink is never a usable
+    # preallocated destination and must not produce a successful preparation.
+    existing = {}
     for name,size in FILES.items():
         p=folder/name
-        if p.exists():
-            print(f'KEPT EXISTING: {p} ({p.stat().st_size} B)');continue
+        try:
+            entry=p.lstat()
+        except FileNotFoundError:
+            continue
+        if not stat.S_ISREG(entry.st_mode):
+            raise ValueError(f'Existing entry must be a regular file, not a symlink or directory: {p}')
+        if entry.st_size!=size:
+            raise ValueError(f'Existing file has {entry.st_size} bytes; expected {size}: {p}. Preserve it before preparing another card.')
+        existing[name]=entry.st_size
+    for name,size in FILES.items():
+        p=folder/name
+        if name in existing:
+            print(f'KEPT EXISTING: {p} ({existing[name]} B; contents not revalidated)');continue
         with p.open('xb') as f:
             f.write(b'\xa5'*size);f.flush();os.fsync(f.fileno())
         if p.stat().st_size!=size:raise IOError('Short template write')

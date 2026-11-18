@@ -1,0 +1,23 @@
+{
+  "result": "PASS",
+  "version": "1.4.1",
+  "date": "2026-11-18",
+  "total": 3026,
+  "passed": 2992,
+  "skipped": 34,
+  "failures": 0,
+  "errors": 0,
+  "seconds": 45.263,
+  "skipped_reason": "34 power-cut programming cases do not apply to the write-disabled READONLY build; negative no-write tests still execute.",
+  "command": "PYTHONPATH=source/tools:source/tests python3 -m pytest -q source/tests tests --junitxml=evidence/REGRESSION_1.4.1.xml",
+  "junit_xml_sha256": "495f923be0a2be1a2ecfcf161eeec41919bc18a511655cca6dd6b89ffd4e1a99",
+  "log_sha256": "7ae939da3570d04335ca9cde105c038347ffe11a67d2111787184de6c0c6ea0f",
+  "scope": "Private native-C/HAL, installer, physical-confirmation state machines, journal, profile, fault-injection, parser and build/layout tests. No printer accessed.",
+  "baseline_run": {
+    "version": "1.4",
+    "passed": 2784,
+    "failed": 0,
+    "date": "2026-11-18"
+  },
+  "obsolete_linker_test_updated": "The original linker remains byte-identical after removing exactly two approved additions. The final ELF must preserve original vector/hook bytes, addresses, MEMORY limits, segment non-overlap and at least 8 KiB stack headroom."
+}

@@ -1,0 +1,215 @@
+{
+  "version": "1.4.1",
+  "extraction": "All 13 current C menu pages compiled and executed natively; current BOOT/service/installer dispatch forms independently extracted and compared with the prior inventory; no physical printer execution",
+  "source_sha256": {
+    "source/src/menu.c": "72f0a1c534bf5db66f2e48443bf6b701e657ffde95c9efeba617f6baeca7dfea",
+    "source/src/main.c": "0b3a93662bdb971f92d50267e8c53b9efe51f2adfe316322188713a3bff22bcd",
+    "source/src/services.c": "a9d0658ec9382f026c9e6b9f6b40f164ba61a906f754402b7449be37e41633c0",
+    "source/src/service_state.c": "185d438a1f7966f7d8d7c8e945899a0433ccab5fda6c952a2bf080949d7f5d68",
+    "source/src/fat_ro.c": "7c0fe142fd611bbb2749ee80c0b0f7bd7453015e462457e292ca9212db463c34",
+    "firmware/src/main.c": "2d2bbab81b30a909cb5a5516c10a63b970209afd4ff8d8bfbf62630e8a31e9d5",
+    "firmware/src/confirm_input.c": "a750cc1557c7d0543cecd07dcbf47def39f281a3492ee8b861b74b5755601f06",
+    "source/include/ib.h": "3c24d25348f3202b5dbaae285a49dd4ed791d74e63b172ff7d5ad646b5a36bd8",
+    "firmware/include/ib.h": "81a2e851d3f59c3338a48ae4def237b114476139e5fe81485edb2619a740b534"
+  },
+  "boot_pages": [
+    {
+      "page": 0,
+      "title": "Main menu",
+      "items": [
+        "Start application",
+        "Firmware on SD",
+        "Diagnostics",
+        "About",
+        "Restart",
+        "Backup Flash",
+        "Service history"
+      ]
+    },
+    {
+      "page": 1,
+      "title": "Start application",
+      "items": [
+        "Back",
+        "Launch application"
+      ]
+    },
+    {
+      "page": 2,
+      "title": "Firmware on SD",
+      "items": [
+        "Back",
+        "Check SD package",
+        "Install firmware",
+        "Choose firmware file"
+      ]
+    },
+    {
+      "page": 3,
+      "title": "Diagnostics",
+      "items": [
+        "Back",
+        "Verify Flash",
+        "Hardware",
+        "Reset / Recovery",
+        "Clear recovery lock",
+        "Encoder / raw inputs",
+        "Display test",
+        "UART",
+        "SD card info"
+      ]
+    },
+    {
+      "page": 4,
+      "title": "About",
+      "items": [
+        "Back",
+        "© Marcin Kowalik",
+        "mkowalik@agh.edu.pl",
+        "Version v1.4.1"
+      ]
+    },
+    {
+      "page": 5,
+      "title": "Restart",
+      "items": [
+        "Back",
+        "Restart controller"
+      ]
+    },
+    {
+      "page": 6,
+      "title": "Backup to SD",
+      "items": [
+        "Back",
+        "Backup Flash + identity"
+      ]
+    },
+    {
+      "page": 7,
+      "title": "Service history",
+      "items": [
+        "Back",
+        "View history on UART",
+        "Save history to SD"
+      ]
+    },
+    {
+      "page": 8,
+      "title": "Files - select, then verify",
+      "items": [
+        "Back"
+      ]
+    },
+    {
+      "page": 9,
+      "title": "Selected firmware",
+      "items": [
+        "Back to files",
+        "Check selected file",
+        "Install selected file"
+      ]
+    },
+    {
+      "page": 10,
+      "title": "UART baud rate",
+      "items": [
+        "Back",
+        "115200",
+        "250000",
+        "500000",
+        "750000",
+        "1500000"
+      ]
+    },
+    {
+      "page": 11,
+      "title": "UART",
+      "items": [
+        "Back",
+        "UART test",
+        "UART baud rate",
+        "UART on bootwait: OFF"
+      ]
+    },
+    {
+      "page": 12,
+      "title": "UART on bootwait",
+      "items": [
+        "Back",
+        "OFF",
+        "ON"
+      ]
+    }
+  ],
+  "boot_commands": [
+    "INFO",
+    "VERIFY",
+    "SDCHECK",
+    "SDUPDATE",
+    "UARTCHECK",
+    "UARTUPDATE",
+    "BOOT",
+    "REBOOT",
+    "SELECT AUTO",
+    "SELECT",
+    "MENU",
+    "HOME",
+    "BACK",
+    "HELP",
+    "ECHO ON",
+    "ECHO OFF",
+    "BACKUP",
+    "RESETINFO",
+    "RECOVERY CLEAR",
+    "DIAG",
+    "DISPLAY",
+    "PING",
+    "CARDINFO",
+    "LOG",
+    "LOGSAVE",
+    "LIST",
+    "DUMP"
+  ],
+  "dump_regions": [
+    "FLASH",
+    "BOOT",
+    "NVM",
+    "FACTORY",
+    "SYSROM",
+    "SIZE",
+    "UID",
+    "OPTIONS"
+  ],
+  "installer_items": [
+    "Check board + SD",
+    "Backup Flash x2",
+    "Install / upgrade boot",
+    "Recover saved boot",
+    "Restart to boot",
+    "Hardware",
+    "About"
+  ],
+  "installer_commands": [
+    "PING",
+    "ECHO OFF",
+    "INFO",
+    "CHECK",
+    "BACKUP SD",
+    "INSTALL V141",
+    "RECOVER SOURCE",
+    "REBOOT",
+    "HELP"
+  ],
+  "notes": [
+    "Dynamic firmware catalog contains up to 16 entries; exceeding that returns LIST_FULL.",
+    "HELP is not the command authority; HOME and intermediary ECHO OFF are accepted dispatch forms.",
+    "Back and empty catalog are represented by the actual initial menu state.",
+    "The current patch retains every BOOT menu and command; its About version is1.4.1 and explicit intermediary install command is INSTALL V141.",
+    "Native menu output and the new renderer are tied to matching source hashes; they are offline evidence, not hardware testing."
+  ],
+  "native_menu_api_executed": true,
+  "renderer_manifest": "docs/assets/v1.4.1/RENDER_MANIFEST.json",
+  "renderer_manifest_sha256": "538fb160ad87ec76b1ea266d92524a1b92ba683fd061efe76409553cb3c822d2",
+  "baseline_inventory": "docs/reports/v1.4/DOCUMENTED_OPTIONS.json"
+}

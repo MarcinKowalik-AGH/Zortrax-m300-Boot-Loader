@@ -21,7 +21,7 @@ import zlib
 
 ROOT = Path(__file__).resolve().parents[1]
 FW = ROOT/'firmware/v1.4'
-HOST = ROOT/'tools'
+HOST = ROOT/'tools/archive/v1.4'
 DOC = ROOT/'docs/en/v1.4'
 PL_DOC = ROOT/'docs/pl/v1.4'
 # Filled with independently observed build identities before publication.

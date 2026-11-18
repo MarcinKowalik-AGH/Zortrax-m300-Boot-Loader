@@ -2,7 +2,7 @@
 
 [English](../../en/v1.4/README.md) · [Polski](../../pl/v1.4/README.md) · [Index](README.md)
 
-**Bieżące wydanie: 1.4.**
+**Archiwalne wydanie: 1.4.**
 
 M300Boot **1.4** jest przeznaczony dla zakwalifikowanego profilu klasycznej M300 HW05 / PCB Rev.5.3 / zmierzone 256 KiB Flash. BOOT, instalator SD, aplikacja oryginalna i aplikacja MCU Klippera pełnią odrębne role. Wydanie 1.4 jest sprawdzane programowo, a właściciel potwierdził na drukarce instalację FACTORY, UPGRADE i ST-Link; zgłoszenie zapisano 09.11.2026. [Odbiór właściciela](../../reports/v1.4/HARDWARE_ACCEPTANCE.json) jest osobny od dawnych raportów archiwalnej 1.3.1.
 
@@ -20,3 +20,5 @@ M300Boot **1.4** jest przeznaczony dla zakwalifikowanego profilu klasycznej M300
 Dokładnie pięć prędkości UART: **115200, 250000, 500000, 750000, 1500000**. Domyślnie **250000 / bootwait OFF**. Zacznij od kopii, wybierz drogę instalacji, zakończ zapis BOOT, a następnie jawnie przywróć docelową aplikację APP. Starsze wydania zachowano jako archiwum.
 
 [Wszystkie wersje](../README.md) · [Projekt](../../../README_PL.md)
+
+[Archiwalne wydanie 1.4; bieżąca dokumentacja 1.4.1](../v1.4.1/README.md).

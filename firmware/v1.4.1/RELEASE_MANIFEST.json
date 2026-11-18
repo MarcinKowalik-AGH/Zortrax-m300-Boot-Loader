@@ -1,0 +1,69 @@
+{
+  "version": "1.4.1",
+  "installer": "1.4.1",
+  "date": "2026-11-18",
+  "scope": "single qualified device profile retained; classic M300 HW05 Rev.5.3 256 KiB; no new UID/profile qualification inferred from owner reports",
+  "publication": "binary firmware, operational host tools, EN/PL docs; no private dumps or firmware sources",
+  "target_stage2_sha256": "c4dbbc6a1bc013aaa4c7bc1a0f05f50b1d6b4e133c9b4eae5456f7c0dfe81bc6",
+  "target_assets_sha256": "4bd51e13ed757b5bfad9e0e6b9e8d7dc272557d9dbe6d2f0408d99e41453967d",
+  "hardware_tested": false,
+  "owner_confirmed_hardware": {
+    "FACTORY": false,
+    "UPGRADE": false,
+    "STLINK": false
+  },
+  "baseline_hardware_evidence": "Owner reports approximately two weeks on baseline 1.4; this does not qualify new 1.4.1 firmware on hardware.",
+  "baud_menu": [
+    115200,
+    250000,
+    500000,
+    750000,
+    1500000
+  ],
+  "unsupported_legacy_saved_baud": [
+    19200,
+    57600,
+    1000000
+  ],
+  "default_baud": 250000,
+  "default_uart_on_bootwait": false,
+  "firmware_binaries_rebuilt_for_publication": true,
+  "prior_v11_assets_unchanged": true,
+  "prior_v131_assets_unchanged": true,
+  "prior_v14_assets_unchanged": true,
+  "compiler": "Ubuntu clang version 19.1.1 (1ubuntu1~24.04.2)",
+  "stage2_code_slack_bytes": 24,
+  "assets_slack_bytes": 4764,
+  "recovery_helpers_gap": {
+    "start": "0x08001184",
+    "end_exclusive": "0x0800127C",
+    "bytes": 248
+  },
+  "fixed_oem_hook": "0x08001304",
+  "boot_entry": "0x08001311",
+  "audit_report": "../../docs/reports/v1.4.1/AUDIT_2026-11-18.json",
+  "assets": [
+    {
+      "name": "M300Boot_v1.4.1_SD_FACTORY_OEMV3.zip",
+      "bytes": 186480,
+      "sha256": "c744294cd726242268422b3f37cf31384d8859f1e3bd0d34e0d0b4dd37df8c08"
+    },
+    {
+      "name": "M300Boot_v1.4.1_SD_UPGRADE.zip",
+      "bytes": 148340,
+      "sha256": "ed711a6ec8fad4a266a0cf24851fbea63b75996375e7227fe7144bdcad7f24b7"
+    },
+    {
+      "name": "M300Boot_v1.4.1_STLINK.zip",
+      "bytes": 88710,
+      "sha256": "0071a7d0217822219b3cffef6cdd399d433187260f67dba6e41860d664fb31a9"
+    },
+    {
+      "name": "M300_BACKUP_0.5.5_UART.zip",
+      "bytes": 30476,
+      "sha256": "61a72b7e296c2b3066324aa0352bea2c86c760673cb0b5c4536e7b065cf02149"
+    }
+  ],
+  "boot_installer_tests_rerun": 2992,
+  "boot_installer_tests_skipped": 34
+}

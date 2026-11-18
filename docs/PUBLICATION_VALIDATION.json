@@ -1,6 +1,11 @@
 {
-  "current_version": "1.3.1",
-  "current_report": "reports/v1.3.1/PUBLICATION_VALIDATION.json",
-  "archived_report": "reports/v1.1/PUBLICATION_VALIDATION.json",
+  "current_version": "1.4.1",
+  "current_report": "reports/v1.4.1/AUDIT_2026-11-18.json",
+  "hardware_status": "reports/v1.4.1/HARDWARE_STATUS.json",
+  "archived_reports": [
+    "reports/v1.4/PUBLICATION_VALIDATION.json",
+    "reports/v1.3.1/PUBLICATION_VALIDATION.json",
+    "reports/v1.1/PUBLICATION_VALIDATION.json"
+  ],
   "documentation_map": "DOCUMENTATION_MAP.json"
 }

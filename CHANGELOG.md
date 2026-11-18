@@ -2,6 +2,16 @@
 
 [English](CHANGELOG.md) · [Polski](docs/pl/changelog.md)
 
+## 1.4.1 — 2026-11-18
+
+- Fixed the APP retry dead end after an interrupted metadata commit: the same verified candidate, recognized torn record, matching complete Flash payload and fresh physical confirmation are required. Incomplete commits still block launch; unrelated records and damaged APP remain refused.
+- Rebuilt BOOT and installer as 1.4.1. Recovery checks use the existing vector-to-OEM-hook gap; the fixed hook, APP base, programming slots, OEM prefix, NVM and setting journals remain protected.
+- Hardened service-card preparation to reject invalid existing destinations before creating missing templates. Fixed serial/log cleanup on connection failures and exact console version/board-response validation. Matching current tools are provided; 1.4 tools remain archived.
+- Retained exactly 115200/250000/500000/750000/1500000, default 250000 / bootwait OFF. 1000000 was already removed in 1.4; 10000000 is unsupported. Supported saved codes and explicit older-APP migration remain.
+- Updated all three variants: FACTORY, UPGRADE and STLINK, with complete EN/PL manuals, package instructions, direct downloads, manifests, checksums and current native C OLED renders.
+- Evidence is separated: the owner reports approximately two weeks of using baseline 1.4 and its previously accepted installation routes; the new 1.4.1 patch has offline validation dated 2026-11-18, without a two-week hardware-test claim. [Hardware status](docs/reports/v1.4.1/HARDWARE_STATUS.json) · [Audit](docs/reports/v1.4.1/AUDIT_2026-11-18.json).
+- The retry fix needs working BOOT 1.4.1. An older device already stuck in `NO_COMMIT` requires separate recovery review; ordinary ST-Link preflight still requires a valid APP. No automatic power-loss rollback is added. [Bilingual release notes and downloads](RELEASE_NOTES_v1.4.1.md).
+
 ## 1.4 — 2026-11-08
 
 - Owner acceptance recorded 2026-11-09: FACTORY, UPGRADE and ST-Link validated on the printer. Published the unmodified original Zortrax Bootloader v3, with provenance and SHA-256. Installation packages and release tag are unchanged.

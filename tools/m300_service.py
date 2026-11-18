@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""M300Boot v1.4 (rc3-compatible format): receive read-only UART dumps; verify SD backups/logs.
+"""M300Boot v1.4.1 (rc3-compatible format): receive read-only UART dumps; verify SD backups/logs.
 This program has NO erase, Flash programming, OTP-write or option-write command.
 """
 from __future__ import annotations

@@ -1,0 +1,98 @@
+name: Release M300Boot 1.4.1
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'firmware/v1.4.1/**'
+      - '.github/workflows/release-v1.4.1.yml'
+      - 'RELEASE_NOTES_v1.4.1.md'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: release-m300boot-v1.4.1
+  cancel-in-progress: false
+jobs:
+  release:
+    if: github.repository == 'MarcinKowalik-AGH/Zortrax-m300-Boot-Loader'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify all tracked publication checksums
+        run: sha256sum -c SHA256SUMS.txt
+      - name: Run host regressions without serial devices
+        run: python -m unittest discover -s tests -v
+      - name: Validate current and all preserved releases without device access
+        run: python tools/validate_publication.py --json
+      - name: Verify 1.4.1 release assets
+        working-directory: firmware/v1.4.1
+        run: sha256sum -c SHA256SUMS.txt
+      - name: Publish exact verified commit without replacing release assets
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          tag='v1.4.1'
+          if gh release view "$tag" >/dev/null 2>&1; then
+            echo 'Existing release found; its tag and assets will be preserved.'
+          else
+            if object="$(gh api "repos/$GH_REPO/git/ref/tags/$tag" --jq '.object | .type + " " + .sha' 2>/dev/null)"; then
+              read -r object_type object_sha <<< "$object"
+              for attempt in 1 2 3 4 5; do
+                if [[ "$object_type" != 'tag' ]]; then break; fi
+                object="$(gh api "repos/$GH_REPO/git/tags/$object_sha" --jq '.object | .type + " " + .sha')"
+                read -r object_type object_sha <<< "$object"
+              done
+              if [[ "$object_type" != 'commit' || "$object_sha" != "$GITHUB_SHA" ]]; then
+                echo 'Refusing to publish: existing tag does not identify this verified commit.' >&2
+                exit 1
+              fi
+            else
+              gh api --method POST "repos/$GH_REPO/git/refs" \
+                -f "ref=refs/tags/$tag" -f "sha=$GITHUB_SHA" >/dev/null
+            fi
+            gh release create "$tag" \
+              firmware/v1.4.1/M300Boot_v1.4.1_SD_FACTORY_OEMV3.zip \
+              firmware/v1.4.1/M300Boot_v1.4.1_SD_UPGRADE.zip \
+              firmware/v1.4.1/M300Boot_v1.4.1_STLINK.zip \
+              firmware/v1.4.1/M300_BACKUP_0.5.5_UART.zip \
+              firmware/v1.4.1/SHA256SUMS.txt \
+              firmware/v1.4.1/RELEASE_MANIFEST.json \
+              --verify-tag --target "$GITHUB_SHA" \
+              --title 'M300Boot 1.4.1' \
+              --notes-file RELEASE_NOTES_v1.4.1.md --latest
+          fi
+          # Download and compare even when the release already existed. A
+          # mismatched/missing asset is an error, never a reason to overwrite it.
+          release_check_dir="$(mktemp -d)"
+          trap 'rm -rf "$release_check_dir"' EXIT
+          gh release download "$tag" --dir "$release_check_dir"
+          python - "$release_check_dir" <<'PY'
+          from pathlib import Path
+          import sys
+          remote = Path(sys.argv[1])
+          local = Path('firmware/v1.4.1')
+          expected = {
+              'M300Boot_v1.4.1_SD_FACTORY_OEMV3.zip',
+              'M300Boot_v1.4.1_SD_UPGRADE.zip',
+              'M300Boot_v1.4.1_STLINK.zip',
+              'M300_BACKUP_0.5.5_UART.zip',
+              'SHA256SUMS.txt', 'RELEASE_MANIFEST.json',
+          }
+          if {p.name for p in remote.iterdir()} != expected:
+              raise SystemExit('Release asset set differs from the verified six files')
+          for name in sorted(expected):
+              if (remote / name).read_bytes() != (local / name).read_bytes():
+                  raise SystemExit('Published asset differs: ' + name)
+          print('PASS: all six published assets match the verified commit byte for byte')
+          PY
+          gh release edit "$tag" --title 'M300Boot 1.4.1' \
+            --notes-file RELEASE_NOTES_v1.4.1.md --latest
+          echo 'Published bytes verified; existing tags and assets were not replaced.'

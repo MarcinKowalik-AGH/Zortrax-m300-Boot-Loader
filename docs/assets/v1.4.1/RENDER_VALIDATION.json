@@ -1,0 +1,16 @@
+{
+  "result": "PASS",
+  "version": "1.4.1",
+  "screens": 29,
+  "native_pngs": 29,
+  "enlarged_pngs": 29,
+  "actual_c_renderer_executed": true,
+  "current_source_headers_verified": true,
+  "actual_boot_menu_api_executed": true,
+  "actual_confirmation_prompts_executed": true,
+  "synthetic_invalid_hardware_fixture": true,
+  "png_readbacks_verified": true,
+  "hardware_test": false,
+  "private_device_data": false,
+  "manifest_sha256": "538fb160ad87ec76b1ea266d92524a1b92ba683fd061efe76409553cb3c822d2"
+}
