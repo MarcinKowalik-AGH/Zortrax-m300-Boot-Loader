@@ -15,7 +15,8 @@ concurrency:
 jobs:
   release:
     if: github.repository == 'MarcinKowalik-AGH/Zortrax-m300-Boot-Loader'
-    runs-on: ubuntu-latest
+    # Pin the OS: Python 3.9 is unavailable on the moving Ubuntu 26.04 latest image.
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v4
         with:
