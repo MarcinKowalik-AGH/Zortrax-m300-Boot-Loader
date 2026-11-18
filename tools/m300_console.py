@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""M300Boot v1.4.1 host: fixed port configuration, paced read-only commands.
+"""M300Boot v1.5 host: fixed port configuration, paced read-only commands.
 No RDP/WRP change, no flash/program/BOOT/REBOOT command. Python3.9 + pyserial.
 """
 from __future__ import annotations
@@ -72,9 +72,9 @@ class Link:
   if not ready:raise TimeoutError('Brak READY M300Boot. Nie wgrywaj nic ponownie; zachowaj log.')
   self.send('ECHO OFF');r=self.response(required=b'DONE ECHO_OFF')
   if b'DONE ECHO_OFF'not in r:raise RuntimeError('Brak potwierdzenia ECHO OFF')
-  self.send('INFO');r=self.response(required=b'M300BOOT v1.4.1');info=b'\n'.join(r)
+  self.send('INFO');r=self.response(required=b'M300BOOT v1.5');info=b'\n'.join(r)
   for line in r:print('UART:',line.decode(errors='replace'))
-  if b'M300BOOT v1.4.1'not in r or b'BOARD_CHECK OK'not in r:raise RuntimeError('Niepotwierdzony M300Boot v1.4.1 / hardware')
+  if b'M300BOOT v1.5'not in r or b'BOARD_CHECK OK'not in r:raise RuntimeError('Niepotwierdzony M300Boot v1.5 / hardware')
   self.send('PING');p=self.response(required=b'PONG ')
   if not any(x.startswith(b'PONG ')for x in p):raise RuntimeError('Brak PONG')
   return info.decode('ascii','replace')
@@ -116,11 +116,11 @@ def choose_port(explicit):
 def main(argv=None):
  ap=argparse.ArgumentParser(description=__doc__);ap.add_argument('--port');ap.add_argument('--baud',type=int,choices=RATES,default=250000);ap.add_argument('--dump-all',action='store_true');ap.add_argument('--out',type=Path);a=ap.parse_args(argv)
  stamp=datetime.datetime.now().strftime('%Y%m%d_%H%M%S')+'_'+uuid.uuid4().hex[:6]
- out=a.out or Path.home()/'Desktop'/('M300Boot_V141_'+stamp);out.mkdir(parents=True,exist_ok=False)
- link=None;result={'status':'STARTED','firmware':'M300Boot v1.4.1','hardware_flashing':False}
+ out=a.out or Path.home()/'Desktop'/('M300Boot_V15_'+stamp);out.mkdir(parents=True,exist_ok=False)
+ link=None;result={'status':'STARTED','firmware':'M300Boot v1.5','hardware_flashing':False}
  try:
-  port=choose_port(a.port);link=Link(port,a.baud,out);print('PORT OTWARTY:',port,a.baud,'8N1. Pozostan w menu M300Boot v1.4.1. Konsola tylko odczytuje.',flush=True)
-  result['info']=link.handshake();result['status']='PASS_CONSOLE_V141'
+  port=choose_port(a.port);link=Link(port,a.baud,out);print('PORT OTWARTY:',port,a.baud,'8N1. Pozostan w menu M300Boot v1.5. Konsola tylko odczytuje.',flush=True)
+  result['info']=link.handshake();result['status']='PASS_CONSOLE_V15'
   if a.dump_all:
    files={}
    for name in REGIONS:
@@ -132,7 +132,7 @@ def main(argv=None):
    for region,start in [('BOOT',0),('NVM',0x3e000),('FACTORY',0x3f800)]:
     b=(out/(region+'_A.bin')).read_bytes()
     if flash[start:start+len(b)]!=b:raise ValueError('FLASH differs from '+region)
-   result.update(status='PASS_V141_BACKUP_X2',files=files)
+   result.update(status='PASS_V15_BACKUP_X2',files=files)
   print(result['status'],flush=True)
  except KeyboardInterrupt:result.update(status='INTERRUPTED');print('Przerwano bez zapisu MCU.')
  except Exception as e:result.update(status='FAIL',error=str(e));print('FAIL:',e)

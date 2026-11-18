@@ -1,0 +1,51 @@
+{
+  "result": "PASS",
+  "from": "1.4.1",
+  "to": "1.5",
+  "unchanged_production_c_headers": 90,
+  "changed_files": [
+    {
+      "path": "source/include/ib.h",
+      "before_sha256": "3c24d25348f3202b5dbaae285a49dd4ed791d74e63b172ff7d5ad646b5a36bd8",
+      "after_sha256": "77d956b71e4f133c37c5742aa9dcede1a4595c930eaaa8462de463f4de8e4f7f"
+    },
+    {
+      "path": "firmware/src/images.c",
+      "before_sha256": "a2557b63bec6deed75028da518e320038aa300e5a79d434849d7c8979dc44ead",
+      "after_sha256": "272f9821af3e584e6df65c07d590e3c8e78c9f6c1806812e911c08e634f33787"
+    },
+    {
+      "path": "firmware/src/main.c",
+      "before_sha256": "2d2bbab81b30a909cb5a5516c10a63b970209afd4ff8d8bfbf62630e8a31e9d5",
+      "after_sha256": "0d8c002a6b34277b4d83b07eb729ea4a288a8cbd4f36d939ca0ee9c8d0c9a523"
+    },
+    {
+      "path": "firmware/src/policy.c",
+      "before_sha256": "fa6e0e7dd416c366402e0986feeed680e35d7392dbc84badc3ed9358940d6572",
+      "after_sha256": "abe87a6acf47d3068253aa167592bbd15ae131d9cfb1ccfead3fb9bbf0cc5c40"
+    },
+    {
+      "path": "firmware/include/ib.h",
+      "before_sha256": "81a2e851d3f59c3338a48ae4def237b114476139e5fe81485edb2619a740b534",
+      "after_sha256": "047a1119db351677acbbcfab3971db36ea9fee24e7eaa1f4c01b5d4cceb8bbd3"
+    }
+  ],
+  "allowed_changes": "Literal release identities and INSTALL V15 command; regenerated embedded target images and appended 1.5 allowlist entry.",
+  "all_previous_policy_rows_preserved": 11,
+  "upgrade_source_versions": [
+    "1.0-rc1",
+    "1.0-rc2",
+    "1.0-rc3",
+    "1.1",
+    "1.1-u1",
+    "1.2",
+    "1.2.1",
+    "1.3",
+    "1.3.1",
+    "1.4",
+    "1.4.1",
+    "1.5"
+  ],
+  "linker_scripts_unchanged": true,
+  "scope": "No intentional behavioral change from the already audited 1.4.1 recovery and host fixes."
+}

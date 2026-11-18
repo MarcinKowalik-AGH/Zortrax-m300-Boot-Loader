@@ -2,6 +2,14 @@
 
 [English](../../CHANGELOG.md) · [Polski](changelog.md)
 
+## 1.5 — 18.11.2026
+
+- Przebudowano stały BOOT i instalator SD jako 1.5, łącznie z nagłówkiem startowym OLED, wersją About, tytułem instalatora, bannerami UART i kontrolowaną komendą `INSTALL V15`. Wydanie 1.4.1 i jego załączniki zachowano w archiwum z pierwotną tożsamością.
+- Zachowano poprawki audytu 1.4.1: ograniczone ponowienie tej samej APP po przerwanym zapisie metadanych, kontrolę karty przed tworzeniem plików, dokładną identyfikację konsoli i zachowanie logów/manifestu po błędach połączenia lub zamykania. Pozostają chronione obszary, kwalifikacja urządzenia i fizyczna zgoda.
+- Udostępniono zgodne paczki FACTORY, UPGRADE i STLINK, komplet instrukcji EN/PL oraz nowe rendery OLED z kodu C wersji 1.5. [Dwujęzyczny opis i pobieranie](../../RELEASE_NOTES_v1.5.md).
+- UART nadal oferuje tylko 115200/250000/500000/750000/1500000; domyślnie 250000 / bootwait OFF. 1000000 usunięto w 1.4 i pozostaje nieobsługiwane, tak samo jak 10000000.
+- Osobno zapisano walidację przebudowanego wydania 1.5. Około dwóch tygodni zgłoszonych przez właściciela pozostaje historią bazowej 1.4, nie tej kompilacji. [Bieżący audyt](../reports/v1.5/AUDIT_2026-11-18.json) · [Status sprzętowy](../reports/v1.5/HARDWARE_STATUS.json).
+
 ## 1.4.1 — 18.11.2026
 
 - Usunięto blokadę ponowienia APP po przerwanym zapisie metadanych: wymagane są ta sama zweryfikowana paczka, rozpoznany przerwany rekord, zgodność całej APP we Flash i nowe fizyczne potwierdzenie. Niepełny commit nadal blokuje start; obce rekordy i uszkodzona APP powodują odmowę.

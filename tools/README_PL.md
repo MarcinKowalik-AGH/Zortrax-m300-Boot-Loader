@@ -1,4 +1,4 @@
-# Publiczne narzędzia hosta — M300Boot 1.4.1
+# Publiczne narzędzia hosta — M300Boot 1.5
 
 [English](README.md) · [Polski](README_PL.md)
 
@@ -6,7 +6,7 @@ Python **3.9+**. pySerial jest wymagany tylko dla UART. Dopasuj aktywną prędko
 
 | File | Zastosowanie |
 |---|---|
-| `KONSOLA_M300_v1.4.1.command`, `m300_console.py` | Odczyt wersji 1.4.1, płyty, PING i par zrzutów |
+| `KONSOLA_M300_v1.5.command`, `m300_console.py` | Odczyt wersji 1.5, płyty, PING i par zrzutów |
 | `m300_service.py` | Zrzuty UART, kontrola kopii i historii |
 | `ibtool.py` | Kontrola/pakowanie M3B; sprawdzenie UART, jawna aktualizacja --update |
 | `verify_sd_i2.py` | Bieżące sześcioplikowe karty i gotowe kopie |
@@ -21,8 +21,8 @@ python3 tools/stlink_preflight.py --help
 python3 tools/ibtool.py --help
 ```
 
-Archiwalne launchery i generatory 1.1/1.3.1/1.4 zachowują pierwotny numer. W szczególności prepare_stlink.py buduje 1.1, nie 1.4.1. Nie przygotowuj bieżącego BOOT historycznym generatorem. Aktualna konsola oczekuje 1.4.1. Własne kopie, UID/opcje, plany i logi pozostają prywatne.
+Archiwalne launchery i generatory 1.1/1.3.1/1.4/1.4.1 zachowują pierwotny numer. W szczególności prepare_stlink.py buduje 1.1, nie 1.5. Nie przygotowuj bieżącego BOOT historycznym generatorem. Aktualna konsola oczekuje 1.5. Własne kopie, UID/opcje, plany i logi pozostają prywatne.
 
-[UART](../docs/pl/v1.4.1/uart-examples.md) · [ST-Link](../docs/pl/v1.4.1/stlink-and-recovery.md) · [Wszystkie instrukcje](../docs/pl/README.md).
+[UART](../docs/pl/v1.5/uart-examples.md) · [ST-Link](../docs/pl/v1.5/stlink-and-recovery.md) · [Wszystkie instrukcje](../docs/pl/README.md).
 
 Pomocnik karty serwisowej sprawdza rozmiary i typy plików przed tworzeniem czegokolwiek; zachowuje istniejące pliki i nie potwierdza ich zawartości. Integralność gotowych kopii sprawdź odpowiednim weryfikatorem. Błąd połączenia UART zamyka częściowo otwarte logi i nie nadpisuje wcześniejszych dzienników.

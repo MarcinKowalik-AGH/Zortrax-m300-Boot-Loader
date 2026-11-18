@@ -2,6 +2,14 @@
 
 [English](CHANGELOG.md) · [Polski](docs/pl/changelog.md)
 
+## 1.5 — 2026-11-18
+
+- Rebuilt permanent BOOT and the SD intermediary as 1.5, including the OLED startup header, About version, installer title, UART banners and guarded `INSTALL V15` command. The 1.4.1 release and assets remain archived with their original identities.
+- Retained the audited 1.4.1 fixes: constrained same-APP retry after an interrupted metadata commit, service-card preflight, exact console identity checks and log/manifest retention on connection or close errors. Protected ranges, device qualification and physical confirmation remain.
+- Published matching FACTORY, UPGRADE and STLINK packages, complete EN/PL guides and new native C OLED renders for 1.5. [Bilingual release notes and downloads](RELEASE_NOTES_v1.5.md).
+- UART still offers only 115200/250000/500000/750000/1500000; default 250000 / bootwait OFF. 1000000 was removed in 1.4 and remains unsupported, as does 10000000.
+- Recorded separate validation for the rebuilt 1.5 release. The owner's approximately two-week history remains evidence for baseline 1.4, not this build. [Current audit](docs/reports/v1.5/AUDIT_2026-11-18.json) · [Hardware status](docs/reports/v1.5/HARDWARE_STATUS.json).
+
 ## 1.4.1 — 2026-11-18
 
 - Fixed the APP retry dead end after an interrupted metadata commit: the same verified candidate, recognized torn record, matching complete Flash payload and fresh physical confirmation are required. Incomplete commits still block launch; unrelated records and damaged APP remain refused.

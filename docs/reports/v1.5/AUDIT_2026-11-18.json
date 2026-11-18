@@ -1,0 +1,86 @@
+{
+  "result": "PASS",
+  "version": "1.5",
+  "date": "2026-11-18",
+  "timezone": "Europe/Warsaw",
+  "previous_version": "1.4.1",
+  "previous_release_commit": "b542ff65bb74e8f7bf1cb81747c2f5904051ca2f",
+  "baseline_repository_commit": "69402e138176f6ab44f101c8d9a1fc9f903a75a5",
+  "change": "Renumber the reviewed firmware to 1.5 at the user request, including both compiled OLED trees, UART identities, INSTALL V15, launchers, archive names and complete EN/PL documentation.",
+  "inherited_fixes": "../v1.4.1/AUDIT_2026-11-18.json",
+  "source_change_review": "VERSION_TRANSITION.json",
+  "hardware_access_performed": false,
+  "new_firmware_hardware_tested": false,
+  "hardware_evidence": "HARDWARE_STATUS.json",
+  "oled": {
+    "boot_header": "M300 boot v1.5",
+    "boot_about": "Version v1.5",
+    "installer_title": "SD installer 1.5",
+    "both_header_macros_version": "1.5",
+    "images_from_current_C_renderer": true
+  },
+  "uart": {
+    "supported_baud": [
+      115200,
+      250000,
+      500000,
+      750000,
+      1500000
+    ],
+    "default": 250000,
+    "1000000_and_10000000_selectable": false
+  },
+  "validation": {
+    "private_regression": {
+      "passed": 2998,
+      "skipped": 34,
+      "failures": 0,
+      "errors": 0,
+      "report": "REGRESSION_SUMMARY.json"
+    },
+    "independent_clean_rebuild": {
+      "checks": 59,
+      "result": "PASS",
+      "report": "REPRODUCIBLE_BUILD.json"
+    },
+    "compiled_arm_predicate": {
+      "cases": 105,
+      "result": "PASS",
+      "report": "COMPILED_ARM_RECOVERY.json",
+      "full_boot_or_physical_flash_emulation": false
+    },
+    "public_host_regressions": {
+      "tests": 13,
+      "result": "PASS",
+      "command": "python3 -m unittest discover -s tests -v",
+      "serial_device_opened": false
+    },
+    "oled_renders": {
+      "screens": 29,
+      "png_files": 58,
+      "result": "PASS",
+      "manifest": "../../assets/v1.5/RENDER_MANIFEST.json",
+      "synthetic_hardware_inputs": true
+    },
+    "publication": {
+      "result": "PASS",
+      "report": "PUBLICATION_VALIDATION.json",
+      "checks": 193,
+      "historical_asset_and_documentation_checks_included": true
+    }
+  },
+  "memory": {
+    "fixed_oem_hook": "0x08001304",
+    "reset_entry": "0x8001311",
+    "stage2_code_slack_bytes": 24,
+    "assets_slack_bytes": 4776,
+    "original_slot_boundaries_preserved": true
+  },
+  "installation_variants": [
+    "SD_FACTORY_OEMV3",
+    "SD_UPGRADE",
+    "STLINK"
+  ],
+  "previous_release_assets_preserved": true,
+  "public_content": "Compiled distributables, operational tools and EN/PL manuals; private firmware sources and personal Flash/identity material remain excluded."
+}

@@ -21,4 +21,4 @@ Dokładnie pięć prędkości UART: **115200, 250000, 500000, 750000, 1500000**.
 
 [Wszystkie wersje](../README.md) · [Projekt](../../../README_PL.md)
 
-[Archiwalne wydanie 1.4; bieżąca dokumentacja 1.4.1](../v1.4.1/README.md).
+[Archiwalne wydanie 1.4; bieżąca dokumentacja 1.5](../v1.5/README.md).

@@ -25,7 +25,7 @@ import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
 FW = ROOT / 'firmware/v1.4.1'
-HOST = ROOT / 'tools'
+HOST = ROOT / 'tools/archive/v1.4.1'
 VERSION = '1.4.1'
 RATES = (115200, 250000, 500000, 750000, 1500000)
 DEFAULT_BAUD = 250000
@@ -426,8 +426,8 @@ def main(argv=None):
         c.ok(all(path.is_file() and path.stat().st_size > 500 for path in pair), 'Substantive EN/PL manual pair: ' + name, 'docs')
         c.ok('/pl/' in pair[0].read_text() and '/en/' in pair[1].read_text(), 'Manual language navigation: ' + name, 'docs')
         manuals.extend(pair)
-    roots = [ROOT / name for name in ('README.md', 'README_PL.md', 'RELEASE_NOTES_v1.4.1.md')]
-    c.ok(all(path.is_file() for path in roots), 'Current release entry pages', 'docs')
+    roots = [ROOT / name for name in ('docs/en/v1.4.1/README.md', 'docs/pl/v1.4.1/README.md', 'RELEASE_NOTES_v1.4.1.md')]
+    c.ok(all(path.is_file() for path in roots), 'Preserved 1.4.1 release entry pages', 'docs')
     for path in roots:
         text = path.read_text()
         c.ok('1.4.1' in text and all(name in text for name in INSTALL_ZIPS.values()), 'Version and three direct package links: ' + path.name, 'docs')

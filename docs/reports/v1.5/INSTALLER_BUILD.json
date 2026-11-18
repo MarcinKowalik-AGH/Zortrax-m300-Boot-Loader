@@ -1,0 +1,45 @@
+{
+  "version": "1.5",
+  "OEM_version": "9.8.7",
+  "application_bytes": 102428,
+  "Update_bytes": 102485,
+  "entry": "0x800813d",
+  "end": "0x802101c",
+  "segments": [
+    {
+      "vaddr": "0x8008000",
+      "paddr": "0x8008000",
+      "file_bytes": 316,
+      "memory_bytes": 316,
+      "flags": 4
+    },
+    {
+      "vaddr": "0x800813c",
+      "paddr": "0x800813c",
+      "file_bytes": 101464,
+      "memory_bytes": 101464,
+      "flags": 5
+    },
+    {
+      "vaddr": "0x20000000",
+      "paddr": "0x8020d94",
+      "file_bytes": 648,
+      "memory_bytes": 648,
+      "flags": 7
+    },
+    {
+      "vaddr": "0x20000400",
+      "paddr": "0x20000400",
+      "file_bytes": 0,
+      "memory_bytes": 36068,
+      "flags": 6
+    }
+  ],
+  "tail20": "1f9acbe89d0a8675cb8304046acf1248d1202651",
+  "sha256_update": "10a7414968e747f6544bde5d871ff7b9710deb3f7c8f41a7f78fd0a861155e05",
+  "sha256_app": "0aff4ff8bbce389421eaff48de941e61af57f0bb54016e4c0b3413a3f2d16a74",
+  "sha256_m3b": "a87f3ac0968d7b3e1bee684501ae852a11b10ee3d18ce1ce59e7e202b67fdaec",
+  "M3B_bytes": 102492,
+  "hardware_tested": false,
+  "compiler": "Ubuntu clang version 19.1.1 (1ubuntu1~24.04.2)"
+}

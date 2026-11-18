@@ -192,13 +192,15 @@ class ConsoleProtocolTests(unittest.TestCase):
             return link.handshake()
 
     def test_exact_current_info_and_board_identity_are_accepted(self):
-        self.assertIn('v1.4.1', self.handshake([b'M300BOOT v1.4.1', b'BOARD_CHECK OK']))
+        self.assertIn('v1.5', self.handshake([b'M300BOOT v1.5', b'BOARD_CHECK OK']))
 
     def test_prefix_versions_and_decorated_board_results_are_rejected(self):
-        for info in ([b'M300BOOT v1.4.10', b'BOARD_CHECK OK'],
+        for info in ([b'M300BOOT v1.50', b'BOARD_CHECK OK'],
+                     [b'M300BOOT v1.5.1', b'BOARD_CHECK OK'],
+                     [b'M300BOOT v1.4.1', b'BOARD_CHECK OK'],
                      [b'M300BOOT v1.4', b'BOARD_CHECK OK'],
-                     [b'NOT M300BOOT v1.4.1', b'BOARD_CHECK OK'],
-                     [b'M300BOOT v1.4.1', b'NOT BOARD_CHECK OK']):
+                     [b'NOT M300BOOT v1.5', b'BOARD_CHECK OK'],
+                     [b'M300BOOT v1.5', b'NOT BOARD_CHECK OK']):
             with self.subTest(info=info), self.assertRaisesRegex(RuntimeError, 'Niepotwierdzony'):
                 self.handshake(info)
 
@@ -206,7 +208,7 @@ class ConsoleProtocolTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             out = Path(tmp) / 'session'
             link = mock.Mock()
-            link.handshake.return_value = 'M300BOOT v1.4.1\nBOARD_CHECK OK'
+            link.handshake.return_value = 'M300BOOT v1.5\nBOARD_CHECK OK'
             link.close.side_effect = OSError('injected close failure')
             with mock.patch.object(m300_console, 'Link', return_value=link), contextlib.redirect_stdout(io.StringIO()):
                 code = m300_console.main(['--port', 'FAKE_UART_NO_DEVICE', '--out', str(out)])

@@ -2,7 +2,7 @@
 
 [English](../../en/v1.4.1/README.md) · [Polski](../../pl/v1.4.1/README.md) · [Index](README.md)
 
-**Current release: 1.4.1.** Service bootloader for the qualified classic Zortrax M300 profile: HW05 / PCB Rev.5.3 / measured 256 KiB Flash.
+**Archived release: 1.4.1.** Service bootloader for the qualified classic Zortrax M300 profile: HW05 / PCB Rev.5.3 / measured 256 KiB Flash.
 
 On 2026-11-18 the owner reported about **two weeks of using baseline 1.4**; earlier acceptance of that version covered FACTORY, UPGRADE and ST-Link. **1.4.1 contains a new fix and has separate offline validation in this audit. It is not described as having two weeks of hardware testing.** [Evidence scope](tested-hardware.md) · [Audit results](validation.md).
 
@@ -33,3 +33,5 @@ Version 1.4.1 corrects controlled reinstallation of the same APP image after an 
 Exactly five UART rates: **115200, 250000, 500000, 750000, 1500000**, 8N1. **1000000 and 10000000 are not supported choices.** The 1000000 option was already removed in 1.4; 1.4.1 retains that decision. Default **250000 / bootwait OFF**. The owner's Orange Pi divisor incompatibility report is the reason to keep 1000000 off the list; choose a supported value that matches the particular host configuration.
 
 SD installation replaces APP with the intermediary: explicitly restore stock or a matching Klipper application after installing BOOT. ST-Link writes two BOOT segments and preserves APP. The original APP in `RESTORE.BIN` remains **Zortrax 1.3.1**; extra backup diagnostic **0.5.5** is a separate tool, not a fourth installation route. [Baseline 1.4 archive](../v1.4/README.md).
+
+[Current 1.5 documentation](../v1.5/README.md). The 1.4.1 tag and download bytes retain their published identities.

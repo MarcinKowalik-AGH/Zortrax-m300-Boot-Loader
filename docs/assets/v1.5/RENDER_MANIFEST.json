@@ -1,0 +1,1874 @@
+{
+  "version": "1.5",
+  "native_dimensions": [
+    256,
+    64
+  ],
+  "enlarged_dimensions": [
+    1024,
+    256
+  ],
+  "palette": {
+    "background": "#000000",
+    "full_brightness": "#00FFFF",
+    "levels": 16
+  },
+  "scaling": "nearest neighbour, factor 4",
+  "original_font": "packed M300 stock bitmap pixels from ui_glyphs.h; no replacement font",
+  "hardware_test": false,
+  "private_device_data": false,
+  "fixture_provenance": {
+    "manifest": "docs/assets/v1.4/RENDER_MANIFEST.json",
+    "sha256": "7f61e25edcc480c06dd1abd59d99d4fe9542f814e54b736d020ef222427370da",
+    "use": "Screen names and deterministic inputs only; native code supplies current glyphs, headers, menus and confirmation prompts."
+  },
+  "source_sha256": {
+    "firmware/include/confirm_input.h": "d7f6d3a9bf1d5e4634f44660b4e82f2a557a73e5db7829d9daf3357597cbdcd8",
+    "firmware/include/device_info.h": "e02ad090884dfe9cba0e404ded62d9c90569fdb574c1983bfeb665d8e7b745ad",
+    "firmware/include/ib.h": "047a1119db351677acbbcfab3971db36ea9fee24e7eaa1f4c01b5d4cceb8bbd3",
+    "firmware/include/menu_view.h": "332b9ee3872fb8a3622b5bd8e2bcc188b7bdfcc119a5a44a8d21d038292fdf5f",
+    "firmware/include/oled_render.h": "82487ad217591e5e7b155a3101fd87d13995084de3c703cdbfe1956db1d4b2de",
+    "firmware/include/ui_glyphs.h": "d200a4cd231fb2a106a5f11462b71591e6a56518898ff4a43dbcd801fa5c690f",
+    "firmware/include/ui_ring.h": "84ebc66d7881ac1832c19eca4c119bc083211388e5ba75b75b6594b83497ffcd",
+    "firmware/src/confirm_input.c": "a750cc1557c7d0543cecd07dcbf47def39f281a3492ee8b861b74b5755601f06",
+    "firmware/src/device_info.c": "964634b2a5797bd68771598206872370fc3e95792f0f05e13853e2746f44b912",
+    "firmware/src/main.c": "0d8c002a6b34277b4d83b07eb729ea4a288a8cbd4f36d939ca0ee9c8d0c9a523",
+    "firmware/src/oled_render.c": "0554dbfef6e44a3d610461134e9274e6a22f57dc36fe445ac558ed01b3db934b",
+    "source/include/device_info.h": "e02ad090884dfe9cba0e404ded62d9c90569fdb574c1983bfeb665d8e7b745ad",
+    "source/include/ib.h": "77d956b71e4f133c37c5742aa9dcede1a4595c930eaaa8462de463f4de8e4f7f",
+    "source/include/menu.h": "a06e4f76a27d8722eae23c04242bdc0e0436d4b74c7148f6d5b5c5f5403ccc15",
+    "source/include/menu_view.h": "332b9ee3872fb8a3622b5bd8e2bcc188b7bdfcc119a5a44a8d21d038292fdf5f",
+    "source/include/oled_render.h": "82487ad217591e5e7b155a3101fd87d13995084de3c703cdbfe1956db1d4b2de",
+    "source/include/ui_glyphs.h": "d200a4cd231fb2a106a5f11462b71591e6a56518898ff4a43dbcd801fa5c690f",
+    "source/include/ui_ring.h": "84ebc66d7881ac1832c19eca4c119bc083211388e5ba75b75b6594b83497ffcd",
+    "source/src/device_info.c": "964634b2a5797bd68771598206872370fc3e95792f0f05e13853e2746f44b912",
+    "source/src/main.c": "0b3a93662bdb971f92d50267e8c53b9efe51f2adfe316322188713a3bff22bcd",
+    "source/src/menu.c": "72f0a1c534bf5db66f2e48443bf6b701e657ffde95c9efeba617f6baeca7dfea",
+    "source/src/oled_render.c": "0554dbfef6e44a3d610461134e9274e6a22f57dc36fe445ac558ed01b3db934b"
+  },
+  "screen_headers": {
+    "BOOT": "M300 boot v1.5 © Marcin Kowalik",
+    "INSTALLER": "M300 boot v1.5 © Marcin Kowalik"
+  },
+  "compiler": "gcc (Debian 14.2.0-19) 14.2.0",
+  "compiler_commands": [
+    [
+      "gcc",
+      "-shared",
+      "-fPIC",
+      "-O2",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-Wno-array-parameter",
+      "-Isource/include",
+      "source/src/oled_render.c",
+      "source/src/device_info.c",
+      "source/src/menu.c",
+      "-o",
+      "build/BOOT.so"
+    ],
+    [
+      "gcc",
+      "-shared",
+      "-fPIC",
+      "-O2",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-Wno-array-parameter",
+      "-Ifirmware/include",
+      "firmware/src/oled_render.c",
+      "firmware/src/device_info.c",
+      "firmware/src/confirm_input.c",
+      "-o",
+      "build/INSTALLER.so"
+    ]
+  ],
+  "screens": [
+    {
+      "name": "BOOT_MAIN_MENU",
+      "variant": "BOOT",
+      "native": "native/BOOT_MAIN_MENU.png",
+      "enlarged": "BOOT_MAIN_MENU.png",
+      "renderer": "ib_oled_render_menu",
+      "menu_source": "source/src/menu.c",
+      "page": 0,
+      "title": "Main menu",
+      "items": [
+        "Start application",
+        "Firmware on SD",
+        "Diagnostics",
+        "About",
+        "Restart",
+        "Backup Flash",
+        "Service history"
+      ],
+      "selected": 0,
+      "first_visible_non_pinned": 0,
+      "fixture": "actual menu code; simulated selection",
+      "framebuffer_sha256": "b8a7f8b9e77fb9b5ae644365540de1f0f3243d3d4f2f3e0598430cba537424c2",
+      "native_png_sha256": "af81ecc34bd090813142106fd8ef87c04a4710c663c294e52f1fabeeb30e7288",
+      "enlarged_png_sha256": "a8c21173fa495535c7ae594bed514135d3def040fe4ba413342719b4da415dcd",
+      "palette_values": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          85,
+          85
+        ],
+        [
+          0,
+          119,
+          119
+        ],
+        [
+          0,
+          255,
+          255
+        ]
+      ]
+    },
+    {
+      "name": "BOOT_FIRMWARE_MENU",
+      "variant": "BOOT",
+      "native": "native/BOOT_FIRMWARE_MENU.png",
+      "enlarged": "BOOT_FIRMWARE_MENU.png",
+      "renderer": "ib_oled_render_menu",
+      "menu_source": "source/src/menu.c",
+      "page": 2,
+      "title": "Firmware on SD",
+      "items": [
+        "Back",
+        "Check SD package",
+        "Install firmware",
+        "Choose firmware file"
+      ],
+      "selected": 1,
+      "first_visible_non_pinned": 1,
+      "fixture": "actual menu code; simulated selection",
+      "framebuffer_sha256": "b5c65473ea23da613252952e5fd44390784bad412bab27345f880ae8f39cf4ac",
+      "native_png_sha256": "8e27e1ed7f2eb7be985da454b9bae6577f57e555c1550dd56d7f41b67f3e55f8",
+      "enlarged_png_sha256": "5ea07c613313b843d5f6724ce9cbbfb091688fc485e17de0645410285b58abff",
+      "palette_values": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          85,
+          85
+        ],
+        [
+          0,
+          119,
+          119
+        ],
+        [
+          0,
+          255,
+          255
+        ]
+      ]
+    },
+    {
+      "name": "BOOT_DIAGNOSTICS_MENU",
+      "variant": "BOOT",
+      "native": "native/BOOT_DIAGNOSTICS_MENU.png",
+      "enlarged": "BOOT_DIAGNOSTICS_MENU.png",
+      "renderer": "ib_oled_render_menu",
+      "menu_source": "source/src/menu.c",
+      "page": 3,
+      "title": "Diagnostics",
+      "items": [
+        "Back",
+        "Verify Flash",
+        "Hardware",
+        "Reset / Recovery",
+        "Clear recovery lock",
+        "Encoder / raw inputs",
+        "Display test",
+        "UART",
+        "SD card info"
+      ],
+      "selected": 7,
+      "first_visible_non_pinned": 5,
+      "fixture": "actual menu code; simulated selection",
+      "framebuffer_sha256": "7b1d348cf9e4eabddb8caabd93529db77655223f05c20a72be0ebc6ebbd04aa2",
+      "native_png_sha256": "17b71daf23492647a759e59374039471c2d1ba595b5bb1d45403c2e1b192eb4d",
+      "enlarged_png_sha256": "af77177af5b4ed8946e7dbff93541562d3a1ef9572b2ab51834194a29af27de2",
+      "palette_values": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          85,
+          85
+        ],
+        [
+          0,
+          119,
+          119
+        ],
+        [
+          0,
+          255,
+          255
+        ]
+      ]
+    },
+    {
+      "name": "BOOT_ABOUT_MENU",
+      "variant": "BOOT",
+      "native": "native/BOOT_ABOUT_MENU.png",
+      "enlarged": "BOOT_ABOUT_MENU.png",
+      "renderer": "ib_oled_render_menu",
+      "menu_source": "source/src/menu.c",
+      "page": 4,
+      "title": "About",
+      "items": [
+        "Back",
+        "© Marcin Kowalik",
+        "mkowalik@agh.edu.pl",
+        "Version v1.5"
+      ],
+      "selected": 3,
+      "first_visible_non_pinned": 1,
+      "fixture": "actual menu code; simulated selection",
+      "framebuffer_sha256": "a455e16511b59f7d062ce993c0e7a467b2dffe2ec9b4d20e64912cdbbc4ce12a",
+      "native_png_sha256": "dd3cf154e90115b0f4140ae89aa4cb17970662c9a97cd6045255d34251bb1cf0",
+      "enlarged_png_sha256": "5e1fc8c990fb95afd45af996baba5d70016532d865346f17435b83a3f03a4297",
+      "palette_values": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          85,
+          85
+        ],
+        [
+          0,
+          119,
+          119
+        ],
+        [
+          0,
+          255,
+          255
+        ]
+      ]
+    },
+    {
+      "name": "UART_MENU",
+      "variant": "BOOT",
+      "native": "native/UART_MENU.png",
+      "enlarged": "UART_MENU.png",
+      "renderer": "ib_oled_render_menu",
+      "menu_source": "source/src/menu.c",
+      "page": 11,
+      "title": "UART",
+      "items": [
+        "Back",
+        "UART test",
+        "UART baud rate",
+        "UART on bootwait: OFF"
+      ],
+      "selected": 2,
+      "first_visible_non_pinned": 1,
+      "fixture": "actual menu code; simulated selection",
+      "framebuffer_sha256": "dd9d20eb7a424e22726df31d863f1a8b1c7f80be384ec5bba04542c33d52ccb1",
+      "native_png_sha256": "5487c8cfdd3298b614d755a13655e30f7e6bd471fa2d392d9d7e561cc122d15c",
+      "enlarged_png_sha256": "e94bbf721ccdc4cebad26ecef8b5dd8d34c38be2664597b044ad21900b5f089c",
+      "palette_values": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          85,
+          85
+        ],
+        [
+          0,
+          119,
+          119
+        ],
+        [
+          0,
+          255,
+          255
+        ]
+      ]
+    },
+    {
+      "name": "UART_BAUD_DEFAULT_250000",
+      "variant": "BOOT",
+      "native": "native/UART_BAUD_DEFAULT_250000.png",
+      "enlarged": "UART_BAUD_DEFAULT_250000.png",
+      "renderer": "ib_oled_render_menu",
+      "menu_source": "source/src/menu.c",
+      "page": 10,
+      "title": "UART baud rate",
+      "items": [
+        "Back",
+        "115200",
+        "250000",
+        "500000",
+        "750000",
+        "1500000"
+      ],
+      "selected": 2,
+      "first_visible_non_pinned": 1,
+      "fixture": "actual menu code; simulated selection",
+      "framebuffer_sha256": "ac7179b1adcfe819b196040f9fb1ba1136f40d54c28ed023fed709b157247e5e",
+      "native_png_sha256": "18267bc250e4f9fe617ff7ba05a05aefa1b4443d81c091fca835fcd2bb67eafc",
+      "enlarged_png_sha256": "0db271deadf95359f93c6a5a589e7e7d10d51e596a2d9d9c695953a21ea4a2df",
+      "palette_values": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          85,
+          85
+        ],
+        [
+          0,
+          119,
+          119
+        ],
+        [
+          0,
+          255,
+          255
+        ]
+      ]
+    },
+    {
+      "name": "UART_BAUD_1500000",
+      "variant": "BOOT",
+      "native": "native/UART_BAUD_1500000.png",
+      "enlarged": "UART_BAUD_1500000.png",
+      "renderer": "ib_oled_render_menu",
+      "menu_source": "source/src/menu.c",
+      "page": 10,
+      "title": "UART baud rate",
+      "items": [
+        "Back",
+        "115200",
+        "250000",
+        "500000",
+        "750000",
+        "1500000"
+      ],
+      "selected": 5,
+      "first_visible_non_pinned": 3,
+      "fixture": "actual menu code; simulated selection",
+      "framebuffer_sha256": "b0cb45ee4f067b5875ef2ee5e15f41c3c53051215b8a65edf3697ab7a978cbb3",
+      "native_png_sha256": "2137f4a38fb5ac21b8d6778f1d9cdf0b6717f41ecc80c8b16e79585be14b39d2",
+      "enlarged_png_sha256": "ad7f871c1d08862b2d477a59ccacbee396acbc5869d0765e6ad3caf6518a7903",
+      "palette_values": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          85,
+          85
+        ],
+        [
+          0,
+          119,
+          119
+        ],
+        [
+          0,
+          255,
+          255
+        ]
+      ]
+    },
+    {
+      "name": "UART_BOOTWAIT_OFF",
+      "variant": "BOOT",
+      "native": "native/UART_BOOTWAIT_OFF.png",
+      "enlarged": "UART_BOOTWAIT_OFF.png",
+      "renderer": "ib_oled_render_menu",
+      "menu_source": "source/src/menu.c",
+      "page": 12,
+      "title": "UART on bootwait",
+      "items": [
+        "Back",
+        "OFF",
+        "ON"
+      ],
+      "selected": 1,
+      "first_visible_non_pinned": 1,
+      "fixture": "actual menu code; simulated selection",
+      "framebuffer_sha256": "9ab37ccde16fa017cbe4569167dab5ade2620a0bd2e84fbdcdda25b93196a55e",
+      "native_png_sha256": "853dd73e3571466994632bca95dc4b5e3a99a116f902ec7109080ab34bf7b833",
+      "enlarged_png_sha256": "c6eb5fab4ef95946de12cd6ddc97d48a8991776d4d8708c4c8139bec92955ec6",
+      "palette_values": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          85,
+          85
+        ],
+        [
+          0,
+          119,
+          119
+        ],
+        [
+          0,
+          255,
+          255
+        ]
+      ]
+    },
+    {
+      "name": "UART_BOOTWAIT_ON",
+      "variant": "BOOT",
+      "native": "native/UART_BOOTWAIT_ON.png",
+      "enlarged": "UART_BOOTWAIT_ON.png",
+      "renderer": "ib_oled_render_menu",
+      "menu_source": "source/src/menu.c",
+      "page": 12,
+      "title": "UART on bootwait",
+      "items": [
+        "Back",
+        "OFF",
+        "ON"
+      ],
+      "selected": 2,
+      "first_visible_non_pinned": 1,
+      "fixture": "actual menu code; simulated selection",
+      "framebuffer_sha256": "2c015d4366c7330bf373198b0be7cc49c6bae966c1862b93a8ddcf220e488b7b",
+      "native_png_sha256": "f3eeddbab547dfd80bba7a913d8ac9828cb72251cafba608e2c464d3e262545c",
+      "enlarged_png_sha256": "0c1b13e732122ea7fb551d7e11a8d0b04187ff7e410bc32e76b8b7b91e147441",
+      "palette_values": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          85,
+          85
+        ],
+        [
+          0,
+          119,
+          119
+        ],
+        [
+          0,
+          255,
+          255
+        ]
+      ]
+    },
+    {
+      "name": "UART_SAVED_250000",
+      "variant": "BOOT",
+      "native": "native/UART_SAVED_250000.png",
+      "enlarged": "UART_SAVED_250000.png",
+      "renderer": "ib_oled_render",
+      "line1": "UART saved to Flash",
+      "line2": "250000",
+      "fixture": "deterministic UI state; no device data",
+      "framebuffer_sha256": "af023fd053936651669d275257d4487e473b2268cc4ad0560afce2fbc28a6ac6",
+      "native_png_sha256": "f9dc36d205e5f245395610a7a44d8d1adbf9fccada25254d76f4a49663cca941",
+      "enlarged_png_sha256": "fa4b431d6ee808005b9214c5c432113edd556ff3a05c7b65ac8f4acd299b1e2c",
+      "palette_values": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          85,
+          85
+        ],
+        [
+          0,
+          255,
+          255
+        ]
+      ]
+    },
+    {
+      "name": "UART_BOOTWAIT_SAVED_OFF",
+      "variant": "BOOT",
+      "native": "native/UART_BOOTWAIT_SAVED_OFF.png",
+      "enlarged": "UART_BOOTWAIT_SAVED_OFF.png",
+      "renderer": "ib_oled_render",
+      "line1": "Bootwait UART saved",
+      "line2": "OFF",
+      "fixture": "deterministic UI state; no device data",
+      "framebuffer_sha256": "84c7fcfc9498d855c8b0a9adfa6a6980063f69c6018c4fac6cf5adbfb6bb1181",
+      "native_png_sha256": "7fd9139e7502b3345f18b8119121e757365517c5e995a815bc94ccbf5c37adaf",
+      "enlarged_png_sha256": "33eb995c9921958a164135c16cfd26ded42c7b54020dae26dbef56a473386a23",
+      "palette_values": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          85,
+          85
+        ],
+        [
+          0,
+          255,
+          255
+        ]
+      ]
+    },
+    {
+      "name": "BOOT_COUNTDOWN",
+      "variant": "BOOT",
+      "native": "native/BOOT_COUNTDOWN.png",
+      "enlarged": "BOOT_COUNTDOWN.png",
+      "renderer": "ib_oled_render_progress",
+      "phase": "Auto start in 5 seconds",
+      "detail": "Knob for service menu",
+      "progress_percent": 0,
+      "fixture": "autostart screen at five seconds remaining; no device start executed",
+      "framebuffer_sha256": "95ade32092b825906bf563211a4979a4137b627c7516b4fe817f4fe11fb088d1",
+      "native_png_sha256": "017b66a7552bb4b35887e5f388ba4c70b403fee8f3900791f741701ff29c3edf",
+      "enlarged_png_sha256": "688f3d5bb089956d166c30d8c0f8d11af4f1463267b944142ed35ad1f3bac8a9",
+      "palette_values": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          17,
+          17
+        ],
+        [
+          0,
+          34,
+          34
+        ],
+        [
+          0,
+          51,
+          51
+        ],
+        [
+          0,
+          68,
+          68
+        ],
+        [
+          0,
+          85,
+          85
+        ],
+        [
+          0,
+          255,
+          255
+        ]
+      ]
+    },
+    {
+      "name": "BOOT_START_APPLICATION",
+      "variant": "BOOT",
+      "native": "native/BOOT_START_APPLICATION.png",
+      "enlarged": "BOOT_START_APPLICATION.png",
+      "renderer": "ib_oled_render_progress",
+      "phase": "Start application",
+      "detail": "Switching to firmware",
+      "progress_percent": 100,
+      "fixture": "application launch transition; no device start executed",
+      "framebuffer_sha256": "91d1970142909ce3ba120fc05366fdc799017eab98e93d48273fd429812c563f",
+      "native_png_sha256": "28886daeb5aea4b2c6a9f9621d757473f47152670c4ae36c86d59b59926872b4",
+      "enlarged_png_sha256": "b73330364435b375250dfa85440bccfddf255bc5a5d7ffe37988cb440b4e7bc1",
+      "palette_values": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          17,
+          17
+        ],
+        [
+          0,
+          34,
+          34
+        ],
+        [
+          0,
+          51,
+          51
+        ],
+        [
+          0,
+          68,
+          68
+        ],
+        [
+          0,
+          85,
+          85
+        ],
+        [
+          0,
+          102,
+          102
+        ],
+        [
+          0,
+          119,
+          119
+        ],
+        [
+          0,
+          136,
+          136
+        ],
+        [
+          0,
+          153,
+          153
+        ],
+        [
+          0,
+          170,
+          170
+        ],
+        [
+          0,
+          187,
+          187
+        ],
+        [
+          0,
+          204,
+          204
+        ],
+        [
+          0,
+          221,
+          221
+        ],
+        [
+          0,
+          238,
+          238
+        ],
+        [
+          0,
+          255,
+          255
+        ]
+      ]
+    },
+    {
+      "name": "BOOT_VERIFY_PACKAGE",
+      "variant": "BOOT",
+      "native": "native/BOOT_VERIFY_PACKAGE.png",
+      "enlarged": "BOOT_VERIFY_PACKAGE.png",
+      "renderer": "ib_oled_render_progress",
+      "phase": "Verify package",
+      "detail": "No erase yet",
+      "progress_percent": 0,
+      "fixture": "illustrative phase progress; no operation executed",
+      "framebuffer_sha256": "54cde2f2c7ac935365ba16b7576d64cd164bd4a01d91233caa863d8242ca65d3",
+      "native_png_sha256": "62e97c470461d88e7f01533f48f723bb6b1440b3d1b30674022479aff05bfa7d",
+      "enlarged_png_sha256": "736cb9cb98d5b77c7730dbf7f06d29d0ae1e269d9a68ecbea3a119bf919edf66",
+      "palette_values": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          17,
+          17
+        ],
+        [
+          0,
+          34,
+          34
+        ],
+        [
+          0,
+          51,
+          51
+        ],
+        [
+          0,
+          68,
+          68
+        ],
+        [
+          0,
+          85,
+          85
+        ],
+        [
+          0,
+          255,
+          255
+        ]
+      ]
+    },
+    {
+      "name": "BOOT_HARDWARE_UNAVAILABLE",
+      "variant": "BOOT",
+      "native": "native/BOOT_HARDWARE_UNAVAILABLE.png",
+      "enlarged": "BOOT_HARDWARE_UNAVAILABLE.png",
+      "renderer": "ib_oled_render_hardware",
+      "lines": [
+        "Model: Zortrax M300",
+        "Hardware version: Unavailable",
+        "Serial number: Unavailable",
+        "Total operating time: Unavailable"
+      ],
+      "fixture": "Actual decoder given three synthetic erased pages; all identity/counter flags invalid; no private device data.",
+      "framebuffer_sha256": "1feea7bd241a81da27fae5078ab466306a7be3c5b88abb7be5c4ace131f6b622",
+      "native_png_sha256": "d7bc0c344544f1bcdc45ded2cee4852eb544fceac872ff27e8a696543e5ce3fd",
+      "enlarged_png_sha256": "5d2b4e57ac45e9ef9675b0c25f4fb5dee9f20d59fe66d5de2168c5de9ed3569a",
+      "palette_values": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          85,
+          85
+        ],
+        [
+          0,
+          255,
+          255
+        ]
+      ]
+    },
+    {
+      "name": "INSTALLER_MAIN_MENU",
+      "variant": "INSTALLER",
+      "native": "native/INSTALLER_MAIN_MENU.png",
+      "enlarged": "INSTALLER_MAIN_MENU.png",
+      "renderer": "ib_oled_render_menu",
+      "menu_source": "firmware/src/main.c",
+      "title": "SD installer 1.5",
+      "items": [
+        "Check board + SD",
+        "Backup Flash x2",
+        "Install / upgrade boot",
+        "Recover saved boot",
+        "Restart to boot",
+        "Hardware",
+        "About"
+      ],
+      "selected": 0,
+      "first_visible_non_pinned": 0,
+      "fixture": "actual static installer menu; simulated selection",
+      "framebuffer_sha256": "14d9c8d57dc97b4d4cd8cd7ec33e847c1b3702506cf72c44adb254b28d5800e7",
+      "native_png_sha256": "eb2ce2c87c9f4995e4404b1fe2398b50d64f59d557cc19c330f9bc8a83d482a8",
+      "enlarged_png_sha256": "8de4d97a8f7afeb9a92790bfa310a0bca23ca0814949ca00d990a783ba836d82",
+      "palette_values": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          85,
+          85
+        ],
+        [
+          0,
+          119,
+          119
+        ],
+        [
+          0,
+          255,
+          255
+        ]
+      ]
+    },
+    {
+      "name": "INSTALLER_BACKUP_MENU",
+      "variant": "INSTALLER",
+      "native": "native/INSTALLER_BACKUP_MENU.png",
+      "enlarged": "INSTALLER_BACKUP_MENU.png",
+      "renderer": "ib_oled_render_menu",
+      "menu_source": "firmware/src/main.c",
+      "selected": 1,
+      "fixture": "actual static installer menu; simulated selection",
+      "title": "SD installer 1.5",
+      "items": [
+        "Check board + SD",
+        "Backup Flash x2",
+        "Install / upgrade boot",
+        "Recover saved boot",
+        "Restart to boot",
+        "Hardware",
+        "About"
+      ],
+      "first_visible_non_pinned": 0,
+      "framebuffer_sha256": "45bec5a363aa888a30a4292620a4dc0c3544d099e63b46cd4c610b8a2cba073f",
+      "native_png_sha256": "b880e2b21fb8e6718a406656baebb7a3e71416e65a3f5b72e347991bebd993c5",
+      "enlarged_png_sha256": "42f5ea35ae322e19d8ff971f0fd85158e97b84087e7d77ec78af476d32cf2f7c",
+      "palette_values": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          85,
+          85
+        ],
+        [
+          0,
+          119,
+          119
+        ],
+        [
+          0,
+          255,
+          255
+        ]
+      ]
+    },
+    {
+      "name": "INSTALLER_BACKUP_PROGRESS",
+      "variant": "INSTALLER",
+      "native": "native/INSTALLER_BACKUP_PROGRESS.png",
+      "enlarged": "INSTALLER_BACKUP_PROGRESS.png",
+      "renderer": "ib_oled_render_progress",
+      "phase": "Backup Flash x2",
+      "detail": "Checking - do not remove SD",
+      "progress_percent": 50,
+      "fixture": "illustrative phase progress; no operation executed",
+      "framebuffer_sha256": "e0c9795f2f3c532aa2f52235331a6ac4c45b72a591256c97f2e8a08ed862f3fe",
+      "native_png_sha256": "094ee1007b42be8765f91a2b9c2793e2c472e62b7c423c9f40e0b19fbf92d384",
+      "enlarged_png_sha256": "e5bc30b5533a81b00058edf24df722064d8dc5a29da8236721cdba67aa30ecd8",
+      "palette_values": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          17,
+          17
+        ],
+        [
+          0,
+          34,
+          34
+        ],
+        [
+          0,
+          51,
+          51
+        ],
+        [
+          0,
+          68,
+          68
+        ],
+        [
+          0,
+          85,
+          85
+        ],
+        [
+          0,
+          102,
+          102
+        ],
+        [
+          0,
+          119,
+          119
+        ],
+        [
+          0,
+          136,
+          136
+        ],
+        [
+          0,
+          153,
+          153
+        ],
+        [
+          0,
+          170,
+          170
+        ],
+        [
+          0,
+          187,
+          187
+        ],
+        [
+          0,
+          204,
+          204
+        ],
+        [
+          0,
+          221,
+          221
+        ],
+        [
+          0,
+          238,
+          238
+        ],
+        [
+          0,
+          255,
+          255
+        ]
+      ]
+    },
+    {
+      "name": "INSTALLER_BACKUP_COMPLETE",
+      "variant": "INSTALLER",
+      "native": "native/INSTALLER_BACKUP_COMPLETE.png",
+      "enlarged": "INSTALLER_BACKUP_COMPLETE.png",
+      "renderer": "ib_oled_render_progress",
+      "phase": "Complete - click Back",
+      "detail": "Backup x2 verified",
+      "progress_percent": 100,
+      "fixture": "successful backup result example; no backups executed",
+      "framebuffer_sha256": "977714a8641c910df6910f2b029dd11e03052766c72250d020a3310f3bb00bd3",
+      "native_png_sha256": "056f591703a7f898c5cf35c26d6b3483943c6b26aaf3c9da1bca404a498d5d72",
+      "enlarged_png_sha256": "5835802c2cc22715f290160445bd5d82edf6426061b37eee56ae9c3e6029ebed",
+      "palette_values": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          17,
+          17
+        ],
+        [
+          0,
+          34,
+          34
+        ],
+        [
+          0,
+          51,
+          51
+        ],
+        [
+          0,
+          68,
+          68
+        ],
+        [
+          0,
+          85,
+          85
+        ],
+        [
+          0,
+          102,
+          102
+        ],
+        [
+          0,
+          119,
+          119
+        ],
+        [
+          0,
+          136,
+          136
+        ],
+        [
+          0,
+          153,
+          153
+        ],
+        [
+          0,
+          170,
+          170
+        ],
+        [
+          0,
+          187,
+          187
+        ],
+        [
+          0,
+          204,
+          204
+        ],
+        [
+          0,
+          221,
+          221
+        ],
+        [
+          0,
+          238,
+          238
+        ],
+        [
+          0,
+          255,
+          255
+        ]
+      ]
+    },
+    {
+      "name": "INSTALLER_CONFIRM_INITIAL",
+      "variant": "INSTALLER",
+      "native": "native/INSTALLER_CONFIRM_INITIAL.png",
+      "enlarged": "INSTALLER_CONFIRM_INITIAL.png",
+      "renderer": "ib_oled_render_progress",
+      "phase": "BOOT CHANGE - RISK",
+      "detail": "Release, click, release, hold",
+      "progress_percent": 0,
+      "fixture": "initial physical-consent prompt; no consent given",
+      "framebuffer_sha256": "cdeb212e8481ee74cc00d73a7a84015a02265921c9a7d466329d244491fbe09e",
+      "native_png_sha256": "025dbfbed88032f8c432b7325d959a3f277a5a02989a8c3a120567f59139e0e4",
+      "enlarged_png_sha256": "184ce22730fa30f278cfe12ad4f143af0b9e755de8f911509290c411fc948d3b",
+      "palette_values": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          17,
+          17
+        ],
+        [
+          0,
+          34,
+          34
+        ],
+        [
+          0,
+          51,
+          51
+        ],
+        [
+          0,
+          68,
+          68
+        ],
+        [
+          0,
+          85,
+          85
+        ],
+        [
+          0,
+          255,
+          255
+        ]
+      ]
+    },
+    {
+      "name": "INSTALLER_CONFIRM_RELEASE",
+      "variant": "INSTALLER",
+      "native": "native/INSTALLER_CONFIRM_RELEASE.png",
+      "enlarged": "INSTALLER_CONFIRM_RELEASE.png",
+      "renderer": "ib_oled_render_progress",
+      "phase": "1 Release knob",
+      "detail": "Rotate cancels",
+      "progress_percent": 0,
+      "fixture": "actual confirmation state-machine prompt; simulated state",
+      "confirmation_fixture": {
+        "state": 0,
+        "inputs": [],
+        "render_milliseconds": 0
+      },
+      "framebuffer_sha256": "65393df2eb49b574cd4775ce36e97b2f2fc06fc9ab2ae9154a9846f5278e301d",
+      "native_png_sha256": "6bb2f2575397de830450e5751b763ae6a26adb9847a91c218f3691e899832c3e",
+      "enlarged_png_sha256": "bac902d9a1fe1d50f13ccb7599e9e2587dfc471ea08364092595f802f9f4995a",
+      "palette_values": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          17,
+          17
+        ],
+        [
+          0,
+          34,
+          34
+        ],
+        [
+          0,
+          51,
+          51
+        ],
+        [
+          0,
+          68,
+          68
+        ],
+        [
+          0,
+          85,
+          85
+        ],
+        [
+          0,
+          255,
+          255
+        ]
+      ]
+    },
+    {
+      "name": "INSTALLER_CONFIRM_CLICK",
+      "variant": "INSTALLER",
+      "native": "native/INSTALLER_CONFIRM_CLICK.png",
+      "enlarged": "INSTALLER_CONFIRM_CLICK.png",
+      "renderer": "ib_oled_render_progress",
+      "phase": "2 Click knob once",
+      "detail": "Rotate cancels",
+      "progress_percent": 0,
+      "fixture": "actual confirmation state-machine prompt; simulated state",
+      "confirmation_fixture": {
+        "state": 1,
+        "inputs": [
+          {
+            "milliseconds": 1,
+            "pressed": 0,
+            "rotated": 0
+          },
+          {
+            "milliseconds": 61,
+            "pressed": 0,
+            "rotated": 0
+          }
+        ],
+        "render_milliseconds": 61
+      },
+      "framebuffer_sha256": "ba50b1af45b371d7bf9c453f9081c2a7a0ed08db4e2994552e8164d07451912f",
+      "native_png_sha256": "f0d45f58e5e073a0bd6358b09774ba773501a7aee2afd6d4ab6b2d34bc75d7f5",
+      "enlarged_png_sha256": "6e2aea9649181801b8e22616d0a76ef01bd1d25c4df805533870eb608fbde6de",
+      "palette_values": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          17,
+          17
+        ],
+        [
+          0,
+          34,
+          34
+        ],
+        [
+          0,
+          51,
+          51
+        ],
+        [
+          0,
+          68,
+          68
+        ],
+        [
+          0,
+          85,
+          85
+        ],
+        [
+          0,
+          255,
+          255
+        ]
+      ]
+    },
+    {
+      "name": "INSTALLER_CONFIRM_CLICK_RELEASE",
+      "variant": "INSTALLER",
+      "native": "native/INSTALLER_CONFIRM_CLICK_RELEASE.png",
+      "enlarged": "INSTALLER_CONFIRM_CLICK_RELEASE.png",
+      "renderer": "ib_oled_render_progress",
+      "phase": "3 Release after click",
+      "detail": "Rotate cancels",
+      "progress_percent": 0,
+      "fixture": "actual confirmation state-machine prompt; simulated state",
+      "confirmation_fixture": {
+        "state": 2,
+        "inputs": [
+          {
+            "milliseconds": 1,
+            "pressed": 0,
+            "rotated": 0
+          },
+          {
+            "milliseconds": 61,
+            "pressed": 0,
+            "rotated": 0
+          },
+          {
+            "milliseconds": 62,
+            "pressed": 1,
+            "rotated": 0
+          },
+          {
+            "milliseconds": 102,
+            "pressed": 1,
+            "rotated": 0
+          }
+        ],
+        "render_milliseconds": 102
+      },
+      "framebuffer_sha256": "cbb6a18949a89913cff0e8269c71eff9d45a060c26bdef5f865601810ad58687",
+      "native_png_sha256": "4c7fed46fb09c8434b4a1240e3a2ca26d1d720ed2daf0d1519f9ad97bbd8be09",
+      "enlarged_png_sha256": "00d70765908f32bda2096479258f9ac6d966b23b2294f4efffecfe7a60fb1f42",
+      "palette_values": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          17,
+          17
+        ],
+        [
+          0,
+          34,
+          34
+        ],
+        [
+          0,
+          51,
+          51
+        ],
+        [
+          0,
+          68,
+          68
+        ],
+        [
+          0,
+          85,
+          85
+        ],
+        [
+          0,
+          255,
+          255
+        ]
+      ]
+    },
+    {
+      "name": "INSTALLER_CONFIRM_HOLD_PRESS",
+      "variant": "INSTALLER",
+      "native": "native/INSTALLER_CONFIRM_HOLD_PRESS.png",
+      "enlarged": "INSTALLER_CONFIRM_HOLD_PRESS.png",
+      "renderer": "ib_oled_render_progress",
+      "phase": "4 Press and hold 5s",
+      "detail": "Rotate cancels",
+      "progress_percent": 0,
+      "fixture": "actual confirmation state-machine prompt; simulated state",
+      "confirmation_fixture": {
+        "state": 3,
+        "inputs": [
+          {
+            "milliseconds": 1,
+            "pressed": 0,
+            "rotated": 0
+          },
+          {
+            "milliseconds": 61,
+            "pressed": 0,
+            "rotated": 0
+          },
+          {
+            "milliseconds": 62,
+            "pressed": 1,
+            "rotated": 0
+          },
+          {
+            "milliseconds": 102,
+            "pressed": 1,
+            "rotated": 0
+          },
+          {
+            "milliseconds": 103,
+            "pressed": 0,
+            "rotated": 0
+          },
+          {
+            "milliseconds": 163,
+            "pressed": 0,
+            "rotated": 0
+          }
+        ],
+        "render_milliseconds": 163
+      },
+      "framebuffer_sha256": "d723d899de16702cc6f75cad81dc9fed9932ed60cce4f869019239798d876cb2",
+      "native_png_sha256": "1ae0f43a25ac01df92cbc68fd21955a0f77fb418a0fc27752672ce00914e19b2",
+      "enlarged_png_sha256": "652a7c709e328447511a9ad422d34afd171451c052d3d3703048fa43c7577e27",
+      "palette_values": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          17,
+          17
+        ],
+        [
+          0,
+          34,
+          34
+        ],
+        [
+          0,
+          51,
+          51
+        ],
+        [
+          0,
+          68,
+          68
+        ],
+        [
+          0,
+          85,
+          85
+        ],
+        [
+          0,
+          255,
+          255
+        ]
+      ]
+    },
+    {
+      "name": "INSTALLER_CONFIRM_HOLD",
+      "variant": "INSTALLER",
+      "native": "native/INSTALLER_CONFIRM_HOLD.png",
+      "enlarged": "INSTALLER_CONFIRM_HOLD.png",
+      "renderer": "ib_oled_render_progress",
+      "phase": "5 Keep holding knob",
+      "detail": "Rotate cancels",
+      "progress_percent": 50,
+      "fixture": "actual confirmation state-machine prompt; simulated state",
+      "confirmation_fixture": {
+        "state": 4,
+        "inputs": [
+          {
+            "milliseconds": 1,
+            "pressed": 0,
+            "rotated": 0
+          },
+          {
+            "milliseconds": 61,
+            "pressed": 0,
+            "rotated": 0
+          },
+          {
+            "milliseconds": 62,
+            "pressed": 1,
+            "rotated": 0
+          },
+          {
+            "milliseconds": 102,
+            "pressed": 1,
+            "rotated": 0
+          },
+          {
+            "milliseconds": 103,
+            "pressed": 0,
+            "rotated": 0
+          },
+          {
+            "milliseconds": 163,
+            "pressed": 0,
+            "rotated": 0
+          },
+          {
+            "milliseconds": 164,
+            "pressed": 1,
+            "rotated": 0
+          },
+          {
+            "milliseconds": 204,
+            "pressed": 1,
+            "rotated": 0
+          }
+        ],
+        "render_milliseconds": 2704
+      },
+      "framebuffer_sha256": "9ab34dfdae5e09acaf4ac8c3ac35b8cc88028ddad6685ac92bf32d031fbd5a12",
+      "native_png_sha256": "3787e7141bd1d7b2d9215f143b884dcc4f450ab850dbfa7403ffa16d153e4d5e",
+      "enlarged_png_sha256": "85de828b6fb7838aaaaed22e503e43faf10400030793a6b6c165ccdd9b332838",
+      "palette_values": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          17,
+          17
+        ],
+        [
+          0,
+          34,
+          34
+        ],
+        [
+          0,
+          51,
+          51
+        ],
+        [
+          0,
+          68,
+          68
+        ],
+        [
+          0,
+          85,
+          85
+        ],
+        [
+          0,
+          102,
+          102
+        ],
+        [
+          0,
+          119,
+          119
+        ],
+        [
+          0,
+          136,
+          136
+        ],
+        [
+          0,
+          153,
+          153
+        ],
+        [
+          0,
+          170,
+          170
+        ],
+        [
+          0,
+          187,
+          187
+        ],
+        [
+          0,
+          204,
+          204
+        ],
+        [
+          0,
+          221,
+          221
+        ],
+        [
+          0,
+          238,
+          238
+        ],
+        [
+          0,
+          255,
+          255
+        ]
+      ]
+    },
+    {
+      "name": "INSTALLER_WRITE_PROGRESS",
+      "variant": "INSTALLER",
+      "native": "native/INSTALLER_WRITE_PROGRESS.png",
+      "enlarged": "INSTALLER_WRITE_PROGRESS.png",
+      "renderer": "ib_oled_render_progress",
+      "phase": "Writing boot pages",
+      "detail": "10/20 pages verified",
+      "progress_percent": 50,
+      "fixture": "illustrative phase progress; no operation executed",
+      "framebuffer_sha256": "b8823d3a25297401638b43e2f5f16197a024a92dc4b04a91850923eab43088c9",
+      "native_png_sha256": "6c96a792775915cfb9b6373a5eee612bc56a5413c8ded859cf8b75e4b48efa0f",
+      "enlarged_png_sha256": "4bc566c282537ebde92231537563ffb5df799e5e439f2b882aa5fbe45d5fe552",
+      "palette_values": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          17,
+          17
+        ],
+        [
+          0,
+          34,
+          34
+        ],
+        [
+          0,
+          51,
+          51
+        ],
+        [
+          0,
+          68,
+          68
+        ],
+        [
+          0,
+          85,
+          85
+        ],
+        [
+          0,
+          102,
+          102
+        ],
+        [
+          0,
+          119,
+          119
+        ],
+        [
+          0,
+          136,
+          136
+        ],
+        [
+          0,
+          153,
+          153
+        ],
+        [
+          0,
+          170,
+          170
+        ],
+        [
+          0,
+          187,
+          187
+        ],
+        [
+          0,
+          204,
+          204
+        ],
+        [
+          0,
+          221,
+          221
+        ],
+        [
+          0,
+          238,
+          238
+        ],
+        [
+          0,
+          255,
+          255
+        ]
+      ]
+    },
+    {
+      "name": "INSTALLER_COMPLETE",
+      "variant": "INSTALLER",
+      "native": "native/INSTALLER_COMPLETE.png",
+      "enlarged": "INSTALLER_COMPLETE.png",
+      "renderer": "ib_oled_render_progress",
+      "phase": "Complete - click Back",
+      "detail": "Verified; click Back",
+      "progress_percent": 100,
+      "fixture": "successful installer result example; no installation executed",
+      "framebuffer_sha256": "21a510a4cacd83d666eea4da28c5922f053724661fa37f1c53b5680ae64b2494",
+      "native_png_sha256": "dbac10f9627d397d9d409288a50b14607948f6db33d4f1805955a81c98af1b55",
+      "enlarged_png_sha256": "3c97648bda307d31d76a2d9e5bbe7bb64256c147ed0133d8ded637d3c10a8140",
+      "palette_values": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          17,
+          17
+        ],
+        [
+          0,
+          34,
+          34
+        ],
+        [
+          0,
+          51,
+          51
+        ],
+        [
+          0,
+          68,
+          68
+        ],
+        [
+          0,
+          85,
+          85
+        ],
+        [
+          0,
+          102,
+          102
+        ],
+        [
+          0,
+          119,
+          119
+        ],
+        [
+          0,
+          136,
+          136
+        ],
+        [
+          0,
+          153,
+          153
+        ],
+        [
+          0,
+          170,
+          170
+        ],
+        [
+          0,
+          187,
+          187
+        ],
+        [
+          0,
+          204,
+          204
+        ],
+        [
+          0,
+          221,
+          221
+        ],
+        [
+          0,
+          238,
+          238
+        ],
+        [
+          0,
+          255,
+          255
+        ]
+      ]
+    },
+    {
+      "name": "INSTALLER_RESTART",
+      "variant": "INSTALLER",
+      "native": "native/INSTALLER_RESTART.png",
+      "enlarged": "INSTALLER_RESTART.png",
+      "renderer": "ib_oled_render_progress",
+      "phase": "Restart to boot",
+      "detail": "Starting M300Boot",
+      "progress_percent": 100,
+      "fixture": "restart transition example; no device restart executed",
+      "framebuffer_sha256": "95dca887449d1c5b1bc1e554995aab717f70427a23cd109dd35e312bd9dc241a",
+      "native_png_sha256": "7b7e194705063cd75ebf3ac600b1f42e9c42809d83c26e27fd51ea1f270fe88a",
+      "enlarged_png_sha256": "78315ddb5dbf9a9443ee9b283a044496b17f7c5e9b505f90c17fd165402836cc",
+      "palette_values": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          17,
+          17
+        ],
+        [
+          0,
+          34,
+          34
+        ],
+        [
+          0,
+          51,
+          51
+        ],
+        [
+          0,
+          68,
+          68
+        ],
+        [
+          0,
+          85,
+          85
+        ],
+        [
+          0,
+          102,
+          102
+        ],
+        [
+          0,
+          119,
+          119
+        ],
+        [
+          0,
+          136,
+          136
+        ],
+        [
+          0,
+          153,
+          153
+        ],
+        [
+          0,
+          170,
+          170
+        ],
+        [
+          0,
+          187,
+          187
+        ],
+        [
+          0,
+          204,
+          204
+        ],
+        [
+          0,
+          221,
+          221
+        ],
+        [
+          0,
+          238,
+          238
+        ],
+        [
+          0,
+          255,
+          255
+        ]
+      ]
+    },
+    {
+      "name": "INSTALLER_HARDWARE_UNAVAILABLE",
+      "variant": "INSTALLER",
+      "native": "native/INSTALLER_HARDWARE_UNAVAILABLE.png",
+      "enlarged": "INSTALLER_HARDWARE_UNAVAILABLE.png",
+      "renderer": "ib_oled_render_hardware",
+      "lines": [
+        "Model: Zortrax M300",
+        "Hardware version: Unavailable",
+        "Serial number: Unavailable",
+        "Total operating time: Unavailable"
+      ],
+      "fixture": "Actual decoder given three synthetic erased pages; all identity/counter flags invalid; no private device data.",
+      "framebuffer_sha256": "1feea7bd241a81da27fae5078ab466306a7be3c5b88abb7be5c4ace131f6b622",
+      "native_png_sha256": "d7bc0c344544f1bcdc45ded2cee4852eb544fceac872ff27e8a696543e5ce3fd",
+      "enlarged_png_sha256": "5d2b4e57ac45e9ef9675b0c25f4fb5dee9f20d59fe66d5de2168c5de9ed3569a",
+      "palette_values": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          85,
+          85
+        ],
+        [
+          0,
+          255,
+          255
+        ]
+      ]
+    }
+  ]
+}

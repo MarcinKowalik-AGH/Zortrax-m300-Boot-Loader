@@ -1,0 +1,20 @@
+{
+  "version": "1.5",
+  "recorded_on": "2026-11-18",
+  "timezone": "Europe/Warsaw",
+  "new_firmware_hardware_tested": false,
+  "baseline_version": "1.4",
+  "baseline_owner_reported_duration": "approximately two weeks",
+  "baseline_duration_reported_by": "Marcin Kowalik",
+  "baseline_report_date": "2026-11-18",
+  "exact_start_date_reported": false,
+  "continuous_test_hours_reported": false,
+  "baseline_installation_methods_acceptance_record": "../v1.4/HARDWARE_ACCEPTANCE.json",
+  "baseline_owner_confirmed_methods": [
+    "FACTORY",
+    "UPGRADE",
+    "STLINK"
+  ],
+  "new_patch_validation": "Fresh 1.5 source/build/regression, compiled ARM, rendered OLED, host and package checks; see AUDIT_2026-11-18.json",
+  "claim_scope": "Owner-reported approximately two weeks applies to baseline 1.4. The audited 1.4.1 fixes continue in a newly rebuilt1.5 release; no two-week physical 1.5 test is claimed."
+}

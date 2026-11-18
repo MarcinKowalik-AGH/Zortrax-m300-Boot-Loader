@@ -1,0 +1,186 @@
+{
+  "version": "1.5",
+  "basis": "M300Boot 1.4.1; classic M300 HW05/F103; same metadata retry fix, released as 1.5",
+  "hardware_tested": false,
+  "compiler": "Ubuntu clang version 19.1.1 (1ubuntu1~24.04.2)",
+  "variants": {
+    "PREVIEW": {
+      "entry": "0x800813d",
+      "segments": [
+        {
+          "vaddr": "0x8008000",
+          "paddr": "0x8008000",
+          "file_bytes": 316,
+          "memory_bytes": 316,
+          "flags": 4
+        },
+        {
+          "vaddr": "0x800813c",
+          "paddr": "0x800813c",
+          "file_bytes": 30736,
+          "memory_bytes": 30736,
+          "flags": 5
+        },
+        {
+          "vaddr": "0x20000000",
+          "paddr": "0x800f94c",
+          "file_bytes": 60,
+          "memory_bytes": 60,
+          "flags": 7
+        },
+        {
+          "vaddr": "0x20000200",
+          "paddr": "0x20000200",
+          "file_bytes": 0,
+          "memory_bytes": 27336,
+          "flags": 6
+        }
+      ],
+      "write_enabled": false,
+      "boot_enabled": false,
+      "autoboot": false,
+      "hardware_tested": false,
+      "files": {
+        "M300Boot_v1.5_PREVIEW.bin": {
+          "bytes": 31112,
+          "sha256": "46d0fb609b241ed9d74bcc2ce9bee80ca18b5d3bad53dabc9aef3e6b144a889e"
+        },
+        "Update.bin": {
+          "bytes": 31189,
+          "sha256": "1558ff5c15073299eb82e9551cf74f31239e84cfee759aa856f632cbcdebc484"
+        },
+        "M300Boot_v1.5_PREVIEW_SPARSE.hex": {
+          "bytes": 85592,
+          "sha256": "37094ee6ba4a1cf4191d56d305230bd949bf4f62ea7a037a83ef70e51beeab58"
+        }
+      },
+      "tail20": "4cfb03ada917f175e59b7f2b7b9ca99d19f32c57",
+      "end": "0x800f988",
+      "OEM_version": "9.8.0"
+    },
+    "READONLY": {
+      "entry": "0x8001311",
+      "segments": [
+        {
+          "vaddr": "0x8001000",
+          "paddr": "0x8001000",
+          "file_bytes": 388,
+          "memory_bytes": 388,
+          "flags": 4
+        },
+        {
+          "vaddr": "0x8001184",
+          "paddr": "0x8001184",
+          "file_bytes": 24888,
+          "memory_bytes": 24888,
+          "flags": 5
+        },
+        {
+          "vaddr": "0x803a000",
+          "paddr": "0x803a000",
+          "file_bytes": 6856,
+          "memory_bytes": 6856,
+          "flags": 4
+        },
+        {
+          "vaddr": "0x20000000",
+          "paddr": "0x80072bc",
+          "file_bytes": 60,
+          "memory_bytes": 60,
+          "flags": 7
+        },
+        {
+          "vaddr": "0x20000200",
+          "paddr": "0x20000200",
+          "file_bytes": 0,
+          "memory_bytes": 27336,
+          "flags": 6
+        }
+      ],
+      "write_enabled": false,
+      "boot_enabled": true,
+      "autoboot": false,
+      "hardware_tested": false,
+      "files": {
+        "M300Boot_v1.5_READONLY_STAGE2_0x08001000.bin": {
+          "bytes": 28672,
+          "sha256": "192aec8b5caf21d3d130f835148d299f89a2811791e8baea3716058b4e5e4db7"
+        },
+        "M300Boot_v1.5_READONLY_ASSETS_0x0803A000.bin": {
+          "bytes": 12288,
+          "sha256": "8758951abb2149e84dc8a9e5d80ea2c0a1a0430b4929fc59ae4b91357ef4b742"
+        },
+        "M300Boot_v1.5_READONLY_SPARSE.hex": {
+          "bytes": 112684,
+          "sha256": "4388061b0f8be6612bfe6bd7bc5439410309ab25dd11cd8debc07e644bb92fe0"
+        }
+      },
+      "code_end": "0x80072f8",
+      "code_slack": 3336,
+      "assets_end": "0x803bac8",
+      "assets_slack": 5432
+    },
+    "FULL": {
+      "entry": "0x8001311",
+      "segments": [
+        {
+          "vaddr": "0x8001000",
+          "paddr": "0x8001000",
+          "file_bytes": 388,
+          "memory_bytes": 388,
+          "flags": 4
+        },
+        {
+          "vaddr": "0x8001184",
+          "paddr": "0x8001184",
+          "file_bytes": 27676,
+          "memory_bytes": 27676,
+          "flags": 5
+        },
+        {
+          "vaddr": "0x803a000",
+          "paddr": "0x803a000",
+          "file_bytes": 7512,
+          "memory_bytes": 7512,
+          "flags": 4
+        },
+        {
+          "vaddr": "0x20000000",
+          "paddr": "0x8007da0",
+          "file_bytes": 584,
+          "memory_bytes": 584,
+          "flags": 7
+        },
+        {
+          "vaddr": "0x20000400",
+          "paddr": "0x20000400",
+          "file_bytes": 0,
+          "memory_bytes": 27368,
+          "flags": 6
+        }
+      ],
+      "write_enabled": true,
+      "boot_enabled": true,
+      "autoboot": true,
+      "hardware_tested": false,
+      "files": {
+        "M300Boot_v1.5_FULL_STAGE2_0x08001000.bin": {
+          "bytes": 28672,
+          "sha256": "2dd2b0c101b2b2aa6860d965d2c667a7e086fb1a2f31a693bd28916ac2dfb2b5"
+        },
+        "M300Boot_v1.5_FULL_ASSETS_0x0803A000.bin": {
+          "bytes": 12288,
+          "sha256": "bf9936ff0575c3bbad0f555f356a201cf5cc2b825db80fc0a6d26a724ca5eec8"
+        },
+        "M300Boot_v1.5_FULL_SPARSE.hex": {
+          "bytes": 112684,
+          "sha256": "aa404099e028278b50b2beb0a8f8759473f4e5b28f96bc39ccac86a1c2b62932"
+        }
+      },
+      "code_end": "0x8007fe8",
+      "code_slack": 24,
+      "assets_end": "0x803bd58",
+      "assets_slack": 4776
+    }
+  }
+}

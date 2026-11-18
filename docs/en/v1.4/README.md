@@ -21,4 +21,4 @@ Exactly five UART rates: **115200, 250000, 500000, 750000, 1500000**. Default **
 
 [All versions](../README.md) · [Project](../../../README.md)
 
-[Archived release 1.4; current 1.4.1 documentation](../v1.4.1/README.md).
+[Archived release 1.4; current 1.5 documentation](../v1.5/README.md).

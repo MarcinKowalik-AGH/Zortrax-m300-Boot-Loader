@@ -53,7 +53,7 @@ def inspect(data: bytes) -> dict:
     return {"format": "M3BOOT1", "application_base": hex(base), "payload_bytes": length,
             "sha256": digest.hex(), "initial_msp": hex(sp), "reset_vector": hex(pc),
             "signature": "NONE: integrity check, not authentication",
-            "compatibility": "M300Boot v1.4.1 M3B format; NOT the stock Update format"}
+            "compatibility": "M300Boot v1.5 M3B format; NOT the stock Update format"}
 
 
 def read_bounded(path: Path, maximum: int) -> bytes:

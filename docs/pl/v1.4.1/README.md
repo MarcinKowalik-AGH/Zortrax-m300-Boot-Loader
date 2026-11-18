@@ -2,7 +2,7 @@
 
 [English](../../en/v1.4.1/README.md) · [Polski](../../pl/v1.4.1/README.md) · [Indeks](README.md)
 
-**Bieżące wydanie: 1.4.1.** Bootloader serwisowy dla zakwalifikowanego profilu klasycznej Zortrax M300: HW05 / PCB Rev.5.3 / zmierzone 256 KiB Flash.
+**Archiwalne wydanie: 1.4.1.** Bootloader serwisowy dla zakwalifikowanego profilu klasycznej Zortrax M300: HW05 / PCB Rev.5.3 / zmierzone 256 KiB Flash.
 
 Właściciel zgłosił 18.11.2026 około **dwóch tygodni użytkowania bazowej wersji 1.4**; wcześniejszy odbiór tej wersji obejmował FACTORY, UPGRADE i ST-Link. **1.4.1 zawiera nową poprawkę i ma osobną walidację programową z bieżącego audytu. Nie przypisujemy jej dwóch tygodni testów sprzętowych.** [Zakres dowodów](tested-hardware.md) · [Wyniki audytu](validation.md).
 
@@ -33,3 +33,5 @@ W 1.4.1 poprawiono możliwość kontrolowanej ponownej instalacji tego samego ob
 Dokładnie pięć prędkości UART: **115200, 250000, 500000, 750000, 1500000**, 8N1. **1000000 i 10000000 nie są obsługiwanymi pozycjami.** Wartość 1000000 usunięto już w 1.4; 1.4.1 zachowuje tę decyzję. Domyślnie **250000 / bootwait OFF**. Zgłoszenie problemu z dzielnikami Orange Pi jest przyczyną pozostawienia 1000000 poza listą; dobierz jedną z obsługiwanych wartości zgodnie z konfiguracją danego hosta.
 
 Instalacja SD zastępuje APP pośrednikiem: po zapisie BOOT jawnie przywróć stock lub zgodną aplikację Klippera. ST-Link zapisuje dwa segmenty BOOT i zachowuje APP. Oryginalna APP w `RESTORE.BIN` pozostaje **Zortrax 1.3.1**, a dodatkowa diagnostyka kopii **0.5.5** jest osobnym narzędziem, nie czwartym wariantem instalacji. [Archiwum bazowej 1.4](../v1.4/README.md).
+
+[Bieżąca dokumentacja 1.5](../v1.5/README.md). Tag 1.4.1 i pobierane pliki zachowują opublikowaną tożsamość.

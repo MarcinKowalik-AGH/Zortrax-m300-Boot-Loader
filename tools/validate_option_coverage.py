@@ -14,7 +14,7 @@ def normalize(text):
     return re.sub(r'\s+',' ',text).strip().casefold()
 
 def main(argv=None):
-    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--json',action='store_true');p.add_argument('--root',type=Path,default=Path(__file__).resolve().parents[1]);p.add_argument('--version',choices=('1.4','1.4.1'),default='1.4.1');a=p.parse_args(argv)
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--json',action='store_true');p.add_argument('--root',type=Path,default=Path(__file__).resolve().parents[1]);p.add_argument('--version',choices=('1.4','1.4.1','1.5'),default='1.5');a=p.parse_args(argv)
     root=a.root;version=a.version;inventory=json.loads((root/f'docs/reports/v{version}/DOCUMENTED_OPTIONS.json').read_text());count=0;groups={}
     def check(ok,message,group):
         nonlocal count
@@ -42,12 +42,16 @@ def main(argv=None):
         install=normalize((root/f'docs/{lang}/v{version}/installation.md').read_text())
         for screen in ['Complete - click Back','Board and SD verified','Backup x2 verified','Verified; click Back']:
             check(normalize(screen)in install,f'{lang} actual OLED result: '+screen,'oled_installation')
-    if version=='1.4.1':
+    if version in ('1.4.1','1.5'):
         render_path=root/inventory['renderer_manifest']
         raw=render_path.read_bytes();render=json.loads(raw)
         check(hashlib.sha256(raw).hexdigest()==inventory['renderer_manifest_sha256'],'Matching current renderer manifest','renderer')
         check(render['version']==version and render['hardware_test'] is False and render['private_device_data'] is False,'Render version and truthful evidence scope','renderer')
         check(inventory['native_menu_api_executed'] is True,'Native current menu inventory executed','renderer')
+        if version=='1.5':
+            check(inventory['build_versions']==dict.fromkeys(('BOOT','INSTALLER'),version),'Source IB_VERSION values match current release','renderer')
+            check(render['screen_headers']==dict.fromkeys(('BOOT','INSTALLER'),'M300 boot v1.5 © Marcin Kowalik'),'Actual OLED header values match current release','renderer')
+            check(any('Version v1.5' in page['items'] for page in inventory['boot_pages']),'Native About page has current version','renderer')
         for name in ('source/src/menu.c','source/include/ib.h','firmware/src/main.c','firmware/include/ib.h'):
             check(render['source_sha256'][name]==inventory['source_sha256'][name],'Same menu/dispatcher source: '+name,'renderer')
         for screen in render['screens']:
